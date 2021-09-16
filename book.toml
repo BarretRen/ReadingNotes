@@ -1,0 +1,6 @@
+[book]
+authors = ["Barret Ren"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Barret's Reading Notes"
