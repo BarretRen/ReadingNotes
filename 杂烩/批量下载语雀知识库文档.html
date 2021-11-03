@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>批量下载语雀知识库文档 - Barret&#x27;s Reading Notes</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> README</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> 杂烩</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../杂烩/批量下载语雀知识库文档.html" class="active"><strong aria-hidden="true">2.1.</strong> 批量下载语雀知识库文档</a></li><li class="chapter-item expanded "><a href="../杂烩/Ag快速搜索代替grep.html"><strong aria-hidden="true">2.2.</strong> Ag快速搜索代替grep</a></li><li class="chapter-item expanded "><a href="../杂烩/markdown自定义样式.html"><strong aria-hidden="true">2.3.</strong> markdown自定义样式</a></li><li class="chapter-item expanded "><a href="../杂烩/MobaXterm.html"><strong aria-hidden="true">2.4.</strong> MobaXterm</a></li><li class="chapter-item expanded "><a href="../杂烩/Putty的ColorTheme分享.html"><strong aria-hidden="true">2.5.</strong> Putty的ColorTheme分享</a></li><li class="chapter-item expanded "><a href="../杂烩/Vim折叠方式和卡顿.html"><strong aria-hidden="true">2.6.</strong> Vim折叠方式和卡顿</a></li><li class="chapter-item expanded "><a href="../杂烩/vim作为IDE的基本配置.html"><strong aria-hidden="true">2.7.</strong> vim作为IDE的基本配置</a></li><li class="chapter-item expanded "><a href="../杂烩/如何更新fork的repo.html"><strong aria-hidden="true">2.8.</strong> 如何更新fork的repo</a></li><li class="chapter-item expanded "><a href="../杂烩/一次难忘的宏定义debug.html"><strong aria-hidden="true">2.9.</strong> 一次难忘的宏定义debug</a></li><li class="chapter-item expanded "><a href="../杂烩/一张图弄明白开源协议.html"><strong aria-hidden="true">2.10.</strong> 一张图弄明白开源协议</a></li><li class="chapter-item expanded "><a href="../杂烩/自定义的xshellTheme.html"><strong aria-hidden="true">2.11.</strong> 自定义的xshellTheme</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> 闲书笔记</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../闲书笔记/网络文摘.html"><strong aria-hidden="true">3.1.</strong> 网络文摘</a></li><li class="chapter-item expanded "><a href="../闲书笔记/低水平勤奋陷阱.html"><strong aria-hidden="true">3.2.</strong> 低水平勤奋陷阱</a></li><li class="chapter-item expanded "><a href="../闲书笔记/疲惫生活中的英雄梦想.html"><strong aria-hidden="true">3.3.</strong> 疲惫生活中的英雄梦想</a></li><li class="chapter-item expanded "><a href="../闲书笔记/阿里工程师的自我修养.html"><strong aria-hidden="true">3.4.</strong> 阿里工程师的自我修养</a></li><li class="chapter-item expanded "><a href="../闲书笔记/程序员的职业素养.html"><strong aria-hidden="true">3.5.</strong> 程序员的职业素养</a></li><li class="chapter-item expanded "><a href="../闲书笔记/对自己狠一点.html"><strong aria-hidden="true">3.6.</strong> 对自己狠一点</a></li><li class="chapter-item expanded "><a href="../闲书笔记/高效能人士的七个习惯.html"><strong aria-hidden="true">3.7.</strong> 高效能人士的七个习惯</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Barret&#x27;s Reading Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <ol>
+<li>打开知识库的管理文档页.</li>
+<li>如果你的文档很多, 那么滑到&quot;管理文档&quot;页面底部, 有一个&quot;加载更多&quot; 的按钮, 点一下, 使所以文档加载出来. </li>
+<li>打开浏览器开发者工具, 点击 console, 把以下代码粘贴进去.</li>
+</ol>
+<pre><code class="language-javascript">function download(keyword) {
+    let all = document.querySelectorAll('li[class=&quot;ant-list-item&quot;]');
+    let interval = 1000;
+
+    all.forEach((e) =&gt; {
+
+        function get() {
+            const url = `${e.querySelector('div[class=&quot;info-title-inner&quot;] &gt; a').href}/markdown?attachment=true&amp;latexcode=false&amp;anchor=true&amp;linebreak=true`;
+            const title = `${e.querySelector('div[class=&quot;info-title-inner&quot;]').innerText}.md`;
+            fetch(url).then(resp =&gt; resp.blob()).then(blob =&gt; {
+                console.log(blob.text());
+                const urlDownload = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = urlDownload;
+                a.download = title;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(urlDownload);
+            }).catch((err) =&gt; console.error(err));
+        }
+
+				if (keyword) {
+						if (e.innerText.toLowerCase().indexOf(keyword) &gt; -1) {
+								setTimeout(get, interval, e);
+				        interval += 1000;
+						}
+				} else {
+						setTimeout(get, interval, e);
+				      interval += 1000;
+				}
+    })
+}
+</code></pre>
+<ol start="4">
+<li>在 console 中输入 download(), 就能以 &quot;markdown&quot; 文件格式批量下载了</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../杂烩/Ag快速搜索代替grep.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../杂烩/Ag快速搜索代替grep.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

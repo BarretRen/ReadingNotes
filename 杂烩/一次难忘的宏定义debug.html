@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>一次难忘的宏定义debug - Barret&#x27;s Reading Notes</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> README</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> 杂烩</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../杂烩/批量下载语雀知识库文档.html"><strong aria-hidden="true">2.1.</strong> 批量下载语雀知识库文档</a></li><li class="chapter-item expanded "><a href="../杂烩/Ag快速搜索代替grep.html"><strong aria-hidden="true">2.2.</strong> Ag快速搜索代替grep</a></li><li class="chapter-item expanded "><a href="../杂烩/markdown自定义样式.html"><strong aria-hidden="true">2.3.</strong> markdown自定义样式</a></li><li class="chapter-item expanded "><a href="../杂烩/MobaXterm.html"><strong aria-hidden="true">2.4.</strong> MobaXterm</a></li><li class="chapter-item expanded "><a href="../杂烩/Putty的ColorTheme分享.html"><strong aria-hidden="true">2.5.</strong> Putty的ColorTheme分享</a></li><li class="chapter-item expanded "><a href="../杂烩/Vim折叠方式和卡顿.html"><strong aria-hidden="true">2.6.</strong> Vim折叠方式和卡顿</a></li><li class="chapter-item expanded "><a href="../杂烩/vim作为IDE的基本配置.html"><strong aria-hidden="true">2.7.</strong> vim作为IDE的基本配置</a></li><li class="chapter-item expanded "><a href="../杂烩/如何更新fork的repo.html"><strong aria-hidden="true">2.8.</strong> 如何更新fork的repo</a></li><li class="chapter-item expanded "><a href="../杂烩/一次难忘的宏定义debug.html" class="active"><strong aria-hidden="true">2.9.</strong> 一次难忘的宏定义debug</a></li><li class="chapter-item expanded "><a href="../杂烩/一张图弄明白开源协议.html"><strong aria-hidden="true">2.10.</strong> 一张图弄明白开源协议</a></li><li class="chapter-item expanded "><a href="../杂烩/自定义的xshellTheme.html"><strong aria-hidden="true">2.11.</strong> 自定义的xshellTheme</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> 闲书笔记</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../闲书笔记/网络文摘.html"><strong aria-hidden="true">3.1.</strong> 网络文摘</a></li><li class="chapter-item expanded "><a href="../闲书笔记/低水平勤奋陷阱.html"><strong aria-hidden="true">3.2.</strong> 低水平勤奋陷阱</a></li><li class="chapter-item expanded "><a href="../闲书笔记/疲惫生活中的英雄梦想.html"><strong aria-hidden="true">3.3.</strong> 疲惫生活中的英雄梦想</a></li><li class="chapter-item expanded "><a href="../闲书笔记/阿里工程师的自我修养.html"><strong aria-hidden="true">3.4.</strong> 阿里工程师的自我修养</a></li><li class="chapter-item expanded "><a href="../闲书笔记/程序员的职业素养.html"><strong aria-hidden="true">3.5.</strong> 程序员的职业素养</a></li><li class="chapter-item expanded "><a href="../闲书笔记/对自己狠一点.html"><strong aria-hidden="true">3.6.</strong> 对自己狠一点</a></li><li class="chapter-item expanded "><a href="../闲书笔记/高效能人士的七个习惯.html"><strong aria-hidden="true">3.7.</strong> 高效能人士的七个习惯</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Barret&#x27;s Reading Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="前言"><a class="header" href="#前言">前言</a></h2>
+<p>软件开发者debug程序是家常便饭，然而有时候也会遇到让你丈二和尚摸不着头脑的问题。你会在心中纳闷：“怎么会这样呢？”“这个地方我明明加了限制啊”“见鬼了吧，一样的步骤结果不一样？？”
+有时候这些bug最终发现都是很简单的原因导致的，于是恍然大悟，原来是这样。虽然问题解决了，但是这并不能说明你有所成长，下次遇到这样的问题，你的思路用变化吗？还是说仍旧是check好几天，哀声遍野，然后恍然大悟？
+我想说的是，问题解决不重要，思考方式有所变化，下次能用更短的时间解决问题，才最为重要。
+今天，我就遇到了这样一个让我受益匪浅的问题，来此分享一下。</p>
+<h2 id="问题"><a class="header" href="#问题">问题</a></h2>
+<p>公司有两套产品，基本架构是一样的，所以很多的module是公用的，只有一小部分模块因为逻辑变化较大分成了单独的module，但是这些模块中仍有小部分代码是一样的功能。因此某些文件就出现了两份（这在大的产品中这很正常吧！），画了一个简单的图阐述一下：
+<img src=".assets/1577453976574-e04e4614-9ad7-4e3d-9f59-9aeb23efbfd1.png" alt="2018-2-2-sutrcture.png" /></p>
+<p>而问题就这么出现了，简化来说是这样的：
+产品Ａ和产品Ｂ接受共同的配置，标准的配置时两个产品都正常处理，并且对业务没有任何影响。
+而测试人员配置了一个很长的字符串配置，两个产品都报错了（这是不合法的）。产品针对这个配置项的基本逻辑是：虽然你输入的不合法，我会警告你，但是我仍然会尝试去解析这个配置，不然会导致其他的配置无法生效。而问题出现了，产品A和B都报错了，这是OK的。但是产品B却在后台上报了一个配置项解析错误的error，直接导致某个电话业务失败了；于此同时，产品A却一切正常。</p>
+<p>好吧，我也知道是某个小差别引起的，幸好产品A是好的，对应着查吧！</p>
+<h2 id="捉虫历程"><a class="header" href="#捉虫历程">捉虫历程</a></h2>
+<ol>
+<li>难道是这个字符串太长，两个产品最后读取到的字符串不一致，从而走向了不同的处理？
+打印一下读取到系统里时，这个字符串是什么样的（额，完全一样）：</li>
+</ol>
+<pre><code class="language-cpp">产品Ａ：
+length:109
+xxxxxxxx|1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567811
+</code></pre>
+<pre><code>产品Ｂ:
+length:109
+xxxxxxxx|1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567811
+</code></pre>
+<ol start="2">
+<li>产品A是好的，产品B不OK，说明两个产品某个步骤操作的时候有差别，问题在产品私有的的module，且在相同的那部分文件里(因为是处理同一个东西嘛）。
+肯定是后来的产品开发特性的不同，使得一开始相同的文件出现了不一致，导致问题现象有问题。
+查看一下处理流程吧，都是把上面的字符串放到下面这个函数进行处理，函数的第二个参数是一个out的返回值。解析正常，返回的是有效值；解析失败返回的是NULL.
+额，函数调用几乎一模一样，没区别。</li>
+</ol>
+<pre><code class="language-cpp">//产品A:
+retVal = (Aal_ty_retVal)decode_value(pGlbMap, &amp;(pGlbmapVxx[dpIndex].xxxmapValue), &amp;dError);
+</code></pre>
+<pre><code class="language-cpp">//产品B
+rval = (Bal_ty_retVal)decode_value(pGlbMap, &amp;(pGlbmapVxx[dp_index].xxxmapValue), &amp;dError);
+</code></pre>
+<ol start="3">
+<li>既然调用没问题，那应该是decode_value函数的具体实现不一样吧？
+额，除了去除了一点不支持的变量，没区别了。
+<img src=".assets/1577454124260-8bab9338-8873-4bba-85c6-fb58767d04da.png" alt="2018-2-2-diff.png" /></li>
+<li>好吧，我没辙了，要不把文件夹理所有文件都diff一遍吧？
+也完全一样，额，冷静一下。
+<img src="https://cdn.nlark.com/yuque/0/2019/jpeg/690827/1577454153240-5a231efd-e2fc-4ca1-b585-9c25fad9c7f3.jpeg" alt="2018-2-2-what.jpg" /></li>
+</ol>
+<h2 id="原因"><a class="header" href="#原因">原因</a></h2>
+<p>最后在他人协助下，终于发现问题：
+decode_value函数中有一段处理：</p>
+<pre><code class="language-cpp">count++;
+if (count &gt;= DL_MAX_STR_ELEMS)
+{
+    g_error_code = E_DML_TOOMANY_R_COUNT;
+    YYABORT;
+}
+</code></pre>
+<p>在这段处理中，对count加1，并做一个if判断，看上去没什么区别对吧？But，问题偏偏在这里，与count做判断的一个宏定义DL_MAX_STR_ELEMS有问题啊，DL_MAX_STR_ELEMS在产品A和产品B中定义的值不一样！！！</p>
+<pre><code>产品A:
+#define DL_MAX_STR_ELEMS 100
+</code></pre>
+<pre><code>产品B：
+#define DL_MAX_STR_ELEMS 32
+</code></pre>
+<p>就是这个原因，导致一段很长的配置字符串，在产品A上没有超过100个字符，成功解析，而产品B解析失败。</p>
+<h2 id="结论"><a class="header" href="#结论">结论</a></h2>
+<p>感受颇多，最大的感受是，寻找bug，思路要变化。
+如果两个产品或多个产品有着基本相同的处理，但最终结果不同，其原因获取不仅仅是多个处理或少个处理的问题。
+<strong>更大的可能是某些预定义的常量针对产品不同有不同的值，在if、switch和循环等地方走向了不同的处理。仅仅比较函数 code是否一致是没有用的，关键是check存在流程分流的地方是否走的是同一走向.</strong></p>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../杂烩/如何更新fork的repo.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../杂烩/一张图弄明白开源协议.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../杂烩/如何更新fork的repo.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../杂烩/一张图弄明白开源协议.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
