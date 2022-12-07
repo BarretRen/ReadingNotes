@@ -202,7 +202,7 @@ dl dd>:last-child {
 
 pre > *, code, tt {
   font-size: 15px;
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  font-family: "JetBrains Mono", "Courier New", Consolase;
 }
 
 code, tt {
@@ -252,7 +252,7 @@ kbd {
     border-radius: 2px 2px 2px 2px;
     border-style: solid;
     border-width: 1px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "JetBrains Mono", "Courier New", Consolas;
     line-height: 10px;
     padding: 1px 4px;
 }
@@ -700,7 +700,7 @@ dl dd>:last-child {
 pre > *, code, tt {
 	color: #777;
   font-size: 15px;
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  font-family: "JetBrains Mono", "Courier New", Consolas;
 }
 
 code, tt {
@@ -748,7 +748,7 @@ kbd {
     border-radius: 2px 2px 2px 2px;
     border-style: solid;
     border-width: 1px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "JetBrains Mono", "Courier New", Consolas;
     line-height: 10px;
     padding: 1px 4px;
 }
