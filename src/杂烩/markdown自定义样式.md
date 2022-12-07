@@ -16,10 +16,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 =============================================================================*/
 
 body {
-  font-family: "Microsoft YaHei","Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "JetBrains Mono", "Courier New", Consolas;
   font-size: 15px;
   line-height: 1.6;
-  /*color: #333;*/
+  color: #333;
   background-color: #f3f2ee;
   padding: 20px;
   margin: 0 auto;
@@ -516,7 +516,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 =============================================================================*/
 
 body {
-  font-family: "Microsoft YaHei","Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "JetBrains Mono", "Courier New", Consolas;
   font-size: 15px;
   line-height: 1.6;
   color: #F8F8F2;
