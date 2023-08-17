@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>如何启动DevOps转型 - Barret&#x27;s Reading Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../../index.html"><strong aria-hidden="true">1.</strong> README</a></li><li class="chapter-item affix "><li class="part-title">杂烩</li><li class="chapter-item "><a href="../../杂烩/批量下载语雀知识库文档.html"><strong aria-hidden="true">2.</strong> 批量下载语雀知识库文档</a></li><li class="chapter-item "><a href="../../杂烩/markdown自定义样式.html"><strong aria-hidden="true">3.</strong> markdown自定义样式</a></li><li class="chapter-item "><a href="../../杂烩/MobaXterm.html"><strong aria-hidden="true">4.</strong> MobaXterm</a></li><li class="chapter-item "><a href="../../杂烩/Putty的ColorTheme分享.html"><strong aria-hidden="true">5.</strong> Putty的ColorTheme分享</a></li><li class="chapter-item "><a href="../../杂烩/Vim折叠方式和卡顿.html"><strong aria-hidden="true">6.</strong> Vim折叠方式和卡顿</a></li><li class="chapter-item "><a href="../../杂烩/vim作为IDE的基本配置.html"><strong aria-hidden="true">7.</strong> vim作为IDE的基本配置</a></li><li class="chapter-item "><a href="../../杂烩/如何更新fork的repo.html"><strong aria-hidden="true">8.</strong> 如何更新fork的repo</a></li><li class="chapter-item "><a href="../../杂烩/一次难忘的宏定义debug.html"><strong aria-hidden="true">9.</strong> 一次难忘的宏定义debug</a></li><li class="chapter-item "><a href="../../杂烩/一张图弄明白开源协议.html"><strong aria-hidden="true">10.</strong> 一张图弄明白开源协议</a></li><li class="chapter-item "><a href="../../杂烩/自定义的xshellTheme.html"><strong aria-hidden="true">11.</strong> 自定义的xshellTheme</a></li><li class="chapter-item affix "><li class="part-title">闲书笔记</li><li class="chapter-item "><a href="../../闲书笔记/网络文摘.html"><strong aria-hidden="true">12.</strong> 网络文摘</a></li><li class="chapter-item "><a href="../../闲书笔记/低水平勤奋陷阱.html"><strong aria-hidden="true">13.</strong> 低水平勤奋陷阱</a></li><li class="chapter-item "><a href="../../闲书笔记/疲惫生活中的英雄梦想.html"><strong aria-hidden="true">14.</strong> 疲惫生活中的英雄梦想</a></li><li class="chapter-item "><a href="../../闲书笔记/阿里工程师的自我修养.html"><strong aria-hidden="true">15.</strong> 阿里工程师的自我修养</a></li><li class="chapter-item "><a href="../../闲书笔记/程序员的职业素养.html"><strong aria-hidden="true">16.</strong> 程序员的职业素养</a></li><li class="chapter-item "><a href="../../闲书笔记/对自己狠一点.html"><strong aria-hidden="true">17.</strong> 对自己狠一点</a></li><li class="chapter-item "><a href="../../闲书笔记/高效能人士的七个习惯.html"><strong aria-hidden="true">18.</strong> 高效能人士的七个习惯</a></li><li class="chapter-item affix "><li class="part-title">敏捷项目管理</li><li class="chapter-item "><a href="../../敏捷管理/敏捷宣言.html"><strong aria-hidden="true">19.</strong> 敏捷宣言</a></li><li class="chapter-item "><a href="../../敏捷管理/人月神话.html"><strong aria-hidden="true">20.</strong> 人月神话</a></li><li class="chapter-item "><a href="../../敏捷管理/凤凰项目.html"><strong aria-hidden="true">21.</strong> 凤凰项目</a></li><li class="chapter-item "><div><strong aria-hidden="true">22.</strong> ScrumXP</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../敏捷管理/ScrumXP/1如何编写backlog.html"><strong aria-hidden="true">22.1.</strong> 如何编写backlog</a></li><li class="chapter-item "><a href="../../敏捷管理/ScrumXP/2SprintPlanning.html"><strong aria-hidden="true">22.2.</strong> Sprint Planning</a></li><li class="chapter-item "><a href="../../敏捷管理/ScrumXP/3Scrum例会.html"><strong aria-hidden="true">22.3.</strong> Scrum例会</a></li><li class="chapter-item "><a href="../../敏捷管理/ScrumXP/4Demo和SprintReview.html"><strong aria-hidden="true">22.4.</strong> Demo和Sprint Review</a></li><li class="chapter-item "><a href="../../敏捷管理/ScrumXP/5Scrum和XP的组合.html"><strong aria-hidden="true">22.5.</strong> Scrum和XP的组合</a></li><li class="chapter-item "><a href="../../敏捷管理/ScrumXP/6如何管理多个Scrum团队.html"><strong aria-hidden="true">22.6.</strong> 如何管理多个Scrum团队</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">23.</strong> Scrum精髓</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/1Scrum框架.html"><strong aria-hidden="true">23.1.</strong> Scrum框架</a></li><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/2敏捷原则.html"><strong aria-hidden="true">23.2.</strong> 敏捷原则</a></li><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/3迭代周期Sprint.html"><strong aria-hidden="true">23.3.</strong> 迭代周期Sprint</a></li><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/4需求和UserStory.html"><strong aria-hidden="true">23.4.</strong> 需求和User Story</a></li><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/5技术债.html"><strong aria-hidden="true">23.5.</strong> 技术债</a></li><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/6产品负责人.html"><strong aria-hidden="true">23.6.</strong> 产品负责人</a></li><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/7ScrumMaster.html"><strong aria-hidden="true">23.7.</strong> Scrum Master</a></li><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/8开发团队.html"><strong aria-hidden="true">23.8.</strong> 开发团队</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">24.</strong> DevOps</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../敏捷管理/DevOps/1DevOps简介.html"><strong aria-hidden="true">24.1.</strong> DevOps简介</a></li><li class="chapter-item expanded "><a href="../../敏捷管理/DevOps/2如何启动DevOps转型.html" class="active"><strong aria-hidden="true">24.2.</strong> 如何启动DevOps转型</a></li><li class="chapter-item "><a href="../../敏捷管理/DevOps/3流动原则的实践.html"><strong aria-hidden="true">24.3.</strong> 流动原则的实践</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">25.</strong> 赋能</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../敏捷管理/赋能/1应对不确定性.html"><strong aria-hidden="true">25.1.</strong> 应对不确定性</a></li><li class="chapter-item "><a href="../../敏捷管理/赋能/2化繁为简.html"><strong aria-hidden="true">25.2.</strong> 化繁为简</a></li><li class="chapter-item "><a href="../../敏捷管理/赋能/3信息共享.html"><strong aria-hidden="true">25.3.</strong> 信息共享</a></li><li class="chapter-item "><a href="../../敏捷管理/赋能/4赋能.html"><strong aria-hidden="true">25.4.</strong> 赋能</a></li><li class="chapter-item "><a href="../../敏捷管理/赋能/5走在时代前面.html"><strong aria-hidden="true">25.5.</strong> 走在时代前面</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">26.</strong> 工作收获</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../敏捷管理/工作收获/NokiaProductLifeCycle.html"><strong aria-hidden="true">26.1.</strong> Nokia Product Life Cycle</a></li><li class="chapter-item "><a href="../../敏捷管理/工作收获/项目成功的基本准则.html"><strong aria-hidden="true">26.2.</strong> 项目成功的基本准则</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Barret&#x27;s Reading Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="1-选择合适的价值流"><a class="header" href="#1-选择合适的价值流">1 选择合适的价值流</a></h1>
+<h2 id="11-绿地项目与棕地项目"><a class="header" href="#11-绿地项目与棕地项目">1.1 绿地项目与棕地项目</a></h2>
+<p>软件服务或产品常被分为绿地项目和棕地项目：</p>
+<ul>
+<li>绿地项目是指<strong>全新的软件项目</strong>。这种项目通常还处在规划或实施的早期阶段，有机会构建全新的应用和基础设施，并没有太多限制。
+<ul>
+<li><strong>DevOps 绿地项目通常是指一些试点项目</strong>，用于证明公有云或私有云方案的可行性，或者尝试采用自动化部署工具或相关工具等</li>
+</ul>
+</li>
+<li>棕地项目是指那些<strong>已经服务客户长达几年甚至几十年的产品或服务</strong>。这种项目通常背负大量的技术债务，譬如无自动化测试、运行在无人维护的平台上等</li>
+</ul>
+<p>应用的年龄并不是影响性能的主要因素； 相反， 性能取决于应用架构在当前（或重构后）是否具有可测试性和可部署性。维护棕地项目的团队可能非常愿意尝试 DevOps，尤其在他们认为传统方法无法实现当前目标的情况下（特别是当优化已经迫在眉睫时）。</p>
+<h2 id="12-记录型系统和交互型系统"><a class="header" href="#12-记录型系统和交互型系统">1.2 记录型系统和交互型系统</a></h2>
+<ul>
+<li>传统的记录型系统是指类似于 ERP 的系统（例如 MRP系统、人力资源系统、财务报表系统等），它的交易和数据的正确性是至关重要的；
+<ul>
+<li>变化速度通常较慢，并且有监管和合规性要求，侧重于<strong>做的正确</strong></li>
+</ul>
+</li>
+<li>交互型系统则是指面向客户或员工的可交互系统，例如电子商务系统和办公软件。
+<ul>
+<li>变化速度通常较快，因为它需要快速响应反馈，通过实验找到最能满足客户需求的方式，侧重于<strong>做的迅速</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="13-从最乐于创新的团队开始"><a class="header" href="#13-从最乐于创新的团队开始">1.3 从最乐于创新的团队开始</a></h2>
+<p>在每一个组织中，不同的团队或个人都会对创新持有不同的态度：<img src=".assets/1590854784498-3080becd-274b-4792-a528-c44d565d670d.png" alt="image.png" /></p>
+<h2 id="14-扩大devops的范围"><a class="header" href="#14-扩大devops的范围">1.4 扩大DevOps的范围</a></h2>
+<p>基于已经取得的成功，逐步扩大 DevOps 计划的应用范围。遵循低风险的顺序，有条不紊地提高可信度和影响力，并获取支持。</p>
+<ul>
+<li><strong>发现创新者和早期采用者</strong>： 一开始，把重点放在真正有意愿改进的团队上</li>
+<li><strong>赢得沉默的大多数</strong>： 在下一阶段，力求将 DevOps 实践扩展到更多的团队和价值流，目标是建立更稳固的群众基础</li>
+<li><strong>识别“钉子户”</strong>： 是指那些高调的、有影响力的反对者</li>
+</ul>
+<h1 id="2-理解可视化和运用价值流"><a class="header" href="#2-理解可视化和运用价值流">2 理解、可视化和运用价值流</a></h1>
+<h2 id="21-确定devops团队成员"><a class="header" href="#21-确定devops团队成员">2.1 确定Devops团队成员</a></h2>
+<ul>
+<li><strong>产品负责人</strong>： 作为业务方的代言人，定义系统需要实现的功能。</li>
+<li><strong>开发团队</strong>： 负责开发系统功能。</li>
+<li><strong>QA 团队</strong>： 给开发团队提供反馈，并确保系统功能符合需求。</li>
+<li><strong>运维团队</strong>： 负责维护生产环境，并确保系统能够良好地运行。</li>
+<li><strong>信息安全团队</strong>： 负责系统和数据的安全。</li>
+<li><strong>发布经理</strong>： 负责管理和协调生产环境部署以及发布流程。</li>
+<li><strong>技术主管或价值流经理</strong>：（精益方法论的定义）负责“从始至终地保障价值流的产出满足或超出客户（和组织）期望”。</li>
+</ul>
+<h2 id="22-绘制价值流图"><a class="header" href="#22-绘制价值流图">2.2 绘制价值流图</a></h2>
+<p>深入理解工作方式，并用价值流图进行记录 
+。<strong>绘制价值流图的目标并不是记录所有的步骤和细节，而是识别出阻碍价值流快速流动的环节，从而缩短前置时间和提高可靠性</strong>。
+<img src=".assets/1590890739678-631f7dbf-0a6d-478d-a517-fbabb3efff10.png" alt="image.png" /></p>
+<h2 id="23-专门的转型团队"><a class="header" href="#23-专门的转型团队">2.3 专门的转型团队</a></h2>
+<p>团队应该负责实现明确定义的、可度量的、系统级的目标，措施：</p>
+<ul>
+<li>转型团队的成员专门执行 DevOps 转型工作（而不是让他们继续做之前的工作，但要花20%的时间来做 DevOps 转型）</li>
+<li>选择熟悉多个领域的通才作为团队成员</li>
+<li>选择与其他部门长期保持良好关系的人作为团队成员</li>
+<li>如果可能，为团队找一个独立的办公区域，使各位成员尽可能多地相互交流，并和其他部门保持适当的距离。</li>
+</ul>
+<p><img src=".assets/1590891222656-5820fe9d-46d3-4b61-9a28-cc4e9d7b6adb.png" alt="image.png" /></p>
+<h1 id="3-组织架构"><a class="header" href="#3-组织架构">3 组织架构</a></h1>
+<p><strong>康威定律</strong>：<strong>系统设计受限于组织自身的沟通结构。组织的规模越大，灵活性就越差，这种现象也就越明显</strong>。组织结构决定了工作方式和工作成果。</p>
+<h2 id="31-组织结构类型"><a class="header" href="#31-组织结构类型">3.1 组织结构类型</a></h2>
+<p><img src=".assets/1585031850976-bde0992e-9a06-47cc-a792-c6b62741fee1.png" alt="" />
+<strong>过度职能导向的危害：</strong></p>
+<ul>
+<li>执行工作的人通常都不太理解自己的工作与价值流目标有什么关系（“我之所以要配置这台服务器，是因为别人要我这么做”）。这样就无法让员工发挥创造性和主动性。</li>
+<li>决策逐级下达至各个职能部门，最后调整局部的优先级，而这又会降低其他团队的速度。每个团队都在加速工作，而最终的结果却是所有项目都以同样缓慢的速度向前推进</li>
+<li>除了导致长时间等待和交付周期延长以外，这种情况也会导致糟糕的交接、大量的返工、交付质量下降、瓶颈和延期等问题</li>
+</ul>
+<p><strong>职能导向也可以成就高效运转的组织</strong>。组建跨职能和以市场为导向的团队是实现快速流动和可靠性的一种方式，但并不是唯一的方式。只要价值流中的所有人都能意识到客户和组织的目标，不管他们在组织中处于什么位置，都可以通过职能导向取得所预期的 DevOps 成果。
+<img src=".assets/1590893607390-dfea45d4-5e14-4dfc-8a32-96bbfb554230.png" alt="image.png" />
+Note：<strong>起决定性作用的并不是组织形式，而是人们的行为和反应。成功的根本原因不在于其组织结构，而在于它的发展能力和员工的工作习惯</strong>。</p>
+<h2 id="32-使团队成员都成为通才"><a class="header" href="#32-使团队成员都成为通才">3.2 使团队成员都成为通才</a></h2>
+<p>让每一位团队成员都成为通才。<strong>给工程师提供学习必要技能的机会</strong>，让他们有能力构建和运行所负责的系统，并定期让他们在不同的职位间轮岗。 <strong>全栈工程师</strong>这个术语现在通常是指那些熟悉或至少大致理解整个应用栈（例如代码、数据库、操作系统、网络和云）的通才。<img src=".assets/1590934811496-b6521660-179c-4792-b6d7-06b907aa5a53.png" alt="image.png" /></p>
+<h2 id="33-保持小规模团队"><a class="header" href="#33-保持小规模团队">3.3 保持小规模团队</a></h2>
+<p><strong>两个披萨原则</strong>：两个比萨够团队的所有成员吃，这样的团队通常有 5～ 10 人。</p>
+<ul>
+<li>它确保团队成员对系统有清晰、相同的理解</li>
+<li>它限制正在开发的产品或服务的增长率，保证第一点</li>
+<li>它分散权力并实现自主</li>
+<li>领导“双比萨”团队是让员工获得领导经验的一种方式</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../敏捷管理/DevOps/1DevOps简介.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../敏捷管理/DevOps/3流动原则的实践.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../敏捷管理/DevOps/1DevOps简介.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../敏捷管理/DevOps/3流动原则的实践.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

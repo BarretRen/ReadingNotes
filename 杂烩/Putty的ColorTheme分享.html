@@ -1,0 +1,692 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Putty的ColorTheme分享 - Barret&#x27;s Reading Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../index.html"><strong aria-hidden="true">1.</strong> README</a></li><li class="chapter-item affix "><li class="part-title">杂烩</li><li class="chapter-item "><a href="../杂烩/批量下载语雀知识库文档.html"><strong aria-hidden="true">2.</strong> 批量下载语雀知识库文档</a></li><li class="chapter-item "><a href="../杂烩/markdown自定义样式.html"><strong aria-hidden="true">3.</strong> markdown自定义样式</a></li><li class="chapter-item "><a href="../杂烩/MobaXterm.html"><strong aria-hidden="true">4.</strong> MobaXterm</a></li><li class="chapter-item expanded "><a href="../杂烩/Putty的ColorTheme分享.html" class="active"><strong aria-hidden="true">5.</strong> Putty的ColorTheme分享</a></li><li class="chapter-item "><a href="../杂烩/Vim折叠方式和卡顿.html"><strong aria-hidden="true">6.</strong> Vim折叠方式和卡顿</a></li><li class="chapter-item "><a href="../杂烩/vim作为IDE的基本配置.html"><strong aria-hidden="true">7.</strong> vim作为IDE的基本配置</a></li><li class="chapter-item "><a href="../杂烩/如何更新fork的repo.html"><strong aria-hidden="true">8.</strong> 如何更新fork的repo</a></li><li class="chapter-item "><a href="../杂烩/一次难忘的宏定义debug.html"><strong aria-hidden="true">9.</strong> 一次难忘的宏定义debug</a></li><li class="chapter-item "><a href="../杂烩/一张图弄明白开源协议.html"><strong aria-hidden="true">10.</strong> 一张图弄明白开源协议</a></li><li class="chapter-item "><a href="../杂烩/自定义的xshellTheme.html"><strong aria-hidden="true">11.</strong> 自定义的xshellTheme</a></li><li class="chapter-item affix "><li class="part-title">闲书笔记</li><li class="chapter-item "><a href="../闲书笔记/网络文摘.html"><strong aria-hidden="true">12.</strong> 网络文摘</a></li><li class="chapter-item "><a href="../闲书笔记/低水平勤奋陷阱.html"><strong aria-hidden="true">13.</strong> 低水平勤奋陷阱</a></li><li class="chapter-item "><a href="../闲书笔记/疲惫生活中的英雄梦想.html"><strong aria-hidden="true">14.</strong> 疲惫生活中的英雄梦想</a></li><li class="chapter-item "><a href="../闲书笔记/阿里工程师的自我修养.html"><strong aria-hidden="true">15.</strong> 阿里工程师的自我修养</a></li><li class="chapter-item "><a href="../闲书笔记/程序员的职业素养.html"><strong aria-hidden="true">16.</strong> 程序员的职业素养</a></li><li class="chapter-item "><a href="../闲书笔记/对自己狠一点.html"><strong aria-hidden="true">17.</strong> 对自己狠一点</a></li><li class="chapter-item "><a href="../闲书笔记/高效能人士的七个习惯.html"><strong aria-hidden="true">18.</strong> 高效能人士的七个习惯</a></li><li class="chapter-item affix "><li class="part-title">敏捷项目管理</li><li class="chapter-item "><a href="../敏捷管理/敏捷宣言.html"><strong aria-hidden="true">19.</strong> 敏捷宣言</a></li><li class="chapter-item "><a href="../敏捷管理/人月神话.html"><strong aria-hidden="true">20.</strong> 人月神话</a></li><li class="chapter-item "><a href="../敏捷管理/凤凰项目.html"><strong aria-hidden="true">21.</strong> 凤凰项目</a></li><li class="chapter-item "><div><strong aria-hidden="true">22.</strong> ScrumXP</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../敏捷管理/ScrumXP/1如何编写backlog.html"><strong aria-hidden="true">22.1.</strong> 如何编写backlog</a></li><li class="chapter-item "><a href="../敏捷管理/ScrumXP/2SprintPlanning.html"><strong aria-hidden="true">22.2.</strong> Sprint Planning</a></li><li class="chapter-item "><a href="../敏捷管理/ScrumXP/3Scrum例会.html"><strong aria-hidden="true">22.3.</strong> Scrum例会</a></li><li class="chapter-item "><a href="../敏捷管理/ScrumXP/4Demo和SprintReview.html"><strong aria-hidden="true">22.4.</strong> Demo和Sprint Review</a></li><li class="chapter-item "><a href="../敏捷管理/ScrumXP/5Scrum和XP的组合.html"><strong aria-hidden="true">22.5.</strong> Scrum和XP的组合</a></li><li class="chapter-item "><a href="../敏捷管理/ScrumXP/6如何管理多个Scrum团队.html"><strong aria-hidden="true">22.6.</strong> 如何管理多个Scrum团队</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">23.</strong> Scrum精髓</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/1Scrum框架.html"><strong aria-hidden="true">23.1.</strong> Scrum框架</a></li><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/2敏捷原则.html"><strong aria-hidden="true">23.2.</strong> 敏捷原则</a></li><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/3迭代周期Sprint.html"><strong aria-hidden="true">23.3.</strong> 迭代周期Sprint</a></li><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/4需求和UserStory.html"><strong aria-hidden="true">23.4.</strong> 需求和User Story</a></li><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/5技术债.html"><strong aria-hidden="true">23.5.</strong> 技术债</a></li><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/6产品负责人.html"><strong aria-hidden="true">23.6.</strong> 产品负责人</a></li><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/7ScrumMaster.html"><strong aria-hidden="true">23.7.</strong> Scrum Master</a></li><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/8开发团队.html"><strong aria-hidden="true">23.8.</strong> 开发团队</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">24.</strong> DevOps</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../敏捷管理/DevOps/1DevOps简介.html"><strong aria-hidden="true">24.1.</strong> DevOps简介</a></li><li class="chapter-item "><a href="../敏捷管理/DevOps/2如何启动DevOps转型.html"><strong aria-hidden="true">24.2.</strong> 如何启动DevOps转型</a></li><li class="chapter-item "><a href="../敏捷管理/DevOps/3流动原则的实践.html"><strong aria-hidden="true">24.3.</strong> 流动原则的实践</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">25.</strong> 赋能</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../敏捷管理/赋能/1应对不确定性.html"><strong aria-hidden="true">25.1.</strong> 应对不确定性</a></li><li class="chapter-item "><a href="../敏捷管理/赋能/2化繁为简.html"><strong aria-hidden="true">25.2.</strong> 化繁为简</a></li><li class="chapter-item "><a href="../敏捷管理/赋能/3信息共享.html"><strong aria-hidden="true">25.3.</strong> 信息共享</a></li><li class="chapter-item "><a href="../敏捷管理/赋能/4赋能.html"><strong aria-hidden="true">25.4.</strong> 赋能</a></li><li class="chapter-item "><a href="../敏捷管理/赋能/5走在时代前面.html"><strong aria-hidden="true">25.5.</strong> 走在时代前面</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">26.</strong> 工作收获</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../敏捷管理/工作收获/NokiaProductLifeCycle.html"><strong aria-hidden="true">26.1.</strong> Nokia Product Life Cycle</a></li><li class="chapter-item "><a href="../敏捷管理/工作收获/项目成功的基本准则.html"><strong aria-hidden="true">26.2.</strong> 项目成功的基本准则</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Barret&#x27;s Reading Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="为什么开始使用putty了"><a class="header" href="#为什么开始使用putty了">为什么开始使用Putty了？</a></h1>
+<p>之前分享了两个Xshell的配色方案，xshell这款软件也是用的很舒服。</p>
+<p>奈何用的一直是<strong>家庭免费版</strong>，公司最近有同事收到了Adobe和Netsarang的律师函，<strong>盗版和家庭版被查出来了</strong>。没听说这位同事最后是怎么处理的，估计要辞退的。公司也为此在每个人的电脑上安装了监控软件，一旦有盗版和非商业允许的软件，就会报警，当然xshell是不能用了。
+在尝试了多个SSH Client之后，最终还是选择了Putty。虽然原始古老，但却和我的Tmux/Vim兼容性最好，抓Log也算方便。于是乎，我之前设计保存的两个Putty的Color Theme也算派上了用场，就此分享：</p>
+<h1 id="护眼色theme"><a class="header" href="#护眼色theme">护眼色Theme</a></h1>
+<p><img src=".assets/1586066169835-7835e31d-c50f-4ba9-8b0a-ed8e128ce600.png" alt="image.png" /></p>
+<pre><code>Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\Green]
+&quot;LogFileClash&quot;=dword:00000001
+&quot;CloseOnExit&quot;=dword:00000001
+&quot;PingInterval&quot;=dword:00000001
+&quot;UserName&quot;=&quot;barretr&quot;
+&quot;BackspaceIsDelete&quot;=dword:00000000
+&quot;LinuxFunctionKeys&quot;=dword:00000002
+&quot;Beep&quot;=dword:00000000
+&quot;WinNameAlways&quot;=dword:00000000
+&quot;Font&quot;=&quot;Cascadia Code&quot;
+&quot;FontHeight&quot;=dword:0000000b
+&quot;FontName&quot;=&quot;Cascadia Code&quot;
+&quot;Colour0&quot;=&quot;0,0,0&quot;
+&quot;Colour1&quot;=&quot;0,0,0&quot;
+&quot;Colour2&quot;=&quot;224,241,226&quot;
+&quot;Colour3&quot;=&quot;224,241,226&quot;
+&quot;Colour5&quot;=&quot;255,0,0&quot;
+&quot;Colour6&quot;=&quot;46,52,54&quot;
+&quot;Colour7&quot;=&quot;85,87,83&quot;
+&quot;Colour8&quot;=&quot;204,0,0&quot;
+&quot;Colour9&quot;=&quot;239,41,41&quot;
+&quot;Colour10&quot;=&quot;78,154,6&quot;
+&quot;Colour11&quot;=&quot;33,141,5&quot;
+&quot;Colour12&quot;=&quot;196,160,0&quot;
+&quot;Colour13&quot;=&quot;218,165,32&quot;
+&quot;Colour14&quot;=&quot;69,73,245&quot;
+&quot;Colour15&quot;=&quot;55,60,244&quot;
+&quot;Colour16&quot;=&quot;117,80,123&quot;
+&quot;Colour17&quot;=&quot;173,127,168&quot;
+&quot;Colour18&quot;=&quot;6,152,154&quot;
+&quot;Colour19&quot;=&quot;52,226,226&quot;
+&quot;Colour20&quot;=&quot;211,215,207&quot;
+&quot;Colour21&quot;=&quot;238,238,236&quot;
+&quot;MouseAutocopy&quot;=dword:00000001
+&quot;LineCodePage&quot;=&quot;UTF-8&quot;
+&quot;X11Display&quot;=&quot;localhost:0&quot;
+&quot;BoldFont&quot;=&quot;&quot;
+&quot;BoldFontHeight&quot;=dword:00000000
+&quot;BoldFontName&quot;=&quot;&quot;
+&quot;WideFont&quot;=&quot;&quot;
+&quot;WideFontHeight&quot;=dword:00000000
+&quot;WideFontName&quot;=&quot;&quot;
+&quot;WideBoldFont&quot;=&quot;&quot;
+&quot;WideBoldFontHeight&quot;=dword:00000000
+&quot;WideBoldFontName&quot;=&quot;&quot;
+&quot;GroupCollapse&quot;=dword:00000001
+&quot;DataVersion&quot;=dword:00000002
+&quot;Present&quot;=dword:00000001
+&quot;LogType&quot;=dword:00000000
+&quot;LogFlush&quot;=dword:00000001
+&quot;LogHeader&quot;=dword:00000001
+&quot;SSHLogOmitPasswords&quot;=dword:00000001
+&quot;SSHLogOmitData&quot;=dword:00000000
+&quot;Protocol&quot;=&quot;ssh&quot;
+&quot;PortNumber&quot;=dword:00000016
+&quot;WarnOnClose&quot;=dword:00000001
+&quot;PingIntervalSecs&quot;=dword:00000000
+&quot;TCPNoDelay&quot;=dword:00000001
+&quot;TCPKeepalives&quot;=dword:00000000
+&quot;TerminalType&quot;=&quot;xterm&quot;
+&quot;TerminalSpeed&quot;=&quot;38400,38400&quot;
+&quot;TerminalModes&quot;=&quot;CS7=A,CS8=A,DISCARD=A,DSUSP=A,ECHO=A,ECHOCTL=A,ECHOE=A,ECHOK=A,ECHOKE=A,ECHONL=A,EOF=A,EOL=A,EOL2=A,ERASE=A,FLUSH=A,ICANON=A,ICRNL=A,IEXTEN=A,IGNCR=A,IGNPAR=A,IMAXBEL=A,INLCR=A,INPCK=A,INTR=A,ISIG=A,ISTRIP=A,IUCLC=A,IUTF8=A,IXANY=A,IXOFF=A,IXON=A,KILL=A,LNEXT=A,NOFLSH=A,OCRNL=A,OLCUC=A,ONLCR=A,ONLRET=A,ONOCR=A,OPOST=A,PARENB=A,PARMRK=A,PARODD=A,PENDIN=A,QUIT=A,REPRINT=A,START=A,STATUS=A,STOP=A,SUSP=A,SWTCH=A,TOSTOP=A,WERASE=A,XCASE=A&quot;
+&quot;AddressFamily&quot;=dword:00000000
+&quot;ProxyExcludeList&quot;=&quot;&quot;
+&quot;ProxyDNS&quot;=dword:00000001
+&quot;ProxyLocalhost&quot;=dword:00000000
+&quot;ProxyMethod&quot;=dword:00000000
+&quot;ProxyHost&quot;=&quot;proxy&quot;
+&quot;ProxyPort&quot;=dword:00000050
+&quot;ProxyUsername&quot;=&quot;&quot;
+&quot;ProxyPassword&quot;=&quot;&quot;
+&quot;ProxyTelnetCommand&quot;=&quot;connect %host %port\\n&quot;
+&quot;ProxyLogToTerm&quot;=dword:00000001
+&quot;Environment&quot;=&quot;&quot;
+&quot;UserNameFromEnvironment&quot;=dword:00000000
+&quot;LocalUserName&quot;=&quot;&quot;
+&quot;NoPTY&quot;=dword:00000000
+&quot;Compression&quot;=dword:00000000
+&quot;TryAgent&quot;=dword:00000001
+&quot;AgentFwd&quot;=dword:00000000
+&quot;GssapiFwd&quot;=dword:00000000
+&quot;ChangeUsername&quot;=dword:00000000
+&quot;Cipher&quot;=&quot;aes,chacha20,3des,WARN,des,blowfish,arcfour&quot;
+&quot;KEX&quot;=&quot;ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1&quot;
+&quot;HostKey&quot;=&quot;ed25519,ecdsa,rsa,dsa,WARN&quot;
+&quot;RekeyTime&quot;=dword:0000003c
+&quot;GssapiRekey&quot;=dword:00000002
+&quot;RekeyBytes&quot;=&quot;1G&quot;
+&quot;SshNoAuth&quot;=dword:00000000
+&quot;SshBanner&quot;=dword:00000001
+&quot;AuthTIS&quot;=dword:00000000
+&quot;AuthKI&quot;=dword:00000001
+&quot;AuthGSSAPI&quot;=dword:00000001
+&quot;AuthGSSAPIKEX&quot;=dword:00000001
+&quot;GSSLibs&quot;=&quot;gssapi32,sspi,custom&quot;
+&quot;GSSCustom&quot;=&quot;&quot;
+&quot;SshNoShell&quot;=dword:00000000
+&quot;SshProt&quot;=dword:00000003
+&quot;LogHost&quot;=&quot;&quot;
+&quot;SSH2DES&quot;=dword:00000000
+&quot;RemoteCommand&quot;=&quot;&quot;
+&quot;RFCEnviron&quot;=dword:00000000
+&quot;PassiveTelnet&quot;=dword:00000000
+&quot;RXVTHomeEnd&quot;=dword:00000000
+&quot;NoApplicationKeys&quot;=dword:00000000
+&quot;NoApplicationCursors&quot;=dword:00000000
+&quot;NoMouseReporting&quot;=dword:00000000
+&quot;NoRemoteResize&quot;=dword:00000000
+&quot;NoAltScreen&quot;=dword:00000000
+&quot;NoRemoteWinTitle&quot;=dword:00000000
+&quot;NoRemoteClearScroll&quot;=dword:00000000
+&quot;RemoteQTitleAction&quot;=dword:00000001
+&quot;NoDBackspace&quot;=dword:00000000
+&quot;NoRemoteCharset&quot;=dword:00000000
+&quot;ApplicationCursorKeys&quot;=dword:00000000
+&quot;ApplicationKeypad&quot;=dword:00000000
+&quot;NetHackKeypad&quot;=dword:00000000
+&quot;AltF4&quot;=dword:00000001
+&quot;AltSpace&quot;=dword:00000000
+&quot;AltOnly&quot;=dword:00000000
+&quot;ComposeKey&quot;=dword:00000000
+&quot;CtrlAltKeys&quot;=dword:00000001
+&quot;TelnetKey&quot;=dword:00000000
+&quot;TelnetRet&quot;=dword:00000001
+&quot;LocalEcho&quot;=dword:00000002
+&quot;LocalEdit&quot;=dword:00000002
+&quot;Answerback&quot;=&quot;PuTTY&quot;
+&quot;AlwaysOnTop&quot;=dword:00000000
+&quot;FullScreenOnAltEnter&quot;=dword:00000001
+&quot;HideMousePtr&quot;=dword:00000000
+&quot;SunkenEdge&quot;=dword:00000000
+&quot;WindowBorder&quot;=dword:00000001
+&quot;CurType&quot;=dword:00000000
+&quot;BlinkCur&quot;=dword:00000000
+&quot;BeepInd&quot;=dword:00000000
+&quot;BellWaveFile&quot;=&quot;&quot;
+&quot;BellOverload&quot;=dword:00000001
+&quot;BellOverloadN&quot;=dword:00000005
+&quot;BellOverloadT&quot;=dword:000007d0
+&quot;BellOverloadS&quot;=dword:00001388
+&quot;ScrollbackLines&quot;=dword:000007d0
+&quot;DECOriginMode&quot;=dword:00000000
+&quot;AutoWrapMode&quot;=dword:00000001
+&quot;LFImpliesCR&quot;=dword:00000000
+&quot;CRImpliesLF&quot;=dword:00000000
+&quot;DisableArabicShaping&quot;=dword:00000000
+&quot;DisableBidi&quot;=dword:00000000
+&quot;TermWidth&quot;=dword:00000050
+&quot;TermHeight&quot;=dword:00000018
+&quot;FontIsBold&quot;=dword:00000000
+&quot;FontCharSet&quot;=dword:00000000
+&quot;FontQuality&quot;=dword:00000000
+&quot;FontVTMode&quot;=dword:00000004
+&quot;UseSystemColours&quot;=dword:00000000
+&quot;TryPalette&quot;=dword:00000000
+&quot;ANSIColour&quot;=dword:00000001
+&quot;Xterm256Colour&quot;=dword:00000001
+&quot;TrueColour&quot;=dword:00000001
+&quot;BoldAsColour&quot;=dword:00000001
+&quot;Colour4&quot;=&quot;0,0,0&quot;
+&quot;RawCNP&quot;=dword:00000000
+&quot;UTF8linedraw&quot;=dword:00000000
+&quot;PasteRTF&quot;=dword:00000000
+&quot;MouseIsXterm&quot;=dword:00000000
+&quot;RectSelect&quot;=dword:00000000
+&quot;PasteControls&quot;=dword:00000000
+&quot;MouseOverride&quot;=dword:00000001
+&quot;Wordness0&quot;=&quot;0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0&quot;
+&quot;Wordness32&quot;=&quot;0,1,2,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1&quot;
+&quot;Wordness64&quot;=&quot;1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,2&quot;
+&quot;Wordness96&quot;=&quot;1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1&quot;
+&quot;Wordness128&quot;=&quot;1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&quot;
+&quot;Wordness160&quot;=&quot;1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&quot;
+&quot;Wordness192&quot;=&quot;2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2&quot;
+&quot;Wordness224&quot;=&quot;2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2&quot;
+&quot;MousePaste&quot;=&quot;explicit&quot;
+&quot;CtrlShiftIns&quot;=&quot;explicit&quot;
+&quot;CtrlShiftCV&quot;=&quot;none&quot;
+&quot;CJKAmbigWide&quot;=dword:00000000
+&quot;UTF8Override&quot;=dword:00000001
+&quot;Printer&quot;=&quot;&quot;
+&quot;CapsLockCyr&quot;=dword:00000000
+&quot;ScrollBar&quot;=dword:00000001
+&quot;ScrollBarFullScreen&quot;=dword:00000000
+&quot;ScrollOnKey&quot;=dword:00000000
+&quot;ScrollOnDisp&quot;=dword:00000001
+&quot;EraseToScrollback&quot;=dword:00000001
+&quot;LockSize&quot;=dword:00000000
+&quot;BCE&quot;=dword:00000001
+&quot;BlinkText&quot;=dword:00000000
+&quot;X11Forward&quot;=dword:00000000
+&quot;X11AuthType&quot;=dword:00000001
+&quot;X11AuthFile&quot;=&quot;&quot;
+&quot;LocalPortAcceptAll&quot;=dword:00000000
+&quot;RemotePortAcceptAll&quot;=dword:00000000
+&quot;PortForwardings&quot;=&quot;&quot;
+&quot;BugIgnore1&quot;=dword:00000000
+&quot;BugPlainPW1&quot;=dword:00000000
+&quot;BugRSA1&quot;=dword:00000000
+&quot;BugIgnore2&quot;=dword:00000000
+&quot;BugHMAC2&quot;=dword:00000000
+&quot;BugDeriveKey2&quot;=dword:00000000
+&quot;BugRSAPad2&quot;=dword:00000000
+&quot;BugPKSessID2&quot;=dword:00000000
+&quot;BugRekey2&quot;=dword:00000000
+&quot;BugMaxPkt2&quot;=dword:00000000
+&quot;BugOldGex2&quot;=dword:00000000
+&quot;BugWinadj&quot;=dword:00000000
+&quot;BugChanReq&quot;=dword:00000000
+&quot;StampUtmp&quot;=dword:00000001
+&quot;LoginShell&quot;=dword:00000001
+&quot;ScrollbarOnLeft&quot;=dword:00000000
+&quot;BoldFontIsBold&quot;=dword:00000000
+&quot;BoldFontCharSet&quot;=dword:00000000
+&quot;WideFontIsBold&quot;=dword:00000000
+&quot;WideFontCharSet&quot;=dword:00000000
+&quot;WideBoldFontIsBold&quot;=dword:00000000
+&quot;WideBoldFontCharSet&quot;=dword:00000000
+&quot;ShadowBold&quot;=dword:00000000
+&quot;ShadowBoldOffset&quot;=dword:00000001
+&quot;SerialLine&quot;=&quot;COM1&quot;
+&quot;SerialSpeed&quot;=dword:00002580
+&quot;SerialDataBits&quot;=dword:00000008
+&quot;SerialStopHalfbits&quot;=dword:00000002
+&quot;SerialParity&quot;=dword:00000000
+&quot;SerialFlowControl&quot;=dword:00000001
+&quot;WindowClass&quot;=&quot;&quot;
+&quot;ConnectionSharing&quot;=dword:00000000
+&quot;ConnectionSharingUpstream&quot;=dword:00000001
+&quot;ConnectionSharingDownstream&quot;=dword:00000001
+&quot;SSHManualHostKeys&quot;=&quot;&quot;
+&quot;PreferKnownHostKeys&quot;=dword:00000001
+</code></pre>
+<h1 id="经典monokai-theme"><a class="header" href="#经典monokai-theme">经典Monokai Theme</a></h1>
+<p><img src=".assets/1586066238927-c3418086-3e98-4848-856b-3a0673164216.png" alt="image.png" /></p>
+<pre><code>Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\dark]
+&quot;Present&quot;=dword:00000001
+&quot;LogType&quot;=dword:00000000
+&quot;LogFileClash&quot;=dword:00000001
+&quot;LogFlush&quot;=dword:00000001
+&quot;LogHeader&quot;=dword:00000001
+&quot;SSHLogOmitPasswords&quot;=dword:00000001
+&quot;SSHLogOmitData&quot;=dword:00000000
+&quot;Protocol&quot;=&quot;ssh&quot;
+&quot;PortNumber&quot;=dword:00000016
+&quot;CloseOnExit&quot;=dword:00000001
+&quot;WarnOnClose&quot;=dword:00000001
+&quot;PingInterval&quot;=dword:00000000
+&quot;PingIntervalSecs&quot;=dword:00000000
+&quot;TCPNoDelay&quot;=dword:00000001
+&quot;TCPKeepalives&quot;=dword:00000000
+&quot;TerminalType&quot;=&quot;xterm&quot;
+&quot;TerminalSpeed&quot;=&quot;38400,38400&quot;
+&quot;TerminalModes&quot;=&quot;CS7=A,CS8=A,DISCARD=A,DSUSP=A,ECHO=A,ECHOCTL=A,ECHOE=A,ECHOK=A,ECHOKE=A,ECHONL=A,EOF=A,EOL=A,EOL2=A,ERASE=A,FLUSH=A,ICANON=A,ICRNL=A,IEXTEN=A,IGNCR=A,IGNPAR=A,IMAXBEL=A,INLCR=A,INPCK=A,INTR=A,ISIG=A,ISTRIP=A,IUCLC=A,IUTF8=A,IXANY=A,IXOFF=A,IXON=A,KILL=A,LNEXT=A,NOFLSH=A,OCRNL=A,OLCUC=A,ONLCR=A,ONLRET=A,ONOCR=A,OPOST=A,PARENB=A,PARMRK=A,PARODD=A,PENDIN=A,QUIT=A,REPRINT=A,START=A,STATUS=A,STOP=A,SUSP=A,SWTCH=A,TOSTOP=A,WERASE=A,XCASE=A&quot;
+&quot;AddressFamily&quot;=dword:00000000
+&quot;ProxyExcludeList&quot;=&quot;&quot;
+&quot;ProxyDNS&quot;=dword:00000001
+&quot;ProxyLocalhost&quot;=dword:00000000
+&quot;ProxyMethod&quot;=dword:00000000
+&quot;ProxyHost&quot;=&quot;proxy&quot;
+&quot;ProxyPort&quot;=dword:00000050
+&quot;ProxyUsername&quot;=&quot;&quot;
+&quot;ProxyPassword&quot;=&quot;&quot;
+&quot;ProxyTelnetCommand&quot;=&quot;connect %host %port\\n&quot;
+&quot;ProxyLogToTerm&quot;=dword:00000001
+&quot;Environment&quot;=&quot;&quot;
+&quot;UserName&quot;=&quot;barretr&quot;
+&quot;UserNameFromEnvironment&quot;=dword:00000000
+&quot;LocalUserName&quot;=&quot;&quot;
+&quot;NoPTY&quot;=dword:00000000
+&quot;Compression&quot;=dword:00000000
+&quot;TryAgent&quot;=dword:00000001
+&quot;AgentFwd&quot;=dword:00000000
+&quot;GssapiFwd&quot;=dword:00000000
+&quot;ChangeUsername&quot;=dword:00000000
+&quot;Cipher&quot;=&quot;aes,chacha20,3des,WARN,des,blowfish,arcfour&quot;
+&quot;KEX&quot;=&quot;ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1&quot;
+&quot;HostKey&quot;=&quot;ed25519,ecdsa,rsa,dsa,WARN&quot;
+&quot;RekeyTime&quot;=dword:0000003c
+&quot;GssapiRekey&quot;=dword:00000002
+&quot;RekeyBytes&quot;=&quot;1G&quot;
+&quot;SshNoAuth&quot;=dword:00000000
+&quot;SshBanner&quot;=dword:00000001
+&quot;AuthTIS&quot;=dword:00000000
+&quot;AuthKI&quot;=dword:00000001
+&quot;AuthGSSAPI&quot;=dword:00000001
+&quot;AuthGSSAPIKEX&quot;=dword:00000001
+&quot;GSSLibs&quot;=&quot;gssapi32,sspi,custom&quot;
+&quot;GSSCustom&quot;=&quot;&quot;
+&quot;SshNoShell&quot;=dword:00000000
+&quot;SshProt&quot;=dword:00000003
+&quot;LogHost&quot;=&quot;&quot;
+&quot;SSH2DES&quot;=dword:00000000
+&quot;RemoteCommand&quot;=&quot;&quot;
+&quot;RFCEnviron&quot;=dword:00000000
+&quot;PassiveTelnet&quot;=dword:00000000
+&quot;BackspaceIsDelete&quot;=dword:00000000
+&quot;RXVTHomeEnd&quot;=dword:00000000
+&quot;LinuxFunctionKeys&quot;=dword:00000002
+&quot;NoApplicationKeys&quot;=dword:00000000
+&quot;NoApplicationCursors&quot;=dword:00000000
+&quot;NoMouseReporting&quot;=dword:00000000
+&quot;NoRemoteResize&quot;=dword:00000000
+&quot;NoAltScreen&quot;=dword:00000000
+&quot;NoRemoteWinTitle&quot;=dword:00000000
+&quot;NoRemoteClearScroll&quot;=dword:00000000
+&quot;RemoteQTitleAction&quot;=dword:00000001
+&quot;NoDBackspace&quot;=dword:00000000
+&quot;NoRemoteCharset&quot;=dword:00000000
+&quot;ApplicationCursorKeys&quot;=dword:00000000
+&quot;ApplicationKeypad&quot;=dword:00000000
+&quot;NetHackKeypad&quot;=dword:00000000
+&quot;AltF4&quot;=dword:00000001
+&quot;AltSpace&quot;=dword:00000000
+&quot;AltOnly&quot;=dword:00000000
+&quot;ComposeKey&quot;=dword:00000000
+&quot;CtrlAltKeys&quot;=dword:00000001
+&quot;TelnetKey&quot;=dword:00000000
+&quot;TelnetRet&quot;=dword:00000001
+&quot;LocalEcho&quot;=dword:00000002
+&quot;LocalEdit&quot;=dword:00000002
+&quot;Answerback&quot;=&quot;PuTTY&quot;
+&quot;AlwaysOnTop&quot;=dword:00000000
+&quot;FullScreenOnAltEnter&quot;=dword:00000000
+&quot;HideMousePtr&quot;=dword:00000000
+&quot;SunkenEdge&quot;=dword:00000000
+&quot;WindowBorder&quot;=dword:00000001
+&quot;CurType&quot;=dword:00000000
+&quot;BlinkCur&quot;=dword:00000000
+&quot;Beep&quot;=dword:00000000
+&quot;BeepInd&quot;=dword:00000000
+&quot;BellWaveFile&quot;=&quot;&quot;
+&quot;BellOverload&quot;=dword:00000001
+&quot;BellOverloadN&quot;=dword:00000005
+&quot;BellOverloadT&quot;=dword:000007d0
+&quot;BellOverloadS&quot;=dword:00001388
+&quot;ScrollbackLines&quot;=dword:000007d0
+&quot;DECOriginMode&quot;=dword:00000000
+&quot;AutoWrapMode&quot;=dword:00000001
+&quot;LFImpliesCR&quot;=dword:00000000
+&quot;CRImpliesLF&quot;=dword:00000000
+&quot;DisableArabicShaping&quot;=dword:00000000
+&quot;DisableBidi&quot;=dword:00000000
+&quot;WinNameAlways&quot;=dword:00000000
+&quot;TermWidth&quot;=dword:00000050
+&quot;TermHeight&quot;=dword:00000018
+&quot;Font&quot;=&quot;Cascadia Code&quot;
+&quot;FontIsBold&quot;=dword:00000000
+&quot;FontCharSet&quot;=dword:00000000
+&quot;FontHeight&quot;=dword:0000000b
+&quot;FontQuality&quot;=dword:00000000
+&quot;FontVTMode&quot;=dword:00000004
+&quot;UseSystemColours&quot;=dword:00000000
+&quot;TryPalette&quot;=dword:00000000
+&quot;ANSIColour&quot;=dword:00000001
+&quot;Xterm256Colour&quot;=dword:00000001
+&quot;TrueColour&quot;=dword:00000001
+&quot;BoldAsColour&quot;=dword:00000001
+&quot;Colour0&quot;=&quot;210,216,217&quot;
+&quot;Colour1&quot;=&quot;236,236,236&quot;
+&quot;Colour2&quot;=&quot;39,40,34&quot;
+&quot;Colour3&quot;=&quot;39,40,34&quot;
+&quot;Colour4&quot;=&quot;0,0,0&quot;
+&quot;Colour5&quot;=&quot;255,128,0&quot;
+&quot;Colour6&quot;=&quot;0,0,0&quot;
+&quot;Colour7&quot;=&quot;85,85,85&quot;
+&quot;Colour8&quot;=&quot;249,38,114&quot;
+&quot;Colour9&quot;=&quot;221,66,120&quot;
+&quot;Colour10&quot;=&quot;166,226,46&quot;
+&quot;Colour11&quot;=&quot;157,197,75&quot;
+&quot;Colour12&quot;=&quot;230,219,116&quot;
+&quot;Colour13&quot;=&quot;209,202,137&quot;
+&quot;Colour14&quot;=&quot;102,217,239&quot;
+&quot;Colour15&quot;=&quot;122,204,218&quot;
+&quot;Colour16&quot;=&quot;174,129,255&quot;
+&quot;Colour17&quot;=&quot;179,146,239&quot;
+&quot;Colour18&quot;=&quot;0,217,217&quot;
+&quot;Colour19&quot;=&quot;200,240,240&quot;
+&quot;Colour20&quot;=&quot;245,222,179&quot;
+&quot;Colour21&quot;=&quot;255,255,255&quot;
+&quot;RawCNP&quot;=dword:00000000
+&quot;UTF8linedraw&quot;=dword:00000000
+&quot;PasteRTF&quot;=dword:00000000
+&quot;MouseIsXterm&quot;=dword:00000000
+&quot;RectSelect&quot;=dword:00000000
+&quot;PasteControls&quot;=dword:00000000
+&quot;MouseOverride&quot;=dword:00000001
+&quot;Wordness0&quot;=&quot;0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0&quot;
+&quot;Wordness32&quot;=&quot;0,1,2,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1&quot;
+&quot;Wordness64&quot;=&quot;1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,2&quot;
+&quot;Wordness96&quot;=&quot;1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1&quot;
+&quot;Wordness128&quot;=&quot;1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&quot;
+&quot;Wordness160&quot;=&quot;1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&quot;
+&quot;Wordness192&quot;=&quot;2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2&quot;
+&quot;Wordness224&quot;=&quot;2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2&quot;
+&quot;MouseAutocopy&quot;=dword:00000001
+&quot;MousePaste&quot;=&quot;explicit&quot;
+&quot;CtrlShiftIns&quot;=&quot;explicit&quot;
+&quot;CtrlShiftCV&quot;=&quot;none&quot;
+&quot;LineCodePage&quot;=&quot;UTF-8&quot;
+&quot;CJKAmbigWide&quot;=dword:00000000
+&quot;UTF8Override&quot;=dword:00000001
+&quot;Printer&quot;=&quot;&quot;
+&quot;CapsLockCyr&quot;=dword:00000000
+&quot;ScrollBar&quot;=dword:00000001
+&quot;ScrollBarFullScreen&quot;=dword:00000000
+&quot;ScrollOnKey&quot;=dword:00000000
+&quot;ScrollOnDisp&quot;=dword:00000001
+&quot;EraseToScrollback&quot;=dword:00000001
+&quot;LockSize&quot;=dword:00000000
+&quot;BCE&quot;=dword:00000001
+&quot;BlinkText&quot;=dword:00000000
+&quot;X11Forward&quot;=dword:00000000
+&quot;X11Display&quot;=&quot;&quot;
+&quot;X11AuthType&quot;=dword:00000001
+&quot;X11AuthFile&quot;=&quot;&quot;
+&quot;LocalPortAcceptAll&quot;=dword:00000000
+&quot;RemotePortAcceptAll&quot;=dword:00000000
+&quot;PortForwardings&quot;=&quot;&quot;
+&quot;BugIgnore1&quot;=dword:00000000
+&quot;BugPlainPW1&quot;=dword:00000000
+&quot;BugRSA1&quot;=dword:00000000
+&quot;BugIgnore2&quot;=dword:00000000
+&quot;BugHMAC2&quot;=dword:00000000
+&quot;BugDeriveKey2&quot;=dword:00000000
+&quot;BugRSAPad2&quot;=dword:00000000
+&quot;BugPKSessID2&quot;=dword:00000000
+&quot;BugRekey2&quot;=dword:00000000
+&quot;BugMaxPkt2&quot;=dword:00000000
+&quot;BugOldGex2&quot;=dword:00000000
+&quot;BugWinadj&quot;=dword:00000000
+&quot;BugChanReq&quot;=dword:00000000
+&quot;StampUtmp&quot;=dword:00000001
+&quot;LoginShell&quot;=dword:00000001
+&quot;ScrollbarOnLeft&quot;=dword:00000000
+&quot;BoldFont&quot;=&quot;&quot;
+&quot;BoldFontIsBold&quot;=dword:00000000
+&quot;BoldFontCharSet&quot;=dword:00000000
+&quot;BoldFontHeight&quot;=dword:00000000
+&quot;WideFont&quot;=&quot;&quot;
+&quot;WideFontIsBold&quot;=dword:00000000
+&quot;WideFontCharSet&quot;=dword:00000000
+&quot;WideFontHeight&quot;=dword:00000000
+&quot;WideBoldFont&quot;=&quot;&quot;
+&quot;WideBoldFontIsBold&quot;=dword:00000000
+&quot;WideBoldFontCharSet&quot;=dword:00000000
+&quot;WideBoldFontHeight&quot;=dword:00000000
+&quot;ShadowBold&quot;=dword:00000000
+&quot;ShadowBoldOffset&quot;=dword:00000001
+&quot;SerialLine&quot;=&quot;COM1&quot;
+&quot;SerialSpeed&quot;=dword:00002580
+&quot;SerialDataBits&quot;=dword:00000008
+&quot;SerialStopHalfbits&quot;=dword:00000002
+&quot;SerialParity&quot;=dword:00000000
+&quot;SerialFlowControl&quot;=dword:00000001
+&quot;WindowClass&quot;=&quot;&quot;
+&quot;ConnectionSharing&quot;=dword:00000000
+&quot;ConnectionSharingUpstream&quot;=dword:00000001
+&quot;ConnectionSharingDownstream&quot;=dword:00000001
+&quot;SSHManualHostKeys&quot;=&quot;&quot;
+&quot;PreferKnownHostKeys&quot;=dword:00000001
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../杂烩/MobaXterm.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../杂烩/Vim折叠方式和卡顿.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../杂烩/MobaXterm.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../杂烩/Vim折叠方式和卡顿.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

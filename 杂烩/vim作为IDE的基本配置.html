@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>vim作为IDE的基本配置 - Barret&#x27;s Reading Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../index.html"><strong aria-hidden="true">1.</strong> README</a></li><li class="chapter-item affix "><li class="part-title">杂烩</li><li class="chapter-item "><a href="../杂烩/批量下载语雀知识库文档.html"><strong aria-hidden="true">2.</strong> 批量下载语雀知识库文档</a></li><li class="chapter-item "><a href="../杂烩/markdown自定义样式.html"><strong aria-hidden="true">3.</strong> markdown自定义样式</a></li><li class="chapter-item "><a href="../杂烩/MobaXterm.html"><strong aria-hidden="true">4.</strong> MobaXterm</a></li><li class="chapter-item "><a href="../杂烩/Putty的ColorTheme分享.html"><strong aria-hidden="true">5.</strong> Putty的ColorTheme分享</a></li><li class="chapter-item "><a href="../杂烩/Vim折叠方式和卡顿.html"><strong aria-hidden="true">6.</strong> Vim折叠方式和卡顿</a></li><li class="chapter-item expanded "><a href="../杂烩/vim作为IDE的基本配置.html" class="active"><strong aria-hidden="true">7.</strong> vim作为IDE的基本配置</a></li><li class="chapter-item "><a href="../杂烩/如何更新fork的repo.html"><strong aria-hidden="true">8.</strong> 如何更新fork的repo</a></li><li class="chapter-item "><a href="../杂烩/一次难忘的宏定义debug.html"><strong aria-hidden="true">9.</strong> 一次难忘的宏定义debug</a></li><li class="chapter-item "><a href="../杂烩/一张图弄明白开源协议.html"><strong aria-hidden="true">10.</strong> 一张图弄明白开源协议</a></li><li class="chapter-item "><a href="../杂烩/自定义的xshellTheme.html"><strong aria-hidden="true">11.</strong> 自定义的xshellTheme</a></li><li class="chapter-item affix "><li class="part-title">闲书笔记</li><li class="chapter-item "><a href="../闲书笔记/网络文摘.html"><strong aria-hidden="true">12.</strong> 网络文摘</a></li><li class="chapter-item "><a href="../闲书笔记/低水平勤奋陷阱.html"><strong aria-hidden="true">13.</strong> 低水平勤奋陷阱</a></li><li class="chapter-item "><a href="../闲书笔记/疲惫生活中的英雄梦想.html"><strong aria-hidden="true">14.</strong> 疲惫生活中的英雄梦想</a></li><li class="chapter-item "><a href="../闲书笔记/阿里工程师的自我修养.html"><strong aria-hidden="true">15.</strong> 阿里工程师的自我修养</a></li><li class="chapter-item "><a href="../闲书笔记/程序员的职业素养.html"><strong aria-hidden="true">16.</strong> 程序员的职业素养</a></li><li class="chapter-item "><a href="../闲书笔记/对自己狠一点.html"><strong aria-hidden="true">17.</strong> 对自己狠一点</a></li><li class="chapter-item "><a href="../闲书笔记/高效能人士的七个习惯.html"><strong aria-hidden="true">18.</strong> 高效能人士的七个习惯</a></li><li class="chapter-item affix "><li class="part-title">敏捷项目管理</li><li class="chapter-item "><a href="../敏捷管理/敏捷宣言.html"><strong aria-hidden="true">19.</strong> 敏捷宣言</a></li><li class="chapter-item "><a href="../敏捷管理/人月神话.html"><strong aria-hidden="true">20.</strong> 人月神话</a></li><li class="chapter-item "><a href="../敏捷管理/凤凰项目.html"><strong aria-hidden="true">21.</strong> 凤凰项目</a></li><li class="chapter-item "><div><strong aria-hidden="true">22.</strong> ScrumXP</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../敏捷管理/ScrumXP/1如何编写backlog.html"><strong aria-hidden="true">22.1.</strong> 如何编写backlog</a></li><li class="chapter-item "><a href="../敏捷管理/ScrumXP/2SprintPlanning.html"><strong aria-hidden="true">22.2.</strong> Sprint Planning</a></li><li class="chapter-item "><a href="../敏捷管理/ScrumXP/3Scrum例会.html"><strong aria-hidden="true">22.3.</strong> Scrum例会</a></li><li class="chapter-item "><a href="../敏捷管理/ScrumXP/4Demo和SprintReview.html"><strong aria-hidden="true">22.4.</strong> Demo和Sprint Review</a></li><li class="chapter-item "><a href="../敏捷管理/ScrumXP/5Scrum和XP的组合.html"><strong aria-hidden="true">22.5.</strong> Scrum和XP的组合</a></li><li class="chapter-item "><a href="../敏捷管理/ScrumXP/6如何管理多个Scrum团队.html"><strong aria-hidden="true">22.6.</strong> 如何管理多个Scrum团队</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">23.</strong> Scrum精髓</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/1Scrum框架.html"><strong aria-hidden="true">23.1.</strong> Scrum框架</a></li><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/2敏捷原则.html"><strong aria-hidden="true">23.2.</strong> 敏捷原则</a></li><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/3迭代周期Sprint.html"><strong aria-hidden="true">23.3.</strong> 迭代周期Sprint</a></li><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/4需求和UserStory.html"><strong aria-hidden="true">23.4.</strong> 需求和User Story</a></li><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/5技术债.html"><strong aria-hidden="true">23.5.</strong> 技术债</a></li><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/6产品负责人.html"><strong aria-hidden="true">23.6.</strong> 产品负责人</a></li><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/7ScrumMaster.html"><strong aria-hidden="true">23.7.</strong> Scrum Master</a></li><li class="chapter-item "><a href="../敏捷管理/Scrum精髓/8开发团队.html"><strong aria-hidden="true">23.8.</strong> 开发团队</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">24.</strong> DevOps</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../敏捷管理/DevOps/1DevOps简介.html"><strong aria-hidden="true">24.1.</strong> DevOps简介</a></li><li class="chapter-item "><a href="../敏捷管理/DevOps/2如何启动DevOps转型.html"><strong aria-hidden="true">24.2.</strong> 如何启动DevOps转型</a></li><li class="chapter-item "><a href="../敏捷管理/DevOps/3流动原则的实践.html"><strong aria-hidden="true">24.3.</strong> 流动原则的实践</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">25.</strong> 赋能</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../敏捷管理/赋能/1应对不确定性.html"><strong aria-hidden="true">25.1.</strong> 应对不确定性</a></li><li class="chapter-item "><a href="../敏捷管理/赋能/2化繁为简.html"><strong aria-hidden="true">25.2.</strong> 化繁为简</a></li><li class="chapter-item "><a href="../敏捷管理/赋能/3信息共享.html"><strong aria-hidden="true">25.3.</strong> 信息共享</a></li><li class="chapter-item "><a href="../敏捷管理/赋能/4赋能.html"><strong aria-hidden="true">25.4.</strong> 赋能</a></li><li class="chapter-item "><a href="../敏捷管理/赋能/5走在时代前面.html"><strong aria-hidden="true">25.5.</strong> 走在时代前面</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">26.</strong> 工作收获</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../敏捷管理/工作收获/NokiaProductLifeCycle.html"><strong aria-hidden="true">26.1.</strong> Nokia Product Life Cycle</a></li><li class="chapter-item "><a href="../敏捷管理/工作收获/项目成功的基本准则.html"><strong aria-hidden="true">26.2.</strong> 项目成功的基本准则</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Barret&#x27;s Reading Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="简介"><a class="header" href="#简介">简介</a></h1>
+<p>Vim是从 vi 发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用，和Emacs并列成为类Unix系统用户最喜欢的文本编辑器。
+使用vim先知道其设计理念是很重要的,有助于记忆,举一反三。</p>
+<p>Bram Moolenaar 在 80 年代末购入他的Amiga计算机时，Amiga 上没有他最常用的编辑器vi。Bram 从一个开源的 vi 复制 Stevie 开始，开发了 Vim 的 1.0版本。最初的目标只是完全复制 vi 的功能，那个时候的 Vim 是Vi IMitation（模拟）的简称。</p>
+<p>1991 年 Vim 1.14 版被 &quot;Fred Fish Disk #591&quot; ——Amiga 用的免费软体集收录了。1992 年 1.22 版本的 Vim 被移植到了 UNIX 和MS-DOS上。从那个时候开始，Vim 的全名就变成 Vi IMproved（改良）了。</p>
+<p>在这之后，Vim 加入了不计其数的新功能。做为第一个里程碑的是 1994 年的 3.0 版本加入了多视窗编辑模式（分割视窗）。从那之后，同一荧幕可以显示的 Vim 编辑文件数可以不止一个了。1996 年发布的 Vim 4.0 是第一个利用图型接口（GUI）的版本。</p>
+<p>1998 年 5.0 版本的 Vim 加入了 highlight（语法高亮）功能。2001 年的 Vim 6.0 版本加入了代码折叠、插件、多国语言支持、垂直分割视窗等功能。</p>
+<p>2006 年 5 月发布的 Vim 7.0 版更加入了拼字检查、上下文相关补完，标签页编辑等新功能。</p>
+<p>2008 年 8 月发布的 Vim 7.2，该版本合并了 vim 7.1 以来的所有修正补丁，并且加入了脚本的浮点数支持.</p>
+<p>2010年08月15日，历时两年的时间，vim又发布了vim 7.3这个版本，这个版本修复了前面版本的一些bug，以及添加了一些新的特征，这个版本比前面几个版本来的要更加优秀
+十年以后，Vim 终于发布了一个新的大版本 8.0[2]  ，结束了从 2006 年 5 月 7 日开始的 7.0 世代。虽然这十年间，Vim 也一直在不断更新，从 7.0 到三年前的 7.4，每隔一两年或两三年就会有个小版本更新，但是这次跨越大版本更新，带来了不少新的特性，据说有一些是从其它的 Vi 流派吸收来的特性。</p>
+<hr />
+<h2 id="我的配置"><a class="header" href="#我的配置">我的配置</a></h2>
+<h3 id="github地址"><a class="header" href="#github地址">github地址：</a></h3>
+<p><a href="https://github.com/barretren/VimProfiles">VimProfiles</a></p>
+<h3 id="主要插件"><a class="header" href="#主要插件">主要插件</a></h3>
+<p>插件的作用请自行查询，如下提供我的配置中的插件，其中有些是我自己的github库</p>
+<pre><code>Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/EasyGrep'
+Plug 'Yggdroot/indentLine'
+Plug 'vim-scripts/Mark--Karkat'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'vim-scripts/a.vim'
+Plug 'https://github.com/skywind3000/asyncrun.vim.git'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'jiangmiao/auto-pairs'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'aceofall/gtags.vim'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'Shougo/neocomplcache.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'barretren/LeaderF'
+Plug 'barretren/vim-colorscheme'
+Plug 'barretren/SearchOnSelectVim'
+</code></pre>
+<h3 id="基本快捷键"><a class="header" href="#基本快捷键">基本快捷键</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>按键</th><th style="text-align: left">含义</th></tr></thead><tbody>
+<tr><td>F2</td><td style="text-align: left">关闭当前buffer</td></tr>
+<tr><td>F3</td><td style="text-align: left">退出vim</td></tr>
+<tr><td>F4</td><td style="text-align: left">保存文件</td></tr>
+<tr><td>F5</td><td style="text-align: left">打开文件浏览器</td></tr>
+<tr><td>F6</td><td style="text-align: left">打开tagbar</td></tr>
+<tr><td>F7</td><td style="text-align: left">查找光标位置的词语</td></tr>
+<tr><td>F8</td><td style="text-align: left">替换光标位置的词语</td></tr>
+<tr><td>F11</td><td style="text-align: left">开关代码缩进线</td></tr>
+<tr><td>F12</td><td style="text-align: left">打开文件历史记录</td></tr>
+<tr><td>w  v</td><td style="text-align: left">垂直分割当前窗口</td></tr>
+<tr><td>w  x</td><td style="text-align: left">水平分割当前窗口</td></tr>
+<tr><td>w  c</td><td style="text-align: left">关闭当前窗口</td></tr>
+<tr><td>l  n</td><td style="text-align: left">开关行号</td></tr>
+<tr><td>f  x</td><td style="text-align: left">打开quickfix窗口</td></tr>
+<tr><td>a  s</td><td style="text-align: left">调用AsyncRun执行异步操作</td></tr>
+<tr><td>t</td><td style="text-align: left">vim中打开shell</td></tr>
+<tr><td>b  u</td><td style="text-align: left">打开buffer list</td></tr>
+<tr><td>f  u</td><td style="text-align: left">打开当前文件函数列表</td></tr>
+<tr><td>m</td><td style="text-align: left">标记光标下词语</td></tr>
+<tr><td>y  s</td><td style="text-align: left">打开剪切板，查看历史记录</td></tr>
+<tr><td>y  c</td><td style="text-align: left">清空剪切板</td></tr>
+<tr><td>Ctrl n</td><td style="text-align: left">新建buffer</td></tr>
+<tr><td>Ctrl c</td><td style="text-align: left">复制</td></tr>
+<tr><td>Ctrl x</td><td style="text-align: left">剪切</td></tr>
+<tr><td>Ctrl v</td><td style="text-align: left">粘贴</td></tr>
+<tr><td>Ctrl a</td><td style="text-align: left">全选</td></tr>
+<tr><td>Ctrl \</td><td style="text-align: left">注释、反注释</td></tr>
+<tr><td>Ctrl p</td><td style="text-align: left">打开文件搜索</td></tr>
+<tr><td>Ctrl Shift - s</td><td style="text-align: left">搜索光标下变量名或函数名调用位置（需要gtags支持）</td></tr>
+</tbody></table>
+</div>
+<h3 id="其他"><a class="header" href="#其他">其他</a></h3>
+<p>具体的配置请参照github库，很简单的.vimrc配置，都有中文注释，一看就懂了。</p>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../杂烩/Vim折叠方式和卡顿.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../杂烩/如何更新fork的repo.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../杂烩/Vim折叠方式和卡顿.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../杂烩/如何更新fork的repo.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

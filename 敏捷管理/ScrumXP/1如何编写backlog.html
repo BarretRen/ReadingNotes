@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>如何编写backlog - Barret&#x27;s Reading Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../../index.html"><strong aria-hidden="true">1.</strong> README</a></li><li class="chapter-item affix "><li class="part-title">杂烩</li><li class="chapter-item "><a href="../../杂烩/批量下载语雀知识库文档.html"><strong aria-hidden="true">2.</strong> 批量下载语雀知识库文档</a></li><li class="chapter-item "><a href="../../杂烩/markdown自定义样式.html"><strong aria-hidden="true">3.</strong> markdown自定义样式</a></li><li class="chapter-item "><a href="../../杂烩/MobaXterm.html"><strong aria-hidden="true">4.</strong> MobaXterm</a></li><li class="chapter-item "><a href="../../杂烩/Putty的ColorTheme分享.html"><strong aria-hidden="true">5.</strong> Putty的ColorTheme分享</a></li><li class="chapter-item "><a href="../../杂烩/Vim折叠方式和卡顿.html"><strong aria-hidden="true">6.</strong> Vim折叠方式和卡顿</a></li><li class="chapter-item "><a href="../../杂烩/vim作为IDE的基本配置.html"><strong aria-hidden="true">7.</strong> vim作为IDE的基本配置</a></li><li class="chapter-item "><a href="../../杂烩/如何更新fork的repo.html"><strong aria-hidden="true">8.</strong> 如何更新fork的repo</a></li><li class="chapter-item "><a href="../../杂烩/一次难忘的宏定义debug.html"><strong aria-hidden="true">9.</strong> 一次难忘的宏定义debug</a></li><li class="chapter-item "><a href="../../杂烩/一张图弄明白开源协议.html"><strong aria-hidden="true">10.</strong> 一张图弄明白开源协议</a></li><li class="chapter-item "><a href="../../杂烩/自定义的xshellTheme.html"><strong aria-hidden="true">11.</strong> 自定义的xshellTheme</a></li><li class="chapter-item affix "><li class="part-title">闲书笔记</li><li class="chapter-item "><a href="../../闲书笔记/网络文摘.html"><strong aria-hidden="true">12.</strong> 网络文摘</a></li><li class="chapter-item "><a href="../../闲书笔记/低水平勤奋陷阱.html"><strong aria-hidden="true">13.</strong> 低水平勤奋陷阱</a></li><li class="chapter-item "><a href="../../闲书笔记/疲惫生活中的英雄梦想.html"><strong aria-hidden="true">14.</strong> 疲惫生活中的英雄梦想</a></li><li class="chapter-item "><a href="../../闲书笔记/阿里工程师的自我修养.html"><strong aria-hidden="true">15.</strong> 阿里工程师的自我修养</a></li><li class="chapter-item "><a href="../../闲书笔记/程序员的职业素养.html"><strong aria-hidden="true">16.</strong> 程序员的职业素养</a></li><li class="chapter-item "><a href="../../闲书笔记/对自己狠一点.html"><strong aria-hidden="true">17.</strong> 对自己狠一点</a></li><li class="chapter-item "><a href="../../闲书笔记/高效能人士的七个习惯.html"><strong aria-hidden="true">18.</strong> 高效能人士的七个习惯</a></li><li class="chapter-item affix "><li class="part-title">敏捷项目管理</li><li class="chapter-item "><a href="../../敏捷管理/敏捷宣言.html"><strong aria-hidden="true">19.</strong> 敏捷宣言</a></li><li class="chapter-item "><a href="../../敏捷管理/人月神话.html"><strong aria-hidden="true">20.</strong> 人月神话</a></li><li class="chapter-item "><a href="../../敏捷管理/凤凰项目.html"><strong aria-hidden="true">21.</strong> 凤凰项目</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">22.</strong> ScrumXP</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../敏捷管理/ScrumXP/1如何编写backlog.html" class="active"><strong aria-hidden="true">22.1.</strong> 如何编写backlog</a></li><li class="chapter-item "><a href="../../敏捷管理/ScrumXP/2SprintPlanning.html"><strong aria-hidden="true">22.2.</strong> Sprint Planning</a></li><li class="chapter-item "><a href="../../敏捷管理/ScrumXP/3Scrum例会.html"><strong aria-hidden="true">22.3.</strong> Scrum例会</a></li><li class="chapter-item "><a href="../../敏捷管理/ScrumXP/4Demo和SprintReview.html"><strong aria-hidden="true">22.4.</strong> Demo和Sprint Review</a></li><li class="chapter-item "><a href="../../敏捷管理/ScrumXP/5Scrum和XP的组合.html"><strong aria-hidden="true">22.5.</strong> Scrum和XP的组合</a></li><li class="chapter-item "><a href="../../敏捷管理/ScrumXP/6如何管理多个Scrum团队.html"><strong aria-hidden="true">22.6.</strong> 如何管理多个Scrum团队</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">23.</strong> Scrum精髓</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/1Scrum框架.html"><strong aria-hidden="true">23.1.</strong> Scrum框架</a></li><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/2敏捷原则.html"><strong aria-hidden="true">23.2.</strong> 敏捷原则</a></li><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/3迭代周期Sprint.html"><strong aria-hidden="true">23.3.</strong> 迭代周期Sprint</a></li><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/4需求和UserStory.html"><strong aria-hidden="true">23.4.</strong> 需求和User Story</a></li><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/5技术债.html"><strong aria-hidden="true">23.5.</strong> 技术债</a></li><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/6产品负责人.html"><strong aria-hidden="true">23.6.</strong> 产品负责人</a></li><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/7ScrumMaster.html"><strong aria-hidden="true">23.7.</strong> Scrum Master</a></li><li class="chapter-item "><a href="../../敏捷管理/Scrum精髓/8开发团队.html"><strong aria-hidden="true">23.8.</strong> 开发团队</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">24.</strong> DevOps</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../敏捷管理/DevOps/1DevOps简介.html"><strong aria-hidden="true">24.1.</strong> DevOps简介</a></li><li class="chapter-item "><a href="../../敏捷管理/DevOps/2如何启动DevOps转型.html"><strong aria-hidden="true">24.2.</strong> 如何启动DevOps转型</a></li><li class="chapter-item "><a href="../../敏捷管理/DevOps/3流动原则的实践.html"><strong aria-hidden="true">24.3.</strong> 流动原则的实践</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">25.</strong> 赋能</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../敏捷管理/赋能/1应对不确定性.html"><strong aria-hidden="true">25.1.</strong> 应对不确定性</a></li><li class="chapter-item "><a href="../../敏捷管理/赋能/2化繁为简.html"><strong aria-hidden="true">25.2.</strong> 化繁为简</a></li><li class="chapter-item "><a href="../../敏捷管理/赋能/3信息共享.html"><strong aria-hidden="true">25.3.</strong> 信息共享</a></li><li class="chapter-item "><a href="../../敏捷管理/赋能/4赋能.html"><strong aria-hidden="true">25.4.</strong> 赋能</a></li><li class="chapter-item "><a href="../../敏捷管理/赋能/5走在时代前面.html"><strong aria-hidden="true">25.5.</strong> 走在时代前面</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">26.</strong> 工作收获</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../敏捷管理/工作收获/NokiaProductLifeCycle.html"><strong aria-hidden="true">26.1.</strong> Nokia Product Life Cycle</a></li><li class="chapter-item "><a href="../../敏捷管理/工作收获/项目成功的基本准则.html"><strong aria-hidden="true">26.2.</strong> 项目成功的基本准则</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Barret&#x27;s Reading Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="1-什么是scrum"><a class="header" href="#1-什么是scrum">1 什么是Scrum</a></h1>
+<p>Nokia 用了几年时间，对上百个 Scrum 团队的工作进行了回顾，总结出了<strong>迭代开发的基本需求</strong>：</p>
+<ul>
+<li>迭代要有固定时长（被称为“时间盒——timebox”），不能超过六个星期。</li>
+<li>在每一次迭代的结尾，代码都必须经过 QA 的测试，能够正常工作。</li>
+</ul>
+<p>Nokia的<strong>Scrum标准</strong>：</p>
+<ul>
+<li>Scrum 团队必须要有产品负责人，而且团队都清楚这个人是谁。</li>
+<li>产品负责人必须要有产品 Backlog，其中包括团队对它进行的估算。</li>
+<li>团队必须要有燃尽图，而且要了解他们自己的生产率。</li>
+<li>在一个 Sprint 中，外人不能干涉团队的工作。</li>
+</ul>
+<p>Scrum 和 XP 都关注如何把事情做好。这些团队承认在开发过程中会犯错，但是他们明白：<strong>要投入实践中，动手去构建产品，这才是找出错误的最好方式；不要只是停留在理论层次上对软件进行分析和设计</strong>。</p>
+<ul>
+<li><a href="http://agilemanifesto.org/">http://agilemanifesto.org/</a></li>
+<li><a href="http://www.mountaingoatsoftware.com/scrum">http://www.mountaingoatsoftware.com/scrum</a></li>
+<li><a href="http://www.xprogramming.com/xpmag/whatisxp.htm">http://www.xprogramming.com/xpmag/whatisxp.htm</a></li>
+</ul>
+<h1 id="2-什么是backlog"><a class="header" href="#2-什么是backlog">2 什么是Backlog</a></h1>
+<p>产品backlog是 Scrum 的核心，是一个<strong>需求、user story或特性</strong>等组成的列表，按照重要性的级别进行了排序。它里面包含的是客户想要的东西，并用客户的术语加以描述。它可以叫<strong>User Story</strong>或<strong>Backlog条目</strong>。</p>
+<h2 id="21-user-story的结构"><a class="header" href="#21-user-story的结构">2.1 User Story的结构</a></h2>
+<p>主要由以下部分组成：</p>
+<ul>
+<li>ID：统一标识符，唯一标识一个user story</li>
+<li>Name（名称）：简短的、描述性的user story名。比如“查看你自己的交易明细”。它必须要含义明确，这样开发人员和产品负责人才能大致明白我们说的是什么东西，跟其他user story区分开。</li>
+<li>Importance（重要性）：产品负责人评出一个数值，指示这个user story有多重要。例如 10 或 150。分数越高越重要。</li>
+<li>Initial estimate（初始估算）：团队的初步估算，表示与其他user story相比，完成该user story所需的工作量。最小的单位是user story点（story point），一般大致相当于一个“理想的人天（man-day）”。
+<ul>
+<li><strong>不需要保证这个估值绝对无误，而是要保证相对的正确性</strong>（即，两个点的user story所花费的时间应该是四个点的user story所需的一半）</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>补充：在Nokia，一个user story point代表半周事件，更具体的拆分用task标识（可以以天或小时为单位）</p>
+</blockquote>
+<ul>
+<li>How to demo（如何做演示）：它大略描述了这个故事应该如何在 sprint结束demo meeting上进行示范，本质就是一个简单的测试规范。“先这样做，然后那样做，就应该得到……的结果 ”。
+<ul>
+<li>如果你在使用 TDD（测试驱动开发），那么这段描述就可以作为验收测试的伪码表示。</li>
+</ul>
+</li>
+<li>Notes（注解） ——相关信息、解释说明和对其它资料的引用等等。</li>
+</ul>
+<blockquote>
+<p>补充：这里我附加了Nokia的一份Backlog checlist的模板，里面是针对每个user story需要填充的字段。</p>
+</blockquote>
+<h2 id="22-停留在功能上而不是技术细节"><a class="header" href="#22-停留在功能上而不是技术细节">2.2 停留在功能上，而不是技术细节</a></h2>
+<blockquote>
+<p>补充：User Story应该停留在用户功能上，完整描述一个端到端的用户使用场景，而不是堆砌一些技术代码细节可设计方案。要从用户角度要求功能，而不是开发角度。</p>
+</blockquote>
+<p>只要发现面向技术的故事，我一般都会问产品负责人 “但是为什么呢”这样的问题，一直问下去，直到我们发现内在的目标为止。然后再用真正的目标来改写这个故事（“提高在后台系统中搜索并生成表单的响应速度”）。最开始的技术描述只会作为一个注解存在（“为事件表添加索引可能会解决这个问题”）。</p>
+<h2 id="23-a-good-example-of-user-story"><a class="header" href="#23-a-good-example-of-user-story">2.3 A good example of User Story</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>release</th><th>ID</th><th>name</th><th>description</th><th>state</th></tr></thead><tbody>
+<tr><td>release 2</td><td>ID-055</td><td>'Operator wants to</td><td></td><td></td></tr>
+<tr><td>have a CLI command to control the phase of activating UUS3 service</td><td>'As a operator, I</td><td></td><td></td><td></td></tr>
+<tr><td>wants to use below CLI command to control the phase of activating service:CLI command 1:---- configure---- voice---- sip---- [no]</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>allitf-isdn-cas-term---- if-index---- [no]</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>user-info-profileCLI command 2:---- configure---- voice---- sip---- [no]</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>user-info-prof---- prof-name---- [no]</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>version-nbr---- [no]</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>service-type---- [no]</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>active-establish-call---- [no]</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>active-stable-call1. I can use</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>command 1 to assign a pre-created active-rule to the specific term2. I can get error</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>notification with below two types of configurations:active-establish-call</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>is true and active-stable-call true,active-establish-call</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>is false and active-stable-call false,error info should</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>be:&quot;invalid configuration rule(need update)&quot;3. I can configure</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>the service-type to indicating the type of UUS service, now, I only need UUS3</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>service.4. I can use below</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>CLI command to show the detail configuration info which is sorted by profile</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>index instead of profile name:CLI command:show voice sip</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>user-info-prof [prof-name]show voice sip</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>profilesinfo configure</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>voice sip user-info-profinfo configure</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>voice sip user-info-prof [prof-name]Note: if the value</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>of service-type in DB is not UUS3, system shall assign UUS3 to service-type,</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>this solution is designed for avoiding below issue:if one extend the</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>range of service-type in newer release,such as Release 5, and does rollback</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>from Release 5 to Release 3. one shall promise the extended service does not work</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>in Release 3, and can configure to UUS3 again.FT test list:SIPSRV_CLI_01</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>~ SIPSRV_CLI_11Auto Test case :SIPSRV_CLI_01</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>~ SIPSRV_CLI_11</td><td>WellAnalyzed</td><td></td><td></td><td></td></tr>
+</tbody></table>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../敏捷管理/凤凰项目.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../敏捷管理/ScrumXP/2SprintPlanning.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../敏捷管理/凤凰项目.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../敏捷管理/ScrumXP/2SprintPlanning.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
