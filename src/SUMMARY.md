@@ -1,9 +1,9 @@
 # Summary
 - [README](../README.md)
 # 杂烩
+- [archlinux WSL安装](./杂烩/archlinux_wsl.md)
 - [批量下载语雀知识库文档](./杂烩/批量下载语雀知识库文档.md)
 - [markdown自定义样式](./杂烩/markdown自定义样式.md)
-- [MobaXterm](./杂烩/MobaXterm.md)
 - [Putty的ColorTheme分享](./杂烩/Putty的ColorTheme分享.md)
 - [Vim折叠方式和卡顿](./杂烩/Vim折叠方式和卡顿.md)
 - [vim作为IDE的基本配置](./杂烩/vim作为IDE的基本配置.md)
