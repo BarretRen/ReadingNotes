@@ -18,3 +18,14 @@ exclude=kernel*
 SELINUX=disabled
 SELINUXTYPE=minimum
 ```
+
+# gnome 必备扩展
+
+- gnome-extension-app: 开启扩展功能及内置的一些扩展
+- Blur-My-Shell: 让面板, 顶栏, Overview, 锁屏, gnome 自带的截屏, 甚至特定的 app, 都能被毛玻璃化
+- Appindicator: 显示托盘图标
+- Clipboard Indicator: 剪贴板历史记录
+- Dash to Panel: 将 dash 和 gnome 顶栏合并, 类似任务栏
+- 添加最大化最小化按钮:
+  - gnome-tweaks
+  - 使用命令: `gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"`
