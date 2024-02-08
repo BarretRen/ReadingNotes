@@ -231,10 +231,10 @@ pacman-key --populate archlinux
 </li>
 <li>
 <p>Enable <code>multilib</code> (if you want).</p>
-<pre><code class="language-sh">linenumber=$(grep -nr &quot;\\#\\[multilib\\]&quot; /etc/pacman.conf | gawk '{print $1}' FS=&quot;:&quot;)
-sed -i &quot;${linenumber}s:.*:[multilib]:&quot; /etc/pacman.conf
+<pre><code class="language-sh">linenumber=$(grep -nr "\\#\\[multilib\\]" /etc/pacman.conf | gawk '{print $1}' FS=":")
+sed -i "${linenumber}s:.*:[multilib]:" /etc/pacman.conf
 linenumber=$((linenumber+1))
-sed -i &quot;${linenumber}s:.*:Include = /etc/pacman.d/mirrorlist:&quot; /etc/pacman.conf
+sed -i "${linenumber}s:.*:Include = /etc/pacman.d/mirrorlist:" /etc/pacman.conf
 </code></pre>
 </li>
 <li>
@@ -243,7 +243,7 @@ sed -i &quot;${linenumber}s:.*:Include = /etc/pacman.d/mirrorlist:&quot; /etc/pa
 </li>
 <li>
 <p>Update mirror list (replace United States with preferred repo mirror country).</p>
-<p><code>reflector --country &quot;United States&quot; --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist</code></p>
+<p><code>reflector --country "United States" --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist</code></p>
 </li>
 <li>
 <p>Set <code>root</code> user password.</p>
@@ -281,7 +281,7 @@ echo LC_ALL=en_US.UTF-8 &gt;&gt; /etc/locale.confS
 </li>
 <li>
 <p>Download yay PKGBUILD from AUR.</p>
-<p><code>wget &quot;https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay&quot; --output-document=./PKGBUILD</code></p>
+<p><code>wget "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay" --output-document=./PKGBUILD</code></p>
 </li>
 <li>
 <p>Run <code>makepkg</code> to build and install yay.</p>
@@ -304,7 +304,7 @@ echo LC_ALL=en_US.UTF-8 &gt;&gt; /etc/locale.confS
 <p><code>vim /etc/wsl.conf</code></p>
 <pre><code class="language-sh">[automount]
 enabled = true
-options = &quot;metadata,uid=1000,gid=1000,umask=22,fmask=11,case=off&quot;
+options = "metadata,uid=1000,gid=1000,umask=22,fmask=11,case=off"
 mountFsTab = true
 crossDistro = true
 
@@ -325,12 +325,12 @@ default = your_username
 <p><code>vim /etc/profile.d/00-wsl2-systemd.sh</code></p>
 <pre><code class="language-sh">SYSTEMD_PID=$(ps -ef | grep '/lib/systemd/systemd --system-unit=basic.target$' | grep -v unshare | awk '{print $2}')
 
-if [ -z &quot;$SYSTEMD_PID&quot; ]; then
+if [ -z "$SYSTEMD_PID" ]; then
    sudo /usr/bin/daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/    systemd/systemd --system-unit=basic.target
    SYSTEMD_PID=$(ps -ef | grep '/lib/systemd/systemd --system-unit=basic.    target$' | grep -v unshare | awk '{print $2}')
 fi
 
-if [ -n &quot;$SYSTEMD_PID&quot; ] &amp;&amp; [ &quot;$SYSTEMD_PID&quot; != &quot;1&quot; ]; then
+if [ -n "$SYSTEMD_PID" ] &amp;&amp; [ "$SYSTEMD_PID" != "1" ]; then
     exec sudo /usr/bin/nsenter -t $SYSTEMD_PID -a su - $LOGNAME
 fi
 </code></pre>

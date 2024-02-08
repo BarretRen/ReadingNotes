@@ -188,14 +188,14 @@ rust-lang/rust uses in <a href="https://github.com/rust-lang/rust/blob/master/sr
 your web browser.</p>
 <p><em>Firefox:</em></p>
 <pre><code class="language-bash">$ firefox book/index.html                       # Linux
-$ open -a &quot;Firefox&quot; book/index.html             # OS X
-$ Start-Process &quot;firefox.exe&quot; .\book\index.html # Windows (PowerShell)
+$ open -a "Firefox" book/index.html             # OS X
+$ Start-Process "firefox.exe" .\book\index.html # Windows (PowerShell)
 $ start firefox.exe .\book\index.html           # Windows (Cmd)
 </code></pre>
 <p><em>Chrome:</em></p>
 <pre><code class="language-bash">$ google-chrome book/index.html                 # Linux
-$ open -a &quot;Google Chrome&quot; book/index.html       # OS X
-$ Start-Process &quot;chrome.exe&quot; .\book\index.html  # Windows (PowerShell)
+$ open -a "Google Chrome" book/index.html       # OS X
+$ Start-Process "chrome.exe" .\book\index.html  # Windows (PowerShell)
 $ start chrome.exe .\book\index.html            # Windows (Cmd)
 </code></pre>
 <h2 id="local-server"><a class="header" href="#local-server">Local server</a></h2>
@@ -260,10 +260,10 @@ pacman-key --populate archlinux
 </li>
 <li>
 <p>Enable <code>multilib</code> (if you want).</p>
-<pre><code class="language-sh">linenumber=$(grep -nr &quot;\\#\\[multilib\\]&quot; /etc/pacman.conf | gawk '{print $1}' FS=&quot;:&quot;)
-sed -i &quot;${linenumber}s:.*:[multilib]:&quot; /etc/pacman.conf
+<pre><code class="language-sh">linenumber=$(grep -nr "\\#\\[multilib\\]" /etc/pacman.conf | gawk '{print $1}' FS=":")
+sed -i "${linenumber}s:.*:[multilib]:" /etc/pacman.conf
 linenumber=$((linenumber+1))
-sed -i &quot;${linenumber}s:.*:Include = /etc/pacman.d/mirrorlist:&quot; /etc/pacman.conf
+sed -i "${linenumber}s:.*:Include = /etc/pacman.d/mirrorlist:" /etc/pacman.conf
 </code></pre>
 </li>
 <li>
@@ -272,7 +272,7 @@ sed -i &quot;${linenumber}s:.*:Include = /etc/pacman.d/mirrorlist:&quot; /etc/pa
 </li>
 <li>
 <p>Update mirror list (replace United States with preferred repo mirror country).</p>
-<p><code>reflector --country &quot;United States&quot; --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist</code></p>
+<p><code>reflector --country "United States" --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist</code></p>
 </li>
 <li>
 <p>Set <code>root</code> user password.</p>
@@ -310,7 +310,7 @@ echo LC_ALL=en_US.UTF-8 &gt;&gt; /etc/locale.confS
 </li>
 <li>
 <p>Download yay PKGBUILD from AUR.</p>
-<p><code>wget &quot;https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay&quot; --output-document=./PKGBUILD</code></p>
+<p><code>wget "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay" --output-document=./PKGBUILD</code></p>
 </li>
 <li>
 <p>Run <code>makepkg</code> to build and install yay.</p>
@@ -333,7 +333,7 @@ echo LC_ALL=en_US.UTF-8 &gt;&gt; /etc/locale.confS
 <p><code>vim /etc/wsl.conf</code></p>
 <pre><code class="language-sh">[automount]
 enabled = true
-options = &quot;metadata,uid=1000,gid=1000,umask=22,fmask=11,case=off&quot;
+options = "metadata,uid=1000,gid=1000,umask=22,fmask=11,case=off"
 mountFsTab = true
 crossDistro = true
 
@@ -354,12 +354,12 @@ default = your_username
 <p><code>vim /etc/profile.d/00-wsl2-systemd.sh</code></p>
 <pre><code class="language-sh">SYSTEMD_PID=$(ps -ef | grep '/lib/systemd/systemd --system-unit=basic.target$' | grep -v unshare | awk '{print $2}')
 
-if [ -z &quot;$SYSTEMD_PID&quot; ]; then
+if [ -z "$SYSTEMD_PID" ]; then
    sudo /usr/bin/daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/    systemd/systemd --system-unit=basic.target
    SYSTEMD_PID=$(ps -ef | grep '/lib/systemd/systemd --system-unit=basic.    target$' | grep -v unshare | awk '{print $2}')
 fi
 
-if [ -n &quot;$SYSTEMD_PID&quot; ] &amp;&amp; [ &quot;$SYSTEMD_PID&quot; != &quot;1&quot; ]; then
+if [ -n "$SYSTEMD_PID" ] &amp;&amp; [ "$SYSTEMD_PID" != "1" ]; then
     exec sudo /usr/bin/nsenter -t $SYSTEMD_PID -a su - $LOGNAME
 fi
 </code></pre>
@@ -373,18 +373,18 @@ fi
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><ol>
 <li>打开知识库的管理文档页.</li>
-<li>如果你的文档很多, 那么滑到&quot;管理文档&quot;页面底部, 有一个&quot;加载更多&quot; 的按钮, 点一下, 使所以文档加载出来. </li>
+<li>如果你的文档很多, 那么滑到"管理文档"页面底部, 有一个"加载更多" 的按钮, 点一下, 使所以文档加载出来.</li>
 <li>打开浏览器开发者工具, 点击 console, 把以下代码粘贴进去.</li>
 </ol>
 <pre><code class="language-javascript">function download(keyword) {
-    let all = document.querySelectorAll('li[class=&quot;ant-list-item&quot;]');
+    let all = document.querySelectorAll('li[class="ant-list-item"]');
     let interval = 1000;
 
     all.forEach((e) =&gt; {
 
         function get() {
-            const url = `${e.querySelector('div[class=&quot;info-title-inner&quot;] &gt; a').href}/markdown?attachment=true&amp;latexcode=false&amp;anchor=true&amp;linebreak=true`;
-            const title = `${e.querySelector('div[class=&quot;info-title-inner&quot;]').innerText}.md`;
+            const url = `${e.querySelector('div[class="info-title-inner"] &gt; a').href}/markdown?attachment=true&amp;latexcode=false&amp;anchor=true&amp;linebreak=true`;
+            const title = `${e.querySelector('div[class="info-title-inner"]').innerText}.md`;
             fetch(url).then(resp =&gt; resp.blob()).then(blob =&gt; {
                 console.log(blob.text());
                 const urlDownload = window.URL.createObjectURL(blob);
@@ -411,7 +411,7 @@ fi
 }
 </code></pre>
 <ol start="4">
-<li>在 console 中输入 download(), 就能以 &quot;markdown&quot; 文件格式批量下载了</li>
+<li>在 console 中输入 download(), 就能以 "markdown" 文件格式批量下载了</li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="light-theme"><a class="header" href="#light-theme">Light theme</a></h2>
 <pre><code class="language-css">/* RESET
@@ -427,7 +427,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 =============================================================================*/
 
 body {
-  font-family: &quot;JetBrains Mono&quot;, &quot;Courier New&quot;, Consolas;
+  font-family: "JetBrains Mono", "Courier New", Consolas;
   font-size: 15px;
   line-height: 1.6;
   color: #333;
@@ -613,7 +613,7 @@ dl dd&gt;:last-child {
 
 pre &gt; *, code, tt {
   font-size: 15px;
-  font-family: &quot;JetBrains Mono&quot;, &quot;Courier New&quot;, Consolase;
+  font-family: "JetBrains Mono", "Courier New", Consolase;
 }
 
 code, tt {
@@ -663,7 +663,7 @@ kbd {
     border-radius: 2px 2px 2px 2px;
     border-style: solid;
     border-width: 1px;
-    font-family: &quot;JetBrains Mono&quot;, &quot;Courier New&quot;, Consolas;
+    font-family: "JetBrains Mono", "Courier New", Consolas;
     line-height: 10px;
     padding: 1px 4px;
 }
@@ -730,7 +730,7 @@ img {
   display: block;
 }
 &lt;/style&gt;
-&lt;style type=&quot;text/css&quot;&gt;
+&lt;style type="text/css"&gt;
 .highlight  { background: #ffffff; }
 .highlight .c { color: #999988; font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
@@ -921,7 +921,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 =============================================================================*/
 
 body {
-  font-family: &quot;JetBrains Mono&quot;, &quot;Courier New&quot;, Consolas;
+  font-family: "JetBrains Mono", "Courier New", Consolas;
   font-size: 15px;
   line-height: 1.6;
   color: #F8F8F2;
@@ -1105,7 +1105,7 @@ dl dd&gt;:last-child {
 pre &gt; *, code, tt {
 	color: #777;
   font-size: 15px;
-  font-family: &quot;JetBrains Mono&quot;, &quot;Courier New&quot;, Consolas;
+  font-family: "JetBrains Mono", "Courier New", Consolas;
 }
 
 code, tt {
@@ -1153,7 +1153,7 @@ kbd {
     border-radius: 2px 2px 2px 2px;
     border-style: solid;
     border-width: 1px;
-    font-family: &quot;JetBrains Mono&quot;, &quot;Courier New&quot;, Consolas;
+    font-family: "JetBrains Mono", "Courier New", Consolas;
     line-height: 10px;
     padding: 1px 4px;
 }
@@ -1220,7 +1220,7 @@ img {
   display: block;
 }
 &lt;/style&gt;
-&lt;style type=&quot;text/css&quot;&gt;
+&lt;style type="text/css"&gt;
 .highlight  { background: #ffffff; }
 .highlight .c { color: #999988; font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
@@ -1517,468 +1517,468 @@ vertical-align:1px;
 <pre><code>Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\Green]
-&quot;LogFileClash&quot;=dword:00000001
-&quot;CloseOnExit&quot;=dword:00000001
-&quot;PingInterval&quot;=dword:00000001
-&quot;UserName&quot;=&quot;barretr&quot;
-&quot;BackspaceIsDelete&quot;=dword:00000000
-&quot;LinuxFunctionKeys&quot;=dword:00000002
-&quot;Beep&quot;=dword:00000000
-&quot;WinNameAlways&quot;=dword:00000000
-&quot;Font&quot;=&quot;Cascadia Code&quot;
-&quot;FontHeight&quot;=dword:0000000b
-&quot;FontName&quot;=&quot;Cascadia Code&quot;
-&quot;Colour0&quot;=&quot;0,0,0&quot;
-&quot;Colour1&quot;=&quot;0,0,0&quot;
-&quot;Colour2&quot;=&quot;224,241,226&quot;
-&quot;Colour3&quot;=&quot;224,241,226&quot;
-&quot;Colour5&quot;=&quot;255,0,0&quot;
-&quot;Colour6&quot;=&quot;46,52,54&quot;
-&quot;Colour7&quot;=&quot;85,87,83&quot;
-&quot;Colour8&quot;=&quot;204,0,0&quot;
-&quot;Colour9&quot;=&quot;239,41,41&quot;
-&quot;Colour10&quot;=&quot;78,154,6&quot;
-&quot;Colour11&quot;=&quot;33,141,5&quot;
-&quot;Colour12&quot;=&quot;196,160,0&quot;
-&quot;Colour13&quot;=&quot;218,165,32&quot;
-&quot;Colour14&quot;=&quot;69,73,245&quot;
-&quot;Colour15&quot;=&quot;55,60,244&quot;
-&quot;Colour16&quot;=&quot;117,80,123&quot;
-&quot;Colour17&quot;=&quot;173,127,168&quot;
-&quot;Colour18&quot;=&quot;6,152,154&quot;
-&quot;Colour19&quot;=&quot;52,226,226&quot;
-&quot;Colour20&quot;=&quot;211,215,207&quot;
-&quot;Colour21&quot;=&quot;238,238,236&quot;
-&quot;MouseAutocopy&quot;=dword:00000001
-&quot;LineCodePage&quot;=&quot;UTF-8&quot;
-&quot;X11Display&quot;=&quot;localhost:0&quot;
-&quot;BoldFont&quot;=&quot;&quot;
-&quot;BoldFontHeight&quot;=dword:00000000
-&quot;BoldFontName&quot;=&quot;&quot;
-&quot;WideFont&quot;=&quot;&quot;
-&quot;WideFontHeight&quot;=dword:00000000
-&quot;WideFontName&quot;=&quot;&quot;
-&quot;WideBoldFont&quot;=&quot;&quot;
-&quot;WideBoldFontHeight&quot;=dword:00000000
-&quot;WideBoldFontName&quot;=&quot;&quot;
-&quot;GroupCollapse&quot;=dword:00000001
-&quot;DataVersion&quot;=dword:00000002
-&quot;Present&quot;=dword:00000001
-&quot;LogType&quot;=dword:00000000
-&quot;LogFlush&quot;=dword:00000001
-&quot;LogHeader&quot;=dword:00000001
-&quot;SSHLogOmitPasswords&quot;=dword:00000001
-&quot;SSHLogOmitData&quot;=dword:00000000
-&quot;Protocol&quot;=&quot;ssh&quot;
-&quot;PortNumber&quot;=dword:00000016
-&quot;WarnOnClose&quot;=dword:00000001
-&quot;PingIntervalSecs&quot;=dword:00000000
-&quot;TCPNoDelay&quot;=dword:00000001
-&quot;TCPKeepalives&quot;=dword:00000000
-&quot;TerminalType&quot;=&quot;xterm&quot;
-&quot;TerminalSpeed&quot;=&quot;38400,38400&quot;
-&quot;TerminalModes&quot;=&quot;CS7=A,CS8=A,DISCARD=A,DSUSP=A,ECHO=A,ECHOCTL=A,ECHOE=A,ECHOK=A,ECHOKE=A,ECHONL=A,EOF=A,EOL=A,EOL2=A,ERASE=A,FLUSH=A,ICANON=A,ICRNL=A,IEXTEN=A,IGNCR=A,IGNPAR=A,IMAXBEL=A,INLCR=A,INPCK=A,INTR=A,ISIG=A,ISTRIP=A,IUCLC=A,IUTF8=A,IXANY=A,IXOFF=A,IXON=A,KILL=A,LNEXT=A,NOFLSH=A,OCRNL=A,OLCUC=A,ONLCR=A,ONLRET=A,ONOCR=A,OPOST=A,PARENB=A,PARMRK=A,PARODD=A,PENDIN=A,QUIT=A,REPRINT=A,START=A,STATUS=A,STOP=A,SUSP=A,SWTCH=A,TOSTOP=A,WERASE=A,XCASE=A&quot;
-&quot;AddressFamily&quot;=dword:00000000
-&quot;ProxyExcludeList&quot;=&quot;&quot;
-&quot;ProxyDNS&quot;=dword:00000001
-&quot;ProxyLocalhost&quot;=dword:00000000
-&quot;ProxyMethod&quot;=dword:00000000
-&quot;ProxyHost&quot;=&quot;proxy&quot;
-&quot;ProxyPort&quot;=dword:00000050
-&quot;ProxyUsername&quot;=&quot;&quot;
-&quot;ProxyPassword&quot;=&quot;&quot;
-&quot;ProxyTelnetCommand&quot;=&quot;connect %host %port\\n&quot;
-&quot;ProxyLogToTerm&quot;=dword:00000001
-&quot;Environment&quot;=&quot;&quot;
-&quot;UserNameFromEnvironment&quot;=dword:00000000
-&quot;LocalUserName&quot;=&quot;&quot;
-&quot;NoPTY&quot;=dword:00000000
-&quot;Compression&quot;=dword:00000000
-&quot;TryAgent&quot;=dword:00000001
-&quot;AgentFwd&quot;=dword:00000000
-&quot;GssapiFwd&quot;=dword:00000000
-&quot;ChangeUsername&quot;=dword:00000000
-&quot;Cipher&quot;=&quot;aes,chacha20,3des,WARN,des,blowfish,arcfour&quot;
-&quot;KEX&quot;=&quot;ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1&quot;
-&quot;HostKey&quot;=&quot;ed25519,ecdsa,rsa,dsa,WARN&quot;
-&quot;RekeyTime&quot;=dword:0000003c
-&quot;GssapiRekey&quot;=dword:00000002
-&quot;RekeyBytes&quot;=&quot;1G&quot;
-&quot;SshNoAuth&quot;=dword:00000000
-&quot;SshBanner&quot;=dword:00000001
-&quot;AuthTIS&quot;=dword:00000000
-&quot;AuthKI&quot;=dword:00000001
-&quot;AuthGSSAPI&quot;=dword:00000001
-&quot;AuthGSSAPIKEX&quot;=dword:00000001
-&quot;GSSLibs&quot;=&quot;gssapi32,sspi,custom&quot;
-&quot;GSSCustom&quot;=&quot;&quot;
-&quot;SshNoShell&quot;=dword:00000000
-&quot;SshProt&quot;=dword:00000003
-&quot;LogHost&quot;=&quot;&quot;
-&quot;SSH2DES&quot;=dword:00000000
-&quot;RemoteCommand&quot;=&quot;&quot;
-&quot;RFCEnviron&quot;=dword:00000000
-&quot;PassiveTelnet&quot;=dword:00000000
-&quot;RXVTHomeEnd&quot;=dword:00000000
-&quot;NoApplicationKeys&quot;=dword:00000000
-&quot;NoApplicationCursors&quot;=dword:00000000
-&quot;NoMouseReporting&quot;=dword:00000000
-&quot;NoRemoteResize&quot;=dword:00000000
-&quot;NoAltScreen&quot;=dword:00000000
-&quot;NoRemoteWinTitle&quot;=dword:00000000
-&quot;NoRemoteClearScroll&quot;=dword:00000000
-&quot;RemoteQTitleAction&quot;=dword:00000001
-&quot;NoDBackspace&quot;=dword:00000000
-&quot;NoRemoteCharset&quot;=dword:00000000
-&quot;ApplicationCursorKeys&quot;=dword:00000000
-&quot;ApplicationKeypad&quot;=dword:00000000
-&quot;NetHackKeypad&quot;=dword:00000000
-&quot;AltF4&quot;=dword:00000001
-&quot;AltSpace&quot;=dword:00000000
-&quot;AltOnly&quot;=dword:00000000
-&quot;ComposeKey&quot;=dword:00000000
-&quot;CtrlAltKeys&quot;=dword:00000001
-&quot;TelnetKey&quot;=dword:00000000
-&quot;TelnetRet&quot;=dword:00000001
-&quot;LocalEcho&quot;=dword:00000002
-&quot;LocalEdit&quot;=dword:00000002
-&quot;Answerback&quot;=&quot;PuTTY&quot;
-&quot;AlwaysOnTop&quot;=dword:00000000
-&quot;FullScreenOnAltEnter&quot;=dword:00000001
-&quot;HideMousePtr&quot;=dword:00000000
-&quot;SunkenEdge&quot;=dword:00000000
-&quot;WindowBorder&quot;=dword:00000001
-&quot;CurType&quot;=dword:00000000
-&quot;BlinkCur&quot;=dword:00000000
-&quot;BeepInd&quot;=dword:00000000
-&quot;BellWaveFile&quot;=&quot;&quot;
-&quot;BellOverload&quot;=dword:00000001
-&quot;BellOverloadN&quot;=dword:00000005
-&quot;BellOverloadT&quot;=dword:000007d0
-&quot;BellOverloadS&quot;=dword:00001388
-&quot;ScrollbackLines&quot;=dword:000007d0
-&quot;DECOriginMode&quot;=dword:00000000
-&quot;AutoWrapMode&quot;=dword:00000001
-&quot;LFImpliesCR&quot;=dword:00000000
-&quot;CRImpliesLF&quot;=dword:00000000
-&quot;DisableArabicShaping&quot;=dword:00000000
-&quot;DisableBidi&quot;=dword:00000000
-&quot;TermWidth&quot;=dword:00000050
-&quot;TermHeight&quot;=dword:00000018
-&quot;FontIsBold&quot;=dword:00000000
-&quot;FontCharSet&quot;=dword:00000000
-&quot;FontQuality&quot;=dword:00000000
-&quot;FontVTMode&quot;=dword:00000004
-&quot;UseSystemColours&quot;=dword:00000000
-&quot;TryPalette&quot;=dword:00000000
-&quot;ANSIColour&quot;=dword:00000001
-&quot;Xterm256Colour&quot;=dword:00000001
-&quot;TrueColour&quot;=dword:00000001
-&quot;BoldAsColour&quot;=dword:00000001
-&quot;Colour4&quot;=&quot;0,0,0&quot;
-&quot;RawCNP&quot;=dword:00000000
-&quot;UTF8linedraw&quot;=dword:00000000
-&quot;PasteRTF&quot;=dword:00000000
-&quot;MouseIsXterm&quot;=dword:00000000
-&quot;RectSelect&quot;=dword:00000000
-&quot;PasteControls&quot;=dword:00000000
-&quot;MouseOverride&quot;=dword:00000001
-&quot;Wordness0&quot;=&quot;0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0&quot;
-&quot;Wordness32&quot;=&quot;0,1,2,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1&quot;
-&quot;Wordness64&quot;=&quot;1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,2&quot;
-&quot;Wordness96&quot;=&quot;1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1&quot;
-&quot;Wordness128&quot;=&quot;1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&quot;
-&quot;Wordness160&quot;=&quot;1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&quot;
-&quot;Wordness192&quot;=&quot;2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2&quot;
-&quot;Wordness224&quot;=&quot;2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2&quot;
-&quot;MousePaste&quot;=&quot;explicit&quot;
-&quot;CtrlShiftIns&quot;=&quot;explicit&quot;
-&quot;CtrlShiftCV&quot;=&quot;none&quot;
-&quot;CJKAmbigWide&quot;=dword:00000000
-&quot;UTF8Override&quot;=dword:00000001
-&quot;Printer&quot;=&quot;&quot;
-&quot;CapsLockCyr&quot;=dword:00000000
-&quot;ScrollBar&quot;=dword:00000001
-&quot;ScrollBarFullScreen&quot;=dword:00000000
-&quot;ScrollOnKey&quot;=dword:00000000
-&quot;ScrollOnDisp&quot;=dword:00000001
-&quot;EraseToScrollback&quot;=dword:00000001
-&quot;LockSize&quot;=dword:00000000
-&quot;BCE&quot;=dword:00000001
-&quot;BlinkText&quot;=dword:00000000
-&quot;X11Forward&quot;=dword:00000000
-&quot;X11AuthType&quot;=dword:00000001
-&quot;X11AuthFile&quot;=&quot;&quot;
-&quot;LocalPortAcceptAll&quot;=dword:00000000
-&quot;RemotePortAcceptAll&quot;=dword:00000000
-&quot;PortForwardings&quot;=&quot;&quot;
-&quot;BugIgnore1&quot;=dword:00000000
-&quot;BugPlainPW1&quot;=dword:00000000
-&quot;BugRSA1&quot;=dword:00000000
-&quot;BugIgnore2&quot;=dword:00000000
-&quot;BugHMAC2&quot;=dword:00000000
-&quot;BugDeriveKey2&quot;=dword:00000000
-&quot;BugRSAPad2&quot;=dword:00000000
-&quot;BugPKSessID2&quot;=dword:00000000
-&quot;BugRekey2&quot;=dword:00000000
-&quot;BugMaxPkt2&quot;=dword:00000000
-&quot;BugOldGex2&quot;=dword:00000000
-&quot;BugWinadj&quot;=dword:00000000
-&quot;BugChanReq&quot;=dword:00000000
-&quot;StampUtmp&quot;=dword:00000001
-&quot;LoginShell&quot;=dword:00000001
-&quot;ScrollbarOnLeft&quot;=dword:00000000
-&quot;BoldFontIsBold&quot;=dword:00000000
-&quot;BoldFontCharSet&quot;=dword:00000000
-&quot;WideFontIsBold&quot;=dword:00000000
-&quot;WideFontCharSet&quot;=dword:00000000
-&quot;WideBoldFontIsBold&quot;=dword:00000000
-&quot;WideBoldFontCharSet&quot;=dword:00000000
-&quot;ShadowBold&quot;=dword:00000000
-&quot;ShadowBoldOffset&quot;=dword:00000001
-&quot;SerialLine&quot;=&quot;COM1&quot;
-&quot;SerialSpeed&quot;=dword:00002580
-&quot;SerialDataBits&quot;=dword:00000008
-&quot;SerialStopHalfbits&quot;=dword:00000002
-&quot;SerialParity&quot;=dword:00000000
-&quot;SerialFlowControl&quot;=dword:00000001
-&quot;WindowClass&quot;=&quot;&quot;
-&quot;ConnectionSharing&quot;=dword:00000000
-&quot;ConnectionSharingUpstream&quot;=dword:00000001
-&quot;ConnectionSharingDownstream&quot;=dword:00000001
-&quot;SSHManualHostKeys&quot;=&quot;&quot;
-&quot;PreferKnownHostKeys&quot;=dword:00000001
+"LogFileClash"=dword:00000001
+"CloseOnExit"=dword:00000001
+"PingInterval"=dword:00000001
+"UserName"="barretr"
+"BackspaceIsDelete"=dword:00000000
+"LinuxFunctionKeys"=dword:00000002
+"Beep"=dword:00000000
+"WinNameAlways"=dword:00000000
+"Font"="Cascadia Code"
+"FontHeight"=dword:0000000b
+"FontName"="Cascadia Code"
+"Colour0"="0,0,0"
+"Colour1"="0,0,0"
+"Colour2"="224,241,226"
+"Colour3"="224,241,226"
+"Colour5"="255,0,0"
+"Colour6"="46,52,54"
+"Colour7"="85,87,83"
+"Colour8"="204,0,0"
+"Colour9"="239,41,41"
+"Colour10"="78,154,6"
+"Colour11"="33,141,5"
+"Colour12"="196,160,0"
+"Colour13"="218,165,32"
+"Colour14"="69,73,245"
+"Colour15"="55,60,244"
+"Colour16"="117,80,123"
+"Colour17"="173,127,168"
+"Colour18"="6,152,154"
+"Colour19"="52,226,226"
+"Colour20"="211,215,207"
+"Colour21"="238,238,236"
+"MouseAutocopy"=dword:00000001
+"LineCodePage"="UTF-8"
+"X11Display"="localhost:0"
+"BoldFont"=""
+"BoldFontHeight"=dword:00000000
+"BoldFontName"=""
+"WideFont"=""
+"WideFontHeight"=dword:00000000
+"WideFontName"=""
+"WideBoldFont"=""
+"WideBoldFontHeight"=dword:00000000
+"WideBoldFontName"=""
+"GroupCollapse"=dword:00000001
+"DataVersion"=dword:00000002
+"Present"=dword:00000001
+"LogType"=dword:00000000
+"LogFlush"=dword:00000001
+"LogHeader"=dword:00000001
+"SSHLogOmitPasswords"=dword:00000001
+"SSHLogOmitData"=dword:00000000
+"Protocol"="ssh"
+"PortNumber"=dword:00000016
+"WarnOnClose"=dword:00000001
+"PingIntervalSecs"=dword:00000000
+"TCPNoDelay"=dword:00000001
+"TCPKeepalives"=dword:00000000
+"TerminalType"="xterm"
+"TerminalSpeed"="38400,38400"
+"TerminalModes"="CS7=A,CS8=A,DISCARD=A,DSUSP=A,ECHO=A,ECHOCTL=A,ECHOE=A,ECHOK=A,ECHOKE=A,ECHONL=A,EOF=A,EOL=A,EOL2=A,ERASE=A,FLUSH=A,ICANON=A,ICRNL=A,IEXTEN=A,IGNCR=A,IGNPAR=A,IMAXBEL=A,INLCR=A,INPCK=A,INTR=A,ISIG=A,ISTRIP=A,IUCLC=A,IUTF8=A,IXANY=A,IXOFF=A,IXON=A,KILL=A,LNEXT=A,NOFLSH=A,OCRNL=A,OLCUC=A,ONLCR=A,ONLRET=A,ONOCR=A,OPOST=A,PARENB=A,PARMRK=A,PARODD=A,PENDIN=A,QUIT=A,REPRINT=A,START=A,STATUS=A,STOP=A,SUSP=A,SWTCH=A,TOSTOP=A,WERASE=A,XCASE=A"
+"AddressFamily"=dword:00000000
+"ProxyExcludeList"=""
+"ProxyDNS"=dword:00000001
+"ProxyLocalhost"=dword:00000000
+"ProxyMethod"=dword:00000000
+"ProxyHost"="proxy"
+"ProxyPort"=dword:00000050
+"ProxyUsername"=""
+"ProxyPassword"=""
+"ProxyTelnetCommand"="connect %host %port\\n"
+"ProxyLogToTerm"=dword:00000001
+"Environment"=""
+"UserNameFromEnvironment"=dword:00000000
+"LocalUserName"=""
+"NoPTY"=dword:00000000
+"Compression"=dword:00000000
+"TryAgent"=dword:00000001
+"AgentFwd"=dword:00000000
+"GssapiFwd"=dword:00000000
+"ChangeUsername"=dword:00000000
+"Cipher"="aes,chacha20,3des,WARN,des,blowfish,arcfour"
+"KEX"="ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1"
+"HostKey"="ed25519,ecdsa,rsa,dsa,WARN"
+"RekeyTime"=dword:0000003c
+"GssapiRekey"=dword:00000002
+"RekeyBytes"="1G"
+"SshNoAuth"=dword:00000000
+"SshBanner"=dword:00000001
+"AuthTIS"=dword:00000000
+"AuthKI"=dword:00000001
+"AuthGSSAPI"=dword:00000001
+"AuthGSSAPIKEX"=dword:00000001
+"GSSLibs"="gssapi32,sspi,custom"
+"GSSCustom"=""
+"SshNoShell"=dword:00000000
+"SshProt"=dword:00000003
+"LogHost"=""
+"SSH2DES"=dword:00000000
+"RemoteCommand"=""
+"RFCEnviron"=dword:00000000
+"PassiveTelnet"=dword:00000000
+"RXVTHomeEnd"=dword:00000000
+"NoApplicationKeys"=dword:00000000
+"NoApplicationCursors"=dword:00000000
+"NoMouseReporting"=dword:00000000
+"NoRemoteResize"=dword:00000000
+"NoAltScreen"=dword:00000000
+"NoRemoteWinTitle"=dword:00000000
+"NoRemoteClearScroll"=dword:00000000
+"RemoteQTitleAction"=dword:00000001
+"NoDBackspace"=dword:00000000
+"NoRemoteCharset"=dword:00000000
+"ApplicationCursorKeys"=dword:00000000
+"ApplicationKeypad"=dword:00000000
+"NetHackKeypad"=dword:00000000
+"AltF4"=dword:00000001
+"AltSpace"=dword:00000000
+"AltOnly"=dword:00000000
+"ComposeKey"=dword:00000000
+"CtrlAltKeys"=dword:00000001
+"TelnetKey"=dword:00000000
+"TelnetRet"=dword:00000001
+"LocalEcho"=dword:00000002
+"LocalEdit"=dword:00000002
+"Answerback"="PuTTY"
+"AlwaysOnTop"=dword:00000000
+"FullScreenOnAltEnter"=dword:00000001
+"HideMousePtr"=dword:00000000
+"SunkenEdge"=dword:00000000
+"WindowBorder"=dword:00000001
+"CurType"=dword:00000000
+"BlinkCur"=dword:00000000
+"BeepInd"=dword:00000000
+"BellWaveFile"=""
+"BellOverload"=dword:00000001
+"BellOverloadN"=dword:00000005
+"BellOverloadT"=dword:000007d0
+"BellOverloadS"=dword:00001388
+"ScrollbackLines"=dword:000007d0
+"DECOriginMode"=dword:00000000
+"AutoWrapMode"=dword:00000001
+"LFImpliesCR"=dword:00000000
+"CRImpliesLF"=dword:00000000
+"DisableArabicShaping"=dword:00000000
+"DisableBidi"=dword:00000000
+"TermWidth"=dword:00000050
+"TermHeight"=dword:00000018
+"FontIsBold"=dword:00000000
+"FontCharSet"=dword:00000000
+"FontQuality"=dword:00000000
+"FontVTMode"=dword:00000004
+"UseSystemColours"=dword:00000000
+"TryPalette"=dword:00000000
+"ANSIColour"=dword:00000001
+"Xterm256Colour"=dword:00000001
+"TrueColour"=dword:00000001
+"BoldAsColour"=dword:00000001
+"Colour4"="0,0,0"
+"RawCNP"=dword:00000000
+"UTF8linedraw"=dword:00000000
+"PasteRTF"=dword:00000000
+"MouseIsXterm"=dword:00000000
+"RectSelect"=dword:00000000
+"PasteControls"=dword:00000000
+"MouseOverride"=dword:00000001
+"Wordness0"="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
+"Wordness32"="0,1,2,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1"
+"Wordness64"="1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,2"
+"Wordness96"="1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1"
+"Wordness128"="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"
+"Wordness160"="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"
+"Wordness192"="2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2"
+"Wordness224"="2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2"
+"MousePaste"="explicit"
+"CtrlShiftIns"="explicit"
+"CtrlShiftCV"="none"
+"CJKAmbigWide"=dword:00000000
+"UTF8Override"=dword:00000001
+"Printer"=""
+"CapsLockCyr"=dword:00000000
+"ScrollBar"=dword:00000001
+"ScrollBarFullScreen"=dword:00000000
+"ScrollOnKey"=dword:00000000
+"ScrollOnDisp"=dword:00000001
+"EraseToScrollback"=dword:00000001
+"LockSize"=dword:00000000
+"BCE"=dword:00000001
+"BlinkText"=dword:00000000
+"X11Forward"=dword:00000000
+"X11AuthType"=dword:00000001
+"X11AuthFile"=""
+"LocalPortAcceptAll"=dword:00000000
+"RemotePortAcceptAll"=dword:00000000
+"PortForwardings"=""
+"BugIgnore1"=dword:00000000
+"BugPlainPW1"=dword:00000000
+"BugRSA1"=dword:00000000
+"BugIgnore2"=dword:00000000
+"BugHMAC2"=dword:00000000
+"BugDeriveKey2"=dword:00000000
+"BugRSAPad2"=dword:00000000
+"BugPKSessID2"=dword:00000000
+"BugRekey2"=dword:00000000
+"BugMaxPkt2"=dword:00000000
+"BugOldGex2"=dword:00000000
+"BugWinadj"=dword:00000000
+"BugChanReq"=dword:00000000
+"StampUtmp"=dword:00000001
+"LoginShell"=dword:00000001
+"ScrollbarOnLeft"=dword:00000000
+"BoldFontIsBold"=dword:00000000
+"BoldFontCharSet"=dword:00000000
+"WideFontIsBold"=dword:00000000
+"WideFontCharSet"=dword:00000000
+"WideBoldFontIsBold"=dword:00000000
+"WideBoldFontCharSet"=dword:00000000
+"ShadowBold"=dword:00000000
+"ShadowBoldOffset"=dword:00000001
+"SerialLine"="COM1"
+"SerialSpeed"=dword:00002580
+"SerialDataBits"=dword:00000008
+"SerialStopHalfbits"=dword:00000002
+"SerialParity"=dword:00000000
+"SerialFlowControl"=dword:00000001
+"WindowClass"=""
+"ConnectionSharing"=dword:00000000
+"ConnectionSharingUpstream"=dword:00000001
+"ConnectionSharingDownstream"=dword:00000001
+"SSHManualHostKeys"=""
+"PreferKnownHostKeys"=dword:00000001
 </code></pre>
 <h1 id="经典monokai-theme"><a class="header" href="#经典monokai-theme">经典Monokai Theme</a></h1>
 <p><img src="%E6%9D%82%E7%83%A9/.assets/1586066238927-c3418086-3e98-4848-856b-3a0673164216.png" alt="image.png" /></p>
 <pre><code>Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\dark]
-&quot;Present&quot;=dword:00000001
-&quot;LogType&quot;=dword:00000000
-&quot;LogFileClash&quot;=dword:00000001
-&quot;LogFlush&quot;=dword:00000001
-&quot;LogHeader&quot;=dword:00000001
-&quot;SSHLogOmitPasswords&quot;=dword:00000001
-&quot;SSHLogOmitData&quot;=dword:00000000
-&quot;Protocol&quot;=&quot;ssh&quot;
-&quot;PortNumber&quot;=dword:00000016
-&quot;CloseOnExit&quot;=dword:00000001
-&quot;WarnOnClose&quot;=dword:00000001
-&quot;PingInterval&quot;=dword:00000000
-&quot;PingIntervalSecs&quot;=dword:00000000
-&quot;TCPNoDelay&quot;=dword:00000001
-&quot;TCPKeepalives&quot;=dword:00000000
-&quot;TerminalType&quot;=&quot;xterm&quot;
-&quot;TerminalSpeed&quot;=&quot;38400,38400&quot;
-&quot;TerminalModes&quot;=&quot;CS7=A,CS8=A,DISCARD=A,DSUSP=A,ECHO=A,ECHOCTL=A,ECHOE=A,ECHOK=A,ECHOKE=A,ECHONL=A,EOF=A,EOL=A,EOL2=A,ERASE=A,FLUSH=A,ICANON=A,ICRNL=A,IEXTEN=A,IGNCR=A,IGNPAR=A,IMAXBEL=A,INLCR=A,INPCK=A,INTR=A,ISIG=A,ISTRIP=A,IUCLC=A,IUTF8=A,IXANY=A,IXOFF=A,IXON=A,KILL=A,LNEXT=A,NOFLSH=A,OCRNL=A,OLCUC=A,ONLCR=A,ONLRET=A,ONOCR=A,OPOST=A,PARENB=A,PARMRK=A,PARODD=A,PENDIN=A,QUIT=A,REPRINT=A,START=A,STATUS=A,STOP=A,SUSP=A,SWTCH=A,TOSTOP=A,WERASE=A,XCASE=A&quot;
-&quot;AddressFamily&quot;=dword:00000000
-&quot;ProxyExcludeList&quot;=&quot;&quot;
-&quot;ProxyDNS&quot;=dword:00000001
-&quot;ProxyLocalhost&quot;=dword:00000000
-&quot;ProxyMethod&quot;=dword:00000000
-&quot;ProxyHost&quot;=&quot;proxy&quot;
-&quot;ProxyPort&quot;=dword:00000050
-&quot;ProxyUsername&quot;=&quot;&quot;
-&quot;ProxyPassword&quot;=&quot;&quot;
-&quot;ProxyTelnetCommand&quot;=&quot;connect %host %port\\n&quot;
-&quot;ProxyLogToTerm&quot;=dword:00000001
-&quot;Environment&quot;=&quot;&quot;
-&quot;UserName&quot;=&quot;barretr&quot;
-&quot;UserNameFromEnvironment&quot;=dword:00000000
-&quot;LocalUserName&quot;=&quot;&quot;
-&quot;NoPTY&quot;=dword:00000000
-&quot;Compression&quot;=dword:00000000
-&quot;TryAgent&quot;=dword:00000001
-&quot;AgentFwd&quot;=dword:00000000
-&quot;GssapiFwd&quot;=dword:00000000
-&quot;ChangeUsername&quot;=dword:00000000
-&quot;Cipher&quot;=&quot;aes,chacha20,3des,WARN,des,blowfish,arcfour&quot;
-&quot;KEX&quot;=&quot;ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1&quot;
-&quot;HostKey&quot;=&quot;ed25519,ecdsa,rsa,dsa,WARN&quot;
-&quot;RekeyTime&quot;=dword:0000003c
-&quot;GssapiRekey&quot;=dword:00000002
-&quot;RekeyBytes&quot;=&quot;1G&quot;
-&quot;SshNoAuth&quot;=dword:00000000
-&quot;SshBanner&quot;=dword:00000001
-&quot;AuthTIS&quot;=dword:00000000
-&quot;AuthKI&quot;=dword:00000001
-&quot;AuthGSSAPI&quot;=dword:00000001
-&quot;AuthGSSAPIKEX&quot;=dword:00000001
-&quot;GSSLibs&quot;=&quot;gssapi32,sspi,custom&quot;
-&quot;GSSCustom&quot;=&quot;&quot;
-&quot;SshNoShell&quot;=dword:00000000
-&quot;SshProt&quot;=dword:00000003
-&quot;LogHost&quot;=&quot;&quot;
-&quot;SSH2DES&quot;=dword:00000000
-&quot;RemoteCommand&quot;=&quot;&quot;
-&quot;RFCEnviron&quot;=dword:00000000
-&quot;PassiveTelnet&quot;=dword:00000000
-&quot;BackspaceIsDelete&quot;=dword:00000000
-&quot;RXVTHomeEnd&quot;=dword:00000000
-&quot;LinuxFunctionKeys&quot;=dword:00000002
-&quot;NoApplicationKeys&quot;=dword:00000000
-&quot;NoApplicationCursors&quot;=dword:00000000
-&quot;NoMouseReporting&quot;=dword:00000000
-&quot;NoRemoteResize&quot;=dword:00000000
-&quot;NoAltScreen&quot;=dword:00000000
-&quot;NoRemoteWinTitle&quot;=dword:00000000
-&quot;NoRemoteClearScroll&quot;=dword:00000000
-&quot;RemoteQTitleAction&quot;=dword:00000001
-&quot;NoDBackspace&quot;=dword:00000000
-&quot;NoRemoteCharset&quot;=dword:00000000
-&quot;ApplicationCursorKeys&quot;=dword:00000000
-&quot;ApplicationKeypad&quot;=dword:00000000
-&quot;NetHackKeypad&quot;=dword:00000000
-&quot;AltF4&quot;=dword:00000001
-&quot;AltSpace&quot;=dword:00000000
-&quot;AltOnly&quot;=dword:00000000
-&quot;ComposeKey&quot;=dword:00000000
-&quot;CtrlAltKeys&quot;=dword:00000001
-&quot;TelnetKey&quot;=dword:00000000
-&quot;TelnetRet&quot;=dword:00000001
-&quot;LocalEcho&quot;=dword:00000002
-&quot;LocalEdit&quot;=dword:00000002
-&quot;Answerback&quot;=&quot;PuTTY&quot;
-&quot;AlwaysOnTop&quot;=dword:00000000
-&quot;FullScreenOnAltEnter&quot;=dword:00000000
-&quot;HideMousePtr&quot;=dword:00000000
-&quot;SunkenEdge&quot;=dword:00000000
-&quot;WindowBorder&quot;=dword:00000001
-&quot;CurType&quot;=dword:00000000
-&quot;BlinkCur&quot;=dword:00000000
-&quot;Beep&quot;=dword:00000000
-&quot;BeepInd&quot;=dword:00000000
-&quot;BellWaveFile&quot;=&quot;&quot;
-&quot;BellOverload&quot;=dword:00000001
-&quot;BellOverloadN&quot;=dword:00000005
-&quot;BellOverloadT&quot;=dword:000007d0
-&quot;BellOverloadS&quot;=dword:00001388
-&quot;ScrollbackLines&quot;=dword:000007d0
-&quot;DECOriginMode&quot;=dword:00000000
-&quot;AutoWrapMode&quot;=dword:00000001
-&quot;LFImpliesCR&quot;=dword:00000000
-&quot;CRImpliesLF&quot;=dword:00000000
-&quot;DisableArabicShaping&quot;=dword:00000000
-&quot;DisableBidi&quot;=dword:00000000
-&quot;WinNameAlways&quot;=dword:00000000
-&quot;TermWidth&quot;=dword:00000050
-&quot;TermHeight&quot;=dword:00000018
-&quot;Font&quot;=&quot;Cascadia Code&quot;
-&quot;FontIsBold&quot;=dword:00000000
-&quot;FontCharSet&quot;=dword:00000000
-&quot;FontHeight&quot;=dword:0000000b
-&quot;FontQuality&quot;=dword:00000000
-&quot;FontVTMode&quot;=dword:00000004
-&quot;UseSystemColours&quot;=dword:00000000
-&quot;TryPalette&quot;=dword:00000000
-&quot;ANSIColour&quot;=dword:00000001
-&quot;Xterm256Colour&quot;=dword:00000001
-&quot;TrueColour&quot;=dword:00000001
-&quot;BoldAsColour&quot;=dword:00000001
-&quot;Colour0&quot;=&quot;210,216,217&quot;
-&quot;Colour1&quot;=&quot;236,236,236&quot;
-&quot;Colour2&quot;=&quot;39,40,34&quot;
-&quot;Colour3&quot;=&quot;39,40,34&quot;
-&quot;Colour4&quot;=&quot;0,0,0&quot;
-&quot;Colour5&quot;=&quot;255,128,0&quot;
-&quot;Colour6&quot;=&quot;0,0,0&quot;
-&quot;Colour7&quot;=&quot;85,85,85&quot;
-&quot;Colour8&quot;=&quot;249,38,114&quot;
-&quot;Colour9&quot;=&quot;221,66,120&quot;
-&quot;Colour10&quot;=&quot;166,226,46&quot;
-&quot;Colour11&quot;=&quot;157,197,75&quot;
-&quot;Colour12&quot;=&quot;230,219,116&quot;
-&quot;Colour13&quot;=&quot;209,202,137&quot;
-&quot;Colour14&quot;=&quot;102,217,239&quot;
-&quot;Colour15&quot;=&quot;122,204,218&quot;
-&quot;Colour16&quot;=&quot;174,129,255&quot;
-&quot;Colour17&quot;=&quot;179,146,239&quot;
-&quot;Colour18&quot;=&quot;0,217,217&quot;
-&quot;Colour19&quot;=&quot;200,240,240&quot;
-&quot;Colour20&quot;=&quot;245,222,179&quot;
-&quot;Colour21&quot;=&quot;255,255,255&quot;
-&quot;RawCNP&quot;=dword:00000000
-&quot;UTF8linedraw&quot;=dword:00000000
-&quot;PasteRTF&quot;=dword:00000000
-&quot;MouseIsXterm&quot;=dword:00000000
-&quot;RectSelect&quot;=dword:00000000
-&quot;PasteControls&quot;=dword:00000000
-&quot;MouseOverride&quot;=dword:00000001
-&quot;Wordness0&quot;=&quot;0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0&quot;
-&quot;Wordness32&quot;=&quot;0,1,2,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1&quot;
-&quot;Wordness64&quot;=&quot;1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,2&quot;
-&quot;Wordness96&quot;=&quot;1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1&quot;
-&quot;Wordness128&quot;=&quot;1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&quot;
-&quot;Wordness160&quot;=&quot;1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&quot;
-&quot;Wordness192&quot;=&quot;2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2&quot;
-&quot;Wordness224&quot;=&quot;2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2&quot;
-&quot;MouseAutocopy&quot;=dword:00000001
-&quot;MousePaste&quot;=&quot;explicit&quot;
-&quot;CtrlShiftIns&quot;=&quot;explicit&quot;
-&quot;CtrlShiftCV&quot;=&quot;none&quot;
-&quot;LineCodePage&quot;=&quot;UTF-8&quot;
-&quot;CJKAmbigWide&quot;=dword:00000000
-&quot;UTF8Override&quot;=dword:00000001
-&quot;Printer&quot;=&quot;&quot;
-&quot;CapsLockCyr&quot;=dword:00000000
-&quot;ScrollBar&quot;=dword:00000001
-&quot;ScrollBarFullScreen&quot;=dword:00000000
-&quot;ScrollOnKey&quot;=dword:00000000
-&quot;ScrollOnDisp&quot;=dword:00000001
-&quot;EraseToScrollback&quot;=dword:00000001
-&quot;LockSize&quot;=dword:00000000
-&quot;BCE&quot;=dword:00000001
-&quot;BlinkText&quot;=dword:00000000
-&quot;X11Forward&quot;=dword:00000000
-&quot;X11Display&quot;=&quot;&quot;
-&quot;X11AuthType&quot;=dword:00000001
-&quot;X11AuthFile&quot;=&quot;&quot;
-&quot;LocalPortAcceptAll&quot;=dword:00000000
-&quot;RemotePortAcceptAll&quot;=dword:00000000
-&quot;PortForwardings&quot;=&quot;&quot;
-&quot;BugIgnore1&quot;=dword:00000000
-&quot;BugPlainPW1&quot;=dword:00000000
-&quot;BugRSA1&quot;=dword:00000000
-&quot;BugIgnore2&quot;=dword:00000000
-&quot;BugHMAC2&quot;=dword:00000000
-&quot;BugDeriveKey2&quot;=dword:00000000
-&quot;BugRSAPad2&quot;=dword:00000000
-&quot;BugPKSessID2&quot;=dword:00000000
-&quot;BugRekey2&quot;=dword:00000000
-&quot;BugMaxPkt2&quot;=dword:00000000
-&quot;BugOldGex2&quot;=dword:00000000
-&quot;BugWinadj&quot;=dword:00000000
-&quot;BugChanReq&quot;=dword:00000000
-&quot;StampUtmp&quot;=dword:00000001
-&quot;LoginShell&quot;=dword:00000001
-&quot;ScrollbarOnLeft&quot;=dword:00000000
-&quot;BoldFont&quot;=&quot;&quot;
-&quot;BoldFontIsBold&quot;=dword:00000000
-&quot;BoldFontCharSet&quot;=dword:00000000
-&quot;BoldFontHeight&quot;=dword:00000000
-&quot;WideFont&quot;=&quot;&quot;
-&quot;WideFontIsBold&quot;=dword:00000000
-&quot;WideFontCharSet&quot;=dword:00000000
-&quot;WideFontHeight&quot;=dword:00000000
-&quot;WideBoldFont&quot;=&quot;&quot;
-&quot;WideBoldFontIsBold&quot;=dword:00000000
-&quot;WideBoldFontCharSet&quot;=dword:00000000
-&quot;WideBoldFontHeight&quot;=dword:00000000
-&quot;ShadowBold&quot;=dword:00000000
-&quot;ShadowBoldOffset&quot;=dword:00000001
-&quot;SerialLine&quot;=&quot;COM1&quot;
-&quot;SerialSpeed&quot;=dword:00002580
-&quot;SerialDataBits&quot;=dword:00000008
-&quot;SerialStopHalfbits&quot;=dword:00000002
-&quot;SerialParity&quot;=dword:00000000
-&quot;SerialFlowControl&quot;=dword:00000001
-&quot;WindowClass&quot;=&quot;&quot;
-&quot;ConnectionSharing&quot;=dword:00000000
-&quot;ConnectionSharingUpstream&quot;=dword:00000001
-&quot;ConnectionSharingDownstream&quot;=dword:00000001
-&quot;SSHManualHostKeys&quot;=&quot;&quot;
-&quot;PreferKnownHostKeys&quot;=dword:00000001
+"Present"=dword:00000001
+"LogType"=dword:00000000
+"LogFileClash"=dword:00000001
+"LogFlush"=dword:00000001
+"LogHeader"=dword:00000001
+"SSHLogOmitPasswords"=dword:00000001
+"SSHLogOmitData"=dword:00000000
+"Protocol"="ssh"
+"PortNumber"=dword:00000016
+"CloseOnExit"=dword:00000001
+"WarnOnClose"=dword:00000001
+"PingInterval"=dword:00000000
+"PingIntervalSecs"=dword:00000000
+"TCPNoDelay"=dword:00000001
+"TCPKeepalives"=dword:00000000
+"TerminalType"="xterm"
+"TerminalSpeed"="38400,38400"
+"TerminalModes"="CS7=A,CS8=A,DISCARD=A,DSUSP=A,ECHO=A,ECHOCTL=A,ECHOE=A,ECHOK=A,ECHOKE=A,ECHONL=A,EOF=A,EOL=A,EOL2=A,ERASE=A,FLUSH=A,ICANON=A,ICRNL=A,IEXTEN=A,IGNCR=A,IGNPAR=A,IMAXBEL=A,INLCR=A,INPCK=A,INTR=A,ISIG=A,ISTRIP=A,IUCLC=A,IUTF8=A,IXANY=A,IXOFF=A,IXON=A,KILL=A,LNEXT=A,NOFLSH=A,OCRNL=A,OLCUC=A,ONLCR=A,ONLRET=A,ONOCR=A,OPOST=A,PARENB=A,PARMRK=A,PARODD=A,PENDIN=A,QUIT=A,REPRINT=A,START=A,STATUS=A,STOP=A,SUSP=A,SWTCH=A,TOSTOP=A,WERASE=A,XCASE=A"
+"AddressFamily"=dword:00000000
+"ProxyExcludeList"=""
+"ProxyDNS"=dword:00000001
+"ProxyLocalhost"=dword:00000000
+"ProxyMethod"=dword:00000000
+"ProxyHost"="proxy"
+"ProxyPort"=dword:00000050
+"ProxyUsername"=""
+"ProxyPassword"=""
+"ProxyTelnetCommand"="connect %host %port\\n"
+"ProxyLogToTerm"=dword:00000001
+"Environment"=""
+"UserName"="barretr"
+"UserNameFromEnvironment"=dword:00000000
+"LocalUserName"=""
+"NoPTY"=dword:00000000
+"Compression"=dword:00000000
+"TryAgent"=dword:00000001
+"AgentFwd"=dword:00000000
+"GssapiFwd"=dword:00000000
+"ChangeUsername"=dword:00000000
+"Cipher"="aes,chacha20,3des,WARN,des,blowfish,arcfour"
+"KEX"="ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1"
+"HostKey"="ed25519,ecdsa,rsa,dsa,WARN"
+"RekeyTime"=dword:0000003c
+"GssapiRekey"=dword:00000002
+"RekeyBytes"="1G"
+"SshNoAuth"=dword:00000000
+"SshBanner"=dword:00000001
+"AuthTIS"=dword:00000000
+"AuthKI"=dword:00000001
+"AuthGSSAPI"=dword:00000001
+"AuthGSSAPIKEX"=dword:00000001
+"GSSLibs"="gssapi32,sspi,custom"
+"GSSCustom"=""
+"SshNoShell"=dword:00000000
+"SshProt"=dword:00000003
+"LogHost"=""
+"SSH2DES"=dword:00000000
+"RemoteCommand"=""
+"RFCEnviron"=dword:00000000
+"PassiveTelnet"=dword:00000000
+"BackspaceIsDelete"=dword:00000000
+"RXVTHomeEnd"=dword:00000000
+"LinuxFunctionKeys"=dword:00000002
+"NoApplicationKeys"=dword:00000000
+"NoApplicationCursors"=dword:00000000
+"NoMouseReporting"=dword:00000000
+"NoRemoteResize"=dword:00000000
+"NoAltScreen"=dword:00000000
+"NoRemoteWinTitle"=dword:00000000
+"NoRemoteClearScroll"=dword:00000000
+"RemoteQTitleAction"=dword:00000001
+"NoDBackspace"=dword:00000000
+"NoRemoteCharset"=dword:00000000
+"ApplicationCursorKeys"=dword:00000000
+"ApplicationKeypad"=dword:00000000
+"NetHackKeypad"=dword:00000000
+"AltF4"=dword:00000001
+"AltSpace"=dword:00000000
+"AltOnly"=dword:00000000
+"ComposeKey"=dword:00000000
+"CtrlAltKeys"=dword:00000001
+"TelnetKey"=dword:00000000
+"TelnetRet"=dword:00000001
+"LocalEcho"=dword:00000002
+"LocalEdit"=dword:00000002
+"Answerback"="PuTTY"
+"AlwaysOnTop"=dword:00000000
+"FullScreenOnAltEnter"=dword:00000000
+"HideMousePtr"=dword:00000000
+"SunkenEdge"=dword:00000000
+"WindowBorder"=dword:00000001
+"CurType"=dword:00000000
+"BlinkCur"=dword:00000000
+"Beep"=dword:00000000
+"BeepInd"=dword:00000000
+"BellWaveFile"=""
+"BellOverload"=dword:00000001
+"BellOverloadN"=dword:00000005
+"BellOverloadT"=dword:000007d0
+"BellOverloadS"=dword:00001388
+"ScrollbackLines"=dword:000007d0
+"DECOriginMode"=dword:00000000
+"AutoWrapMode"=dword:00000001
+"LFImpliesCR"=dword:00000000
+"CRImpliesLF"=dword:00000000
+"DisableArabicShaping"=dword:00000000
+"DisableBidi"=dword:00000000
+"WinNameAlways"=dword:00000000
+"TermWidth"=dword:00000050
+"TermHeight"=dword:00000018
+"Font"="Cascadia Code"
+"FontIsBold"=dword:00000000
+"FontCharSet"=dword:00000000
+"FontHeight"=dword:0000000b
+"FontQuality"=dword:00000000
+"FontVTMode"=dword:00000004
+"UseSystemColours"=dword:00000000
+"TryPalette"=dword:00000000
+"ANSIColour"=dword:00000001
+"Xterm256Colour"=dword:00000001
+"TrueColour"=dword:00000001
+"BoldAsColour"=dword:00000001
+"Colour0"="210,216,217"
+"Colour1"="236,236,236"
+"Colour2"="39,40,34"
+"Colour3"="39,40,34"
+"Colour4"="0,0,0"
+"Colour5"="255,128,0"
+"Colour6"="0,0,0"
+"Colour7"="85,85,85"
+"Colour8"="249,38,114"
+"Colour9"="221,66,120"
+"Colour10"="166,226,46"
+"Colour11"="157,197,75"
+"Colour12"="230,219,116"
+"Colour13"="209,202,137"
+"Colour14"="102,217,239"
+"Colour15"="122,204,218"
+"Colour16"="174,129,255"
+"Colour17"="179,146,239"
+"Colour18"="0,217,217"
+"Colour19"="200,240,240"
+"Colour20"="245,222,179"
+"Colour21"="255,255,255"
+"RawCNP"=dword:00000000
+"UTF8linedraw"=dword:00000000
+"PasteRTF"=dword:00000000
+"MouseIsXterm"=dword:00000000
+"RectSelect"=dword:00000000
+"PasteControls"=dword:00000000
+"MouseOverride"=dword:00000001
+"Wordness0"="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
+"Wordness32"="0,1,2,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1"
+"Wordness64"="1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,2"
+"Wordness96"="1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1"
+"Wordness128"="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"
+"Wordness160"="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"
+"Wordness192"="2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2"
+"Wordness224"="2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2"
+"MouseAutocopy"=dword:00000001
+"MousePaste"="explicit"
+"CtrlShiftIns"="explicit"
+"CtrlShiftCV"="none"
+"LineCodePage"="UTF-8"
+"CJKAmbigWide"=dword:00000000
+"UTF8Override"=dword:00000001
+"Printer"=""
+"CapsLockCyr"=dword:00000000
+"ScrollBar"=dword:00000001
+"ScrollBarFullScreen"=dword:00000000
+"ScrollOnKey"=dword:00000000
+"ScrollOnDisp"=dword:00000001
+"EraseToScrollback"=dword:00000001
+"LockSize"=dword:00000000
+"BCE"=dword:00000001
+"BlinkText"=dword:00000000
+"X11Forward"=dword:00000000
+"X11Display"=""
+"X11AuthType"=dword:00000001
+"X11AuthFile"=""
+"LocalPortAcceptAll"=dword:00000000
+"RemotePortAcceptAll"=dword:00000000
+"PortForwardings"=""
+"BugIgnore1"=dword:00000000
+"BugPlainPW1"=dword:00000000
+"BugRSA1"=dword:00000000
+"BugIgnore2"=dword:00000000
+"BugHMAC2"=dword:00000000
+"BugDeriveKey2"=dword:00000000
+"BugRSAPad2"=dword:00000000
+"BugPKSessID2"=dword:00000000
+"BugRekey2"=dword:00000000
+"BugMaxPkt2"=dword:00000000
+"BugOldGex2"=dword:00000000
+"BugWinadj"=dword:00000000
+"BugChanReq"=dword:00000000
+"StampUtmp"=dword:00000001
+"LoginShell"=dword:00000001
+"ScrollbarOnLeft"=dword:00000000
+"BoldFont"=""
+"BoldFontIsBold"=dword:00000000
+"BoldFontCharSet"=dword:00000000
+"BoldFontHeight"=dword:00000000
+"WideFont"=""
+"WideFontIsBold"=dword:00000000
+"WideFontCharSet"=dword:00000000
+"WideFontHeight"=dword:00000000
+"WideBoldFont"=""
+"WideBoldFontIsBold"=dword:00000000
+"WideBoldFontCharSet"=dword:00000000
+"WideBoldFontHeight"=dword:00000000
+"ShadowBold"=dword:00000000
+"ShadowBoldOffset"=dword:00000001
+"SerialLine"="COM1"
+"SerialSpeed"=dword:00002580
+"SerialDataBits"=dword:00000008
+"SerialStopHalfbits"=dword:00000002
+"SerialParity"=dword:00000000
+"SerialFlowControl"=dword:00000001
+"WindowClass"=""
+"ConnectionSharing"=dword:00000000
+"ConnectionSharingUpstream"=dword:00000001
+"ConnectionSharingDownstream"=dword:00000001
+"SSHManualHostKeys"=""
+"PreferKnownHostKeys"=dword:00000001
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><p>vim打开大文件时，编辑会特别卡顿，其实真正的原因是：</p>
 <blockquote>
@@ -2140,7 +2140,7 @@ if (count &gt;= DL_MAX_STR_ELEMS)
 <li>适当孤独和喜欢孤独的人，虽不能呼朋唤友，左右逢源，却更容易破开另外一扇心灵的大门，成为知心诚挚的恋人或朋友。</li>
 <li>你要等的人，也许并不是和你在人群中谈笑嬉闹，把酒言欢的哪一个，而是能在安静的时光里，与你认真分享彼此孤独的人。</li>
 <li>一直相信一句话，<strong>如果有人能让你忘记过去，那么ta就是你的未来</strong>。</li>
-<li>&quot;如果八年都没追上一个人，那么这辈子大概也没什么希望了。“</li>
+<li>"如果八年都没追上一个人，那么这辈子大概也没什么希望了。“</li>
 <li><strong>如果真喜欢一个人，怎么舍得让他多等一秒，跨越千山万水也会去给他一个拥抱</strong>。如果真的喜欢一个人，又怎会错过他的每条信息，哪怕是朋友圈无关紧要的自嘲。</li>
 <li>跟谁走得太近，都是一场灾难。你非但回不到从前，还会颠覆了从前。要想得到一个人，你就去走近她；要想失去一个人，你就去无限度的走近她。</li>
 <li>正如故乡是用来怀念的，青春是用来追忆的，当你怀揣着它时，它一文不值，只有将它耗尽后，再回过头看，一切才有了意义。爱过我们的人和伤害过我们的人，都是我们青春存在的意义。</li>
@@ -2232,7 +2232,7 @@ if (count &gt;= DL_MAX_STR_ELEMS)
 <h3 id="-1"><a class="header" href="#-1"></a></h3>
 <h3 id="原理性思维找出知识背后的原理"><a class="header" href="#原理性思维找出知识背后的原理">原理性思维：找出知识背后的原理</a></h3>
 <ul>
-<li>掌握原理实际上可以大幅度降低我们对于知识的记忆量，**知识量是爆炸的，但是原理绝对是可控的！ 
+<li>掌握原理实际上可以大幅度降低我们对于知识的记忆量，**知识量是爆炸的，但是原理绝对是可控的！
 **</li>
 <li><strong>原理性的东西比直接的知识有更强的复用度</strong>！ 记住最核心的原理，当你面对新的场景时，你会惊喜地发现，你的理解速度大大加快！</li>
 <li><strong>探求原理的过程，本身很有乐趣</strong>！ 这是一个非常有价值的思维训练过程。一段时间训练以后，你会发现你看透本质的能力越来越强！</li>
@@ -2333,7 +2333,7 @@ if (count &gt;= DL_MAX_STR_ELEMS)
 <li><strong>一周有168小时，给你的雇主40小时，为自己的职业发展留20小时，剩下的108小时再留56小时给睡眠，那么还剩52小时可以做其他的事。或许你会觉得这样做只会让人精力枯竭。恰恰相反，这样做其实能让你免于枯竭匮乏。</strong></li>
 <li>不写代码的架构师必然遭殃，他们很快会发现自己跟不上时代了；不学习新语言的程序员同样会遭殃，他们只能眼睁睁的看着软件业径直向前，把自己抛在后面；学不会新原则和技术的开发人员必将沦落，他们身边的人都日益卓越。</li>
 <li>专业人士敢于说明真相而不屈从于权势。专业人士有勇气对它们的经理说“不”。</li>
-<li>许诺“尝试”，就意味着你承认自己之前未尽全力，承认自己还有余力可施；许诺&quot;尝试&quot;，意味着只要你再加把劲还是可以达成目标的。从本质上讲，<strong>承认“尝试”就是一种不诚实的表现</strong>。你在说谎，你这么做的原因，可能是为了护住面子和避免冲突。</li>
+<li>许诺“尝试”，就意味着你承认自己之前未尽全力，承认自己还有余力可施；许诺"尝试"，意味着只要你再加把劲还是可以达成目标的。从本质上讲，<strong>承认“尝试”就是一种不诚实的表现</strong>。你在说谎，你这么做的原因，可能是为了护住面子和避免冲突。</li>
 <li>有些事情先前你可能没预料到，这很现实。但如果你仍然希望自己可以不负众望，那就赶紧去调整别人对你的预期，越快越好。</li>
 <li>我发现，要精熟掌握每项技艺，关键都是要具备“信心”和“出错感知”的能力</li>
 <li>疲劳的时候，千万不要写代码。奉献精神和职业素养，更多意义上指要遵循纪律原则而非成为长时间工作的工作狂。要确保自己已经将睡眠、健康和生活方式调整到最佳状态，这样才能做到在每天的8小时工作时间内全力以赴</li>
@@ -2860,7 +2860,7 @@ Mills建议<strong>大型项目的每一个部分由一个团队解决</strong>�
 <p><strong>重点问题：</strong></p>
 <ol>
 <li><strong>运维团队不参与研发团队的架构和计划会议</strong>：DevOps在组织文化层面强调团队共同Share Responsibility，需要运维与研发相互之间进行反馈，运维团队参与架构和计划会议是明智的举动，这样才能设计出易于运维、高可用、安全的架构</li>
-<li><strong>关键资源管理</strong>：项目管理中有关键路径法用于制定计划，最长的路径决定了项目的整体进度。关键资源总是处在关键路径上，而且是多条路径上。小说中提到了&quot;等待时间=忙碌百分比/空闲百分比&quot;，工作中心资源90%的时间是忙碌的，可以理解为，每个任务进行工作中心时，前边总有需要90%时间的任务，1天10小时，需要等待9小时才能处理。关于关键资源瓶颈的解决办法，重点在保护关键资源，图中可以看到一些解决办法和寻找问题的方法（观察+沟通）</li>
+<li><strong>关键资源管理</strong>：项目管理中有关键路径法用于制定计划，最长的路径决定了项目的整体进度。关键资源总是处在关键路径上，而且是多条路径上。小说中提到了"等待时间=忙碌百分比/空闲百分比"，工作中心资源90%的时间是忙碌的，可以理解为，每个任务进行工作中心时，前边总有需要90%时间的任务，1天10小时，需要等待9小时才能处理。关于关键资源瓶颈的解决办法，重点在保护关键资源，图中可以看到一些解决办法和寻找问题的方法（观察+沟通）</li>
 <li><strong>项目泛滥，资源严重不足</strong>：比尔上任初始，最大的行动就是对现有项目的梳理，流程的重组优化。</li>
 <li><strong>变更管理流程失效</strong>：看板是解决变更管理和可视化工作的重点方法，对变更进行分类和管控，严控半成品</li>
 <li><strong>运维对开发的认识</strong>是：没有不给生产环境添乱的开发人员</li>
@@ -3017,7 +3017,7 @@ Mills建议<strong>大型项目的每一个部分由一个团队解决</strong>�
 <tr><td>notification with below two types of configurations:active-establish-call</td><td></td><td></td><td></td><td></td></tr>
 <tr><td>is true and active-stable-call true,active-establish-call</td><td></td><td></td><td></td><td></td></tr>
 <tr><td>is false and active-stable-call false,error info should</td><td></td><td></td><td></td><td></td></tr>
-<tr><td>be:&quot;invalid configuration rule(need update)&quot;3. I can configure</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>be:"invalid configuration rule(need update)"3. I can configure</td><td></td><td></td><td></td><td></td></tr>
 <tr><td>the service-type to indicating the type of UUS service, now, I only need UUS3</td><td></td><td></td><td></td><td></td></tr>
 <tr><td>service.4. I can use below</td><td></td><td></td><td></td><td></td></tr>
 <tr><td>CLI command to show the detail configuration info which is sorted by profile</td><td></td><td></td><td></td><td></td></tr>
@@ -3235,7 +3235,7 @@ Mills建议<strong>大型项目的每一个部分由一个团队解决</strong>�
 <p><img src="%E6%95%8F%E6%8D%B7%E7%AE%A1%E7%90%86/ScrumXP/.assets/1591145974502-bbba51fd-61a8-490f-8f38-f2eee8b9da69.png" alt="image.png" /></p>
 <ul>
 <li>一个是“产品层次”的 Scrum-of-Scrums，包括 Product D 中的所有团队</li>
-<li>另外一个是“团体层次”的 Scrum-of-Scrums，包括所有的产品 </li>
+<li>另外一个是“团体层次”的 Scrum-of-Scrums，包括所有的产品</li>
 </ul>
 <h2 id="31-产品层次的-scrum-of-scrums"><a class="header" href="#31-产品层次的-scrum-of-scrums">3.1 产品层次的 Scrum-of-Scrums</a></h2>
 <p>这个会议非常重要，在会议上我们会讨论集成问题，团队平衡问题，为下个 sprint 计划会议做准备：</p>
@@ -3763,7 +3763,7 @@ Mills建议<strong>大型项目的每一个部分由一个团队解决</strong>�
 <li><strong>技术主管或价值流经理</strong>：（精益方法论的定义）负责“从始至终地保障价值流的产出满足或超出客户（和组织）期望”。</li>
 </ul>
 <h2 id="22-绘制价值流图"><a class="header" href="#22-绘制价值流图">2.2 绘制价值流图</a></h2>
-<p>深入理解工作方式，并用价值流图进行记录 
+<p>深入理解工作方式，并用价值流图进行记录
 。<strong>绘制价值流图的目标并不是记录所有的步骤和细节，而是识别出阻碍价值流快速流动的环节，从而缩短前置时间和提高可靠性</strong>。
 <img src="%E6%95%8F%E6%8D%B7%E7%AE%A1%E7%90%86/DevOps/.assets/1590890739678-631f7dbf-0a6d-478d-a517-fbabb3efff10.png" alt="image.png" /></p>
 <h2 id="23-专门的转型团队"><a class="header" href="#23-专门的转型团队">2.3 专门的转型团队</a></h2>
@@ -3833,7 +3833,7 @@ Note：<strong>起决定性作用的并不是组织形式，而是人们的行�
 <p>编写和执行自动化性能测试的目标是验证整个应用栈（代码、数据库、存储、网络、虚拟化等）的性能，并把它作为部署流水线的一部分，这样才能尽早发现问题，并以最低的成本和最快的速度解决问题。可能需要在项目启动时就搭建性能测试环境，并确保能够为尽早、正确地搭建准备好所需资源。为了能尽早发现性能问题，<strong>应该记录所有性能测试结果，并对比上一次结果</strong>，评估各项性能指标。</p>
 <h1 id="3-持续集成"><a class="header" href="#3-持续集成">3 持续集成</a></h1>
 <p>解决大批量合并问题的对策是，应用持续集成和基于主干的开发实践，让每个开发人员每天都至少向主干提交一次代码。这样做能够将代码提交量降低为开发团队每日的工作量。开发人员提交得越频繁，每次的提交量就越小，他们离理想的单件流状态也就越近。<strong>每日提交代码，也迫使开发人员进一步分解工作</strong>，同时保持主干处于可发布状态。</p>
-<p>版本控制系统为团队间的沟通提供了一套完整的机制——每个人对系统都有了更好的理解，并且都了解部署流水线的状态，而且能在出现问题时互相帮助，从而实现更高的质量和更快的部署速度。 </p>
+<p>版本控制系统为团队间的沟通提供了一套完整的机制——每个人对系统都有了更好的理解，并且都了解部署流水线的状态，而且能在出现问题时互相帮助，从而实现更高的质量和更快的部署速度。</p>
 <h1 id="4-自动化部署"><a class="header" href="#4-自动化部署">4 自动化部署</a></h1>
 <p>大多数具有持续集成和测试功能的工具，也有扩展部署流水线的能力。通常在生产验收测试执行完之后，这些工具可以将验证过的构建版本发布到生产环境中（这样的工具包括** Jenkins Build Pipeline插件**、ThoughtWorks的 GoCD和 Snap CI、Microsoft Visual Studio Team Services，以及 Pivotal Concourse）。</p>
 <h2 id="41-自动部署的要求"><a class="header" href="#41-自动部署的要求">4.1 自动部署的要求</a></h2>
@@ -3910,7 +3910,7 @@ Note：<strong>起决定性作用的并不是组织形式，而是人们的行�
 <h1 id="二-还原论"><a class="header" href="#二-还原论">二 还原论</a></h1>
 <ul>
 <li>
-<p>知识在很大程度上是<strong>经验法则</strong>， 而人们要通过漫长的学徒期来积累经验， 才能成为够格的工匠。 一个老牌机械师写道： “机械师通常并不具备正确的、 充足的知识。 <strong>有时有些人会给你一些不错的建议， 但这只是例外， 而非规律</strong>。 &quot;——太像公司当前的现状了。</p>
+<p>知识在很大程度上是<strong>经验法则</strong>， 而人们要通过漫长的学徒期来积累经验， 才能成为够格的工匠。 一个老牌机械师写道： “机械师通常并不具备正确的、 充足的知识。 <strong>有时有些人会给你一些不错的建议， 但这只是例外， 而非规律</strong>。 "——太像公司当前的现状了。</p>
 </li>
 <li>
 <p><strong>泰勒科学管理：技术能力</strong>与<strong>组织运转方式</strong>之间产生了不匹配， 通过严格的还原性优化、 标准化， 能够将技术潜力极大地发挥出来， 成为实际的生产力。（想想“发条型宇宙”理解这句话的意思）泰勒的哲学， 也就是把凭直觉做事的人换掉，将“管理”制度化作为纪律 。</p>
@@ -3951,7 +3951,7 @@ Note：<strong>起决定性作用的并不是组织形式，而是人们的行�
 <p>在一个“韧性十足”的体系里，管理者会接受这样一个事实：他们不可避免地会遭遇到不曾预料到的威胁，他们不会试图建立坚强的、专门化的防御力量，而是建立一些体系来抗击打，甚至试图从击打中获利。</p>
 </li>
 <li>
-<p>&quot;潮流的变化实在难以驾驭，不要再想着去驾驭它， 我们其实可以建造更好的舟艇。&quot;</p>
+<p>"潮流的变化实在难以驾驭，不要再想着去驾驭它， 我们其实可以建造更好的舟艇。"</p>
 </li>
 <li>
 <p>当我们意识到伊拉克“基地”组织正在占据上风时，<strong>我们的第一反应是更加努力地工作</strong>，大多数大型组织一旦发现自己在竞争中落后也会这么做。我们部署更多的资源、投入更多的人力，并且在现有的作战模式中试图创造出更高的效率。</p>
@@ -4057,7 +4057,7 @@ Note：<strong>起决定性作用的并不是组织形式，而是人们的行�
 <p>信息交叉分享使信息价值升值。信息分享得越广泛， 其价值就越高， 其所能激发出的力量也就越强大。</p>
 </li>
 <li>
-<p>如果一个人或者一个单位能够输出高质量的情报、 能够可靠地与别人协作， 或者准确及时地提出警告， 则他们受欢迎和受尊敬的程度必然提升。 躺在功劳簿上也好， 咆哮怒喝也罢， <strong>或许能够奏效一时， 却最终无济于事</strong>。 </p>
+<p>如果一个人或者一个单位能够输出高质量的情报、 能够可靠地与别人协作， 或者准确及时地提出警告， 则他们受欢迎和受尊敬的程度必然提升。 躺在功劳簿上也好， 咆哮怒喝也罢， <strong>或许能够奏效一时， 却最终无济于事</strong>。</p>
 </li>
 <li>
 <p>把大脑锁进箱子里没人能够受益， 把这些大脑拿出来才是关键的一步。</p>
@@ -4178,7 +4178,7 @@ Note：<strong>起决定性作用的并不是组织形式，而是人们的行�
 <p>我发现， 只有在高层领导者的推动下， 才能保持我们所需要的行动节奏、 信息透明度和各部队之间的良好协作。 我能够塑造一种文化， 并命令保持经常性对话， 从而使得共享意识不会丧失。</p>
 </li>
 <li>
-<p>他们做简报时， 我一般都会全神贯注地倾听。 最后， 我会问一个问题。 答案通常并不是非常重要的， 这一点我其实早就知道， 但<strong>我想让所有人知道我刚才在听， 而且他们的工作也是很重要的</strong>。 </p>
+<p>他们做简报时， 我一般都会全神贯注地倾听。 最后， 我会问一个问题。 答案通常并不是非常重要的， 这一点我其实早就知道， 但<strong>我想让所有人知道我刚才在听， 而且他们的工作也是很重要的</strong>。</p>
 </li>
 <li>
 <p><strong>我不会居高临下地和他们谈话， 我会试着去理解、 尊重他们的视角</strong>。</p>
@@ -4190,7 +4190,7 @@ Note：<strong>起决定性作用的并不是组织形式，而是人们的行�
 <p>为了让麾下的组织变得具有调整适应能力， 我们必须建立、 引导并且维系一种敏捷而持久的文化。 新型领导人的主要责任在于维系一种全局观、 大局观， 避免还原论式的方法， 不管宏观管理的做法多么具有诱惑性， 都要这么做。</p>
 </li>
 <li>
-<p><strong>我们不应该去试图做一名国际象棋大师， 去控制组织里的一举一动， 而应该做一名园丁， 更多地培养， 而不是指导</strong>。 </p>
+<p><strong>我们不应该去试图做一名国际象棋大师， 去控制组织里的一举一动， 而应该做一名园丁， 更多地培养， 而不是指导</strong>。</p>
 </li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="十二-新时代新的组织架构"><a class="header" href="#十二-新时代新的组织架构">十二 新时代新的组织架构</a></h1>
@@ -4224,7 +4224,7 @@ Note：<strong>起决定性作用的并不是组织形式，而是人们的行�
 <li>It is difficult to give very clear estimation in short time, by different engineer.</li>
 <li>We can take actions, try our best to give effort:
 <ul>
-<li>Hold workshop to understand 
+<li>Hold workshop to understand
 <ul>
 <li>the requirement</li>
 <li>the current behavior</li>

@@ -175,18 +175,18 @@
                     <main>
                         <ol>
 <li>打开知识库的管理文档页.</li>
-<li>如果你的文档很多, 那么滑到&quot;管理文档&quot;页面底部, 有一个&quot;加载更多&quot; 的按钮, 点一下, 使所以文档加载出来. </li>
+<li>如果你的文档很多, 那么滑到"管理文档"页面底部, 有一个"加载更多" 的按钮, 点一下, 使所以文档加载出来.</li>
 <li>打开浏览器开发者工具, 点击 console, 把以下代码粘贴进去.</li>
 </ol>
 <pre><code class="language-javascript">function download(keyword) {
-    let all = document.querySelectorAll('li[class=&quot;ant-list-item&quot;]');
+    let all = document.querySelectorAll('li[class="ant-list-item"]');
     let interval = 1000;
 
     all.forEach((e) =&gt; {
 
         function get() {
-            const url = `${e.querySelector('div[class=&quot;info-title-inner&quot;] &gt; a').href}/markdown?attachment=true&amp;latexcode=false&amp;anchor=true&amp;linebreak=true`;
-            const title = `${e.querySelector('div[class=&quot;info-title-inner&quot;]').innerText}.md`;
+            const url = `${e.querySelector('div[class="info-title-inner"] &gt; a').href}/markdown?attachment=true&amp;latexcode=false&amp;anchor=true&amp;linebreak=true`;
+            const title = `${e.querySelector('div[class="info-title-inner"]').innerText}.md`;
             fetch(url).then(resp =&gt; resp.blob()).then(blob =&gt; {
                 console.log(blob.text());
                 const urlDownload = window.URL.createObjectURL(blob);
@@ -213,7 +213,7 @@
 }
 </code></pre>
 <ol start="4">
-<li>在 console 中输入 download(), 就能以 &quot;markdown&quot; 文件格式批量下载了</li>
+<li>在 console 中输入 download(), 就能以 "markdown" 文件格式批量下载了</li>
 </ol>
 
                     </main>
