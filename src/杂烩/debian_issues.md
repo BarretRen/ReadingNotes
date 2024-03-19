@@ -89,3 +89,19 @@ System clock synchronized: yes
               NTP service: active
           RTC in local TZ: no
 ```
+
+# 安装 backports 内核
+
+Backport 的含义是”向后移植”，就是将软件新版本的某些功能移植到旧版本上来, 因此要使用新内核需要先保证 apt 源中已经添加了 backports 源.
+
+```bash
+# 安装新内核
+sudo apt -t buster-backports install linux-image-amd64
+sudo apt -t buster-backports install linux-headers-amd64
+sudo update-grub
+sudo reboot
+
+# 查询内核镜像和头文件, 再apt卸载不需要的版本
+dpkg --list | grep linux-image
+dpkg --list | grep linux-headers
+```
