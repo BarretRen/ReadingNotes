@@ -105,3 +105,49 @@ sudo reboot
 dpkg --list | grep linux-image
 dpkg --list | grep linux-headers
 ```
+
+# debian 安装时 btrfs 子卷设置
+
+手动分区情况:
+
+- /boot/efi: 512MB, fat32/vfat
+- /boot: 1GB, ext4. **不使用 LVM 时可以不单独分区，在根分区内**
+- /swap: 8GB, swap. **可以不单独分区, 用 swapfile 代替**
+- /: 所有空间， btrfs
+
+在手动分区修改结束后, 按 ctrl+alt+F2 进入终端, 执行如下命令后再返回图形界面继续安装系统.
+
+```bash
+~ # umount /target/boot/efi
+~ # umount /target/boot
+~ # umount /target
+
+# 挂载btrfs分区到/mnt
+~ # mount /dev/sda3 /mnt
+
+# 创建子卷
+~ # cd /mnt
+~ # mv @rootfs @
+~ # btrfs subvolume create @home
+~ # btrfs subvolume create @snapshots
+
+# 卸载/mnt
+~ # cd
+~ # umount /mnt
+
+# 挂载子卷
+~ # mount -o rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@ /dev/sda3 /target
+~ # mkdir /target/home
+~ # mount -o rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@home /dev/sda3 /target/home
+~ # mkdir /target/snapshots
+~ # mount -o rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@snapshots /dev/sda3 /target/snapshots
+
+# 挂载efi和boot分区
+~ # mount /dev/sda2 /target/boot/
+~ # mount /dev/sda1 /target/boot/efi
+
+# 修改fstab自动挂载, uuid还是用原来/dev/sda3的值
+UUID=2fd5d7b2-ceb0-4028-8381-3b38b3dcd658 /               btrfs   rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@ 0       0
+UUID=2fd5d7b2-ceb0-4028-8381-3b38b3dcd658 /home           btrfs   rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@home 0       0
+UUID=2fd5d7b2-ceb0-4028-8381-3b38b3dcd658 /snapshots      btrfs   rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@snapshots 0       0
+```
