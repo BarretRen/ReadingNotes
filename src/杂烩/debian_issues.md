@@ -76,6 +76,11 @@ iface wlan0 inet dhcp
 
 # 系统设置
 
+## 开机取消 log 滚屏
+
+1. 在`/etc/default/grub`的`GRUB_CMDLINE_LINUX_DEFAULT`添加如下配置: `loglevel=3 systemd.show_status=false rd.udev.log_level=3`
+1. 执行`update-grub`更新配置
+
 ## networkmanager 找不到 wifi 问题
 
 最近重装 Debian 12，配置 NetworkManager 的过程中遇到了无法找到无线网络的问题，在此记录一下解决方法:
@@ -177,7 +182,7 @@ dpkg --list | grep linux-headers
 
 ## 安装 nvidia 驱动
 
-1. 先禁用开源的 nonveau 驱动
+### 禁用 nonveau 驱动
 
 ```bash
 sudo vi /etc/modprobe.d/blacklist-nouveau.conf
@@ -198,9 +203,12 @@ sudo update-grub
 sudo reboot
 ```
 
-2. 安装`nvidia-detect`, 运行此命令查看推荐的驱动版本
-3. 保证内核对应版本的 linux-headers 已经安装, 没有的话先安装
-4. 按照 debian wiki, 按照如下包:
+### 安装闭源驱动
+
+1. 安装`nvidia-detect`, 运行此命令查看推荐的驱动版本
+1. 保证内核对应版本的 linux-headers 已经安装, 没有的话先安装
+1. 按照 debian wiki, 按照如下包:
+1. 重启之后运行`nvidia-smi`看到显卡信息说明安装成功
 
 ```bash
 sudo apt install nvidia-driver firmware-misc-nonfree
@@ -209,7 +217,30 @@ sudo apt install nvidia-driver firmware-misc-nonfree
 sudo apt install nvidia-cuda-dev nvidia-cuda-toolkit
 ```
 
-5. 之后运行`nvidia-smi`看到显卡信息说明安装成功
+### 导入密钥开启 secure boot
+
+**因为上一步安装的是官方仓库的包，所以密钥都已经帮我们生成好了，只需要我们手动导入即可**:
+
+```bash
+# mok签名密钥和mok证书的位置默认为/var/lib/dkms
+sudo mokutil --import /var/lib/dkms/mok.pub
+# 回车之后，系统会让你输入密码，随意，尽量简单, 重启后需要输入一次验证
+sudo reboot
+```
+
+重启之后，你会发现电脑自动进入蓝屏界面，不要害怕，**选择`Enroll HOK`后再选择`Continue`输入前面设置的密码, 之后重启即可.**
+
+## 双显卡切换
+
+Debian 没有用于集成显卡和 NVIDIA GPU 之间切换的 nvidia-prime 软件包。然而，有一个免费的开源工具`envycontrol`可以让切换显卡非常轻松。
+
+1. 从其[发布页面](https://github.com/bayasdev/envycontrol/releases)下载软件包并安装
+1. 安装 envycontrol 后，您可以运行以下命令之一来切换 GPU 模式:
+   1. 切换到集成显卡 (Intel 或者 AMD): `sudo envycontrol -s integrated`
+   1. 切换到混合模式，平衡性能和功耗: `sudo envycontrol -s hybrid --rtd3`
+   1. 切换到 NVIDIA 独立显卡模式: `sudo envycontrol -s nvidia --force-comp`
+1. 完成 GPU 模式切换后，请记住重新启动计算机以应用更改
+1. 查看当前哪个显卡处于活动状态: `envycontrol --query`
 
 # gnome 设置
 
@@ -230,3 +261,51 @@ sudo apt install nvidia-cuda-dev nvidia-cuda-toolkit
 
 - gnome-tweaks
 - 命令: `gsettings set org.gnome.desktop.interface text-scaling-factor 1.25`
+
+QT 程序需要设置如下参数，上面的修改在 wayland 下不起作用:
+
+```bash
+sudo echo "export QT_SCALE_FACTOR=1.25" >> /etc/profile
+```
+
+## gdm
+
+### 触摸板无法点击
+
+确保 dbus-x11 已经安装, 并使用下面命令:
+
+```bash
+#进入gdm用户环境
+sudo su - Debian-gdm -s /bin/bash
+
+# gdm用户下运行如下命令
+export $(dbus-launch)
+GSETTINGS_BACKEND=dconf gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+GSETTINGS_BACKEND=dconf gsettings set org.gnome.desktop.peripherals.touchpad speed 0.38
+
+#退出终端, 重新登录
+```
+
+### 没有 wayland 登录
+
+默认安装完 nvidia 之后，在 gdm 登录界面找不到 gnome wayland 登录方式，只能用 X org 登录。
+需要执行如下步骤显示 wayland 登录:
+
+1. 在`/etc/default/grub`的`GRUB_CMDLINE_LINUX`中添加`nvidia-drm.modeset=1`
+1. 删除文件`/usr/lib/udev/rules.d/.`, 可以修改**WaylandEnable**相关的配置，但不如直接删除文件快
+
+### 登录界面不显示或卡住
+
+一般原因是安装 nvidia 驱动之后， gdm 加载的比显卡要快. 可以设置 gdm service 让 gdm 启动慢一点:
+
+```bash
+ cat /etc/systemd/system/gdm.service.d/override.conf
+[Service]
+Type=idle
+ExecStartPre=/bin/sleep 1
+```
+
+# 系统软件
+
+- 视频: Celluloid, 默认会安装 mpv 为后端
+- 音乐: deb multimedia 源里安装`deadbeef`和`deadbeef-mpris2`, audacious 不能单曲循环.
