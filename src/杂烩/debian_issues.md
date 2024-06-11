@@ -180,6 +180,20 @@ dpkg --list | grep linux-image
 dpkg --list | grep linux-headers
 ```
 
+## 缺少 i915 固件
+
+在更新 initramfs 时可能报如下错误:
+
+```bash
+sudo update-initramfs -u
+update-initramfs: Generating /boot/initrd.img-6.7.12-amd64
+W: Possible missing firmware /lib/firmware/i915/mtl_gsc_1.bin for module i915
+W: Possible missing firmware /lib/firmware/i915/mtl_huc_gsc.bin for module i915
+W: Possible missing firmware /lib/firmware/i915/mtl_guc_70.bin for module i915
+```
+
+需要从[i915 固件库](https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915)下载缺少的 bin 文件, 复制到`/lib/firmware/i915/`文件夹, 之后再执行`update-initramfs -u -k all`
+
 ## 安装 nvidia 驱动
 
 ### 禁用 nonveau 驱动
@@ -242,13 +256,154 @@ Debian 没有用于集成显卡和 NVIDIA GPU 之间切换的 nvidia-prime 软�
 1. 完成 GPU 模式切换后，请记住重新启动计算机以应用更改
 1. 查看当前哪个显卡处于活动状态: `envycontrol --query`
 
+## 系统字体设置
+
+安装 noto 字体集: `sudo apt install fonts-noto-cjk`
+创建如下文件和内容(指定每种字体):
+
+```bash
+$ cat .config/fontconfig/fonts.conf
+<?xml version='1.0'?>
+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+<fontconfig>
+ <match target="font">
+  <edit mode="assign" name="rgba">
+   <const>rgb</const>
+  </edit>
+ </match>
+ <match target="font">
+  <edit mode="assign" name="hintstyle">
+   <const>hintslight</const>
+  </edit>
+ </match>
+ <!-- Map fonts that are commonly used by web pages to our preferred fonts -->
+ <match target="pattern">
+  <test name="family" qual="any">
+   <string>Liberation Sans</string>
+  </test>
+  <edit binding="same" mode="assign" name="family">
+   <string>sans-serif</string>
+  </edit>
+ </match>
+ <match target="pattern">
+  <test name="family" qual="any">
+   <string>Liberation Mono</string>
+  </test>
+  <edit binding="same" mode="assign" name="family">
+   <string>monospace</string>
+  </edit>
+ </match>
+ <!-- Default font for the zh_CN locale (no fc-match pattern) -->
+ <match>
+  <test compare="contains" name="lang">
+   <string>zh_CN</string>
+  </test>
+  <edit mode="prepend" name="family">
+   <string>Noto Sans CJK SC</string>
+  </edit>
+ </match>
+ <!-- Default sans-serif font -->
+ <match target="pattern">
+  <test name="family" qual="any">
+   <string>sans-serif</string>
+  </test>
+  <edit binding="same" mode="prepend" name="family">
+   <string>Noto Sans</string>
+  </edit>
+ </match>
+ <!-- Default serif fonts -->
+ <match target="pattern">
+  <test name="family" qual="any">
+   <string>serif</string>
+  </test>
+  <edit binding="same" mode="prepend" name="family">
+   <string>Noto Serif</string>
+  </edit>
+ </match>
+ <!-- Default monospace fonts -->
+ <match target="pattern">
+  <test name="family" qual="any">
+   <string>monospace</string>
+  </test>
+  <edit binding="same" mode="prepend" name="family">
+   <string>Noto Sans Mono</string>
+  </edit>
+ </match>
+ <!-- Fallback fonts preference order -->
+ <alias>
+  <family>sans-serif</family>
+  <prefer>
+   <family>Noto Sans</family>
+   <family>Noto Sans CJK SC</family>
+   <family>Noto Sans CJK TC</family>
+   <family>Noto Sans CJK JP</family>
+   <family>Noto Sans CJK KR</family>
+   <family>Noto Color Emoji</family>
+   <family>Noto Emoji</family>
+  </prefer>
+ </alias>
+ <alias>
+  <family>serif</family>
+  <prefer>
+   <family>Noto Serif</family>
+   <family>Noto Serif CJK SC</family>
+   <family>Noto Serif CJK TC</family>
+   <family>Noto Serif CJK JP</family>
+   <family>Noto Serif CJK KR</family>
+   <family>Noto Color Emoji</family>
+   <family>Noto Emoji</family>
+  </prefer>
+ </alias>
+ <alias>
+  <family>monospace</family>
+  <prefer>
+   <family>Noto Sans Mono</family>
+   <family>Noto Sans Mono CJK SC</family>
+   <family>Noto Sans Mono CJK TC</family>
+   <family>Noto Sans Mono CJK HK</family>
+   <family>Noto Sans Mono CJK JP</family>
+   <family>Noto Sans Mono CJK KR</family>
+   <family>Noto Color Emoji</family>
+   <family>Noto Emoji</family>
+  </prefer>
+ </alias>
+ <selectfont>
+  <rejectfont>
+   <pattern>
+    <patelt name="family">
+     <!-- This font is causing problem with GitHub -->
+     <string>Nimbus Sans</string>
+    </patelt>
+   </pattern>
+  </rejectfont>
+ </selectfont>
+ <dir>~/.fonts</dir>
+ <match target="font">
+  <edit mode="assign" name="hinting">
+   <bool>true</bool>
+  </edit>
+ </match>
+ <match target="font">
+  <edit mode="assign" name="antialias">
+   <bool>true</bool>
+  </edit>
+ </match>
+</fontconfig>
+```
+
+**如果需要在 flatpak 应用中生效需要额外运行如下命令:**
+
+```bash
+sudo flatpak override --filesystem="xdg-config/fontconfig:ro"
+```
+
 # gnome 设置
 
 ## 必备扩展
 
 - gnome-extension-app: 开启扩展功能及内置的一些扩展
 - Blur-My-Shell: 让面板, 顶栏, Overview, 锁屏, gnome 自带的截屏, 甚至特定的 app, 都能被毛玻璃化
-- Appindicator: 显示托盘图标
+- Tray icon reloaded: 显示托盘图标
 - Clipboard Indicator: 剪贴板历史记录
 - Dash to Panel: 将 dash 和 gnome 顶栏合并, 类似任务栏
 
@@ -292,7 +447,8 @@ GSETTINGS_BACKEND=dconf gsettings set org.gnome.desktop.peripherals.touchpad spe
 需要执行如下步骤显示 wayland 登录:
 
 1. 在`/etc/default/grub`的`GRUB_CMDLINE_LINUX`中添加`nvidia-drm.modeset=1`
-1. 删除文件`/usr/lib/udev/rules.d/.`, 可以修改**WaylandEnable**相关的配置，但不如直接删除文件快
+1. 确保`/etc/gdm/custom.conf`中`WaylandEnable=false`被注释
+1. 删除文件`/usr/lib/udev/rules.d/61-gdm.rules`, 可以注释`Driver=="nvidia"`相关的配置，但不如直接删除文件快
 
 ### 登录界面不显示或卡住
 
