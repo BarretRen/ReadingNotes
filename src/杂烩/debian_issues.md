@@ -420,7 +420,10 @@ sudo flatpak override --filesystem="xdg-config/fontconfig:ro"
 QT 程序需要设置如下参数，上面的修改在 wayland 下不起作用:
 
 ```bash
-sudo echo "export QT_SCALE_FACTOR=1.25" >> /etc/profile
+#etc/profile
+export QT_SCALE_FACTOR=1
+export QT_AUTO_SCREEN_FACTOR=1
+export QT_FONT_DPI=150
 ```
 
 ## gdm
