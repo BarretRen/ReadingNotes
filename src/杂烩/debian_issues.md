@@ -466,5 +466,28 @@ ExecStartPre=/bin/sleep 1
 
 # 系统软件
 
+## 多媒体
+
 - 视频: Celluloid, 默认会安装 mpv 为后端
 - 音乐: deb multimedia 源里安装`deadbeef`和`deadbeef-mpris2`, audacious 不能单曲循环.
+
+## samba 配置
+
+安装和配置流程如下:
+
+```bash
+sudo apt install samba
+sudo vi /etc/samba/smb.conf
+# 添加如下内容
+[myshare]
+comment=my share directory
+path=/home/renxiuhu
+browseable=yes
+public=yes
+writable=yes
+
+# 设置密码
+sudo smbpasswd -a renxiuhu
+# 重启服务
+sudo systemctl restart smbd.service
+```
