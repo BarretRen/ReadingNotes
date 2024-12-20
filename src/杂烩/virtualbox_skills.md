@@ -11,5 +11,5 @@ sudo shutdown now
 在宿主机上, 用如下命令压缩 vdi 磁盘文件:
 
 ```
-VBoxManage.exe modifyhd "d:\VMs\your_vid_filename.vdi" --compact
+VBoxManage.exe modifymedium disk "d:\VMs\your_vid_filename.vdi" --compact
 ```
