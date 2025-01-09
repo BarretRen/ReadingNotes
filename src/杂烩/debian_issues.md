@@ -1,5 +1,10 @@
 # 安装
 
+## 下载包很慢, 选择国内源无效
+
+虽然选择的了国内源，但软件源中的安全源地址仍然是官方源.
+因此安装时选择 expert install，**不要选择安全更新**，这个选项会访问 debian 的官方软件源
+
 ## virtualbox efi 下安装失败
 
 debian12 在 virtualbox 选择**启用 EFI**时回安装失败, 需要
@@ -70,9 +75,10 @@ iface wlan0 inet dhcp
 
 4. 运行`ifup wlan0`连接网络
 
-## 安装 gnome-core
+## 安装桌面环境
 
-安装 gnome 最小化桌面环境, 直接安装**gnome-core**
+- gnome: 安装 gnome 最小化桌面环境, 直接安装**gnome-core**
+- kde: 安装 kde 最小化桌面环境, 直接安装**kde-plasma-desktop**
 
 # 系统设置
 
