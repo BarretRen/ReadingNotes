@@ -41,3 +41,17 @@ if %errorlevel% equ 0 (
 )
 pause
 ```
+
+# 调整磁盘大小
+
+virtualbox 扩展磁盘的大小。之后进入虚拟机进行如下操作：
+
+先执行 fdisk 查看原分区的起始值，一定要记住。
+进 fdisk 删除原有分区， 再重建原有分区，再分区的时候起始值一定要跟原来的是一样的，要不然就会破坏原分区的数据，只要调整分区结束值大小即可扩容分区。
+
+分区建好后， 用 e2fsck 先检查一下分区， 再用 resize2fs 扩大就可以了
+
+```c
+sudo e2fsck -f /dev/sda1
+sudo resize2fs /dev/sda1
+```

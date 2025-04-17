@@ -25,39 +25,80 @@ debian12 在 virtualbox 选择**启用 EFI**时会安装失败, 需要
 
 在手动分区修改结束后, 按 ctrl+alt+F2 进入终端, 执行如下命令后再返回图形界面继续安装系统(**只安装基本系统即可，不要联网**).
 
-```bash
-~ # umount /target/boot/efi
-~ # umount /target/boot
-~ # umount /target
+```shell
+#!/bin/bash
 
-# 挂载btrfs分区到/mnt
-~ # mount /dev/sda3 /mnt
+# Btrfs子卷设置脚本
+# 功能: 设置Btrfs子卷并配置挂载点
+
+set -euo pipefail  # 启用严格模式
+
+# 检查参数
+if [ $# -eq 0 ]; then
+    echo "使用方法: $0 <btrfs分区设备>"
+    echo "示例: $0 /dev/sda3"
+    exit 1
+fi
+
+BTRFS_PARTITION=$1
+
+echo "开始Btrfs子卷设置..."
+
+# 卸载已挂载的分区
+echo "卸载已挂载的分区..."
+umount /target/boot/efi || true
+umount /target/boot || true
+umount /target || true
+
+# 挂载btrfs分区到临时目录
+echo "挂载Btrfs分区到/mnt..."
+mount $BTRFS_PARTITION /mnt
 
 # 创建子卷
-~ # cd /mnt
-~ # mv @rootfs @
-~ # btrfs subvolume create @home
-~ # btrfs subvolume create @snapshots
+echo "创建Btrfs子卷..."
+cd /mnt
+mv @rootfs @
+btrfs subvolume create @home
+btrfs subvolume create @snapshots
 
-# 卸载/mnt
-~ # cd
-~ # umount /mnt
+# 卸载临时挂载点
+echo "卸载临时挂载点..."
+cd
+umount /mnt
 
-# 挂载子卷
-~ # mount -o rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@ /dev/sda3 /target
-~ # mkdir /target/home
-~ # mount -o rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@home /dev/sda3 /target/home
-~ # mkdir /target/snapshots
-~ # mount -o rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@snapshots /dev/sda3 /target/snapshots
+# 挂载子卷到目标目录
+echo "挂载子卷到/target..."
+mount -o rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@ $BTRFS_PARTITION /target
+mkdir -p /target/home
+mount -o rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@home $BTRFS_PARTITION /target/home
+mkdir -p /target/snapshots
+mount -o rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@snapshots $BTRFS_PARTITION /target/snapshots
 
 # 挂载efi和boot分区
-~ # mount /dev/sda2 /target/boot/
-~ # mount /dev/sda1 /target/boot/efi
+echo "挂载EFI和Boot分区..."
+mount /dev/sda2 /target/boot/
+mount /dev/sda1 /target/boot/efi
 
-# 修改fstab自动挂载, uuid还是用原来/dev/sda3的值
+# 更新fstab文件
+echo "更新fstab配置..."
+cat <<EOF > /target/etc/fstab
 UUID=2fd5d7b2-ceb0-4028-8381-3b38b3dcd658 /               btrfs   rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@ 0       0
 UUID=2fd5d7b2-ceb0-4028-8381-3b38b3dcd658 /home           btrfs   rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@home 0       0
 UUID=2fd5d7b2-ceb0-4028-8381-3b38b3dcd658 /snapshots      btrfs   rw,noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@snapshots 0       0
+EOF
+
+echo "Btrfs子卷设置完成!"
+```
+
+### swapfile 设置
+
+```bash
+#创建swap分区, 也可以不创建,直接创建swapfile
+btrfs subvolume create /swap
+btrfs filesystem mkswapfile --size 4g --uuid clear /swap/swapfile
+swapon /swap/swapfile
+# 加入fstab自动挂载
+/swap/swapfile none swap defaults 0 0
 ```
 
 ## 终端下联网
