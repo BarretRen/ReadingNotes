@@ -444,6 +444,16 @@ $ cat .config/fontconfig/fonts.conf
 sudo flatpak override --filesystem="xdg-config/fontconfig:ro"
 ```
 
+## /tmp 默认挂载在内存中
+
+从 debian13 开始, /tmp 临时文件夹会挂载在内存中, 并默认最大占用 50%. 屏蔽下面服务可以改为原来挂载到磁盘的方式:
+
+```bash
+sudo systemctl mask tmp.mount
+
+# 使用df -h查看/tmp是不是已经不是tmpfs类型了
+```
+
 # gnome 设置
 
 ## 必备扩展
