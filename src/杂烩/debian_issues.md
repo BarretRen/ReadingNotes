@@ -444,6 +444,16 @@ $ cat .config/fontconfig/fonts.conf
 sudo flatpak override --filesystem="xdg-config/fontconfig:ro"
 ```
 
+## /tmp 默认挂载在内存中
+
+从 debian13 开始, /tmp 临时文件夹会挂载在内存中, 并默认最大占用 50%. 屏蔽下面服务可以改为原来挂载到磁盘的方式:
+
+```bash
+sudo systemctl mask tmp.mount
+
+# 使用df -h查看/tmp是不是已经不是tmpfs类型了
+```
+
 # gnome 设置
 
 ## 必备扩展
@@ -538,3 +548,19 @@ sudo smbpasswd -a renxiuhu
 # 重启服务
 sudo systemctl restart smbd.service
 ```
+
+在 virtualbox 中添加 host-only 网卡，并在 debian 中设置该网卡的固定 ip(和宿主机的 host-only 网卡 ip 在同一网段)
+
+```bash
+sudo vim /etc/network/interfaces
+#添加如下内容
+allow-hotplug enp0s8
+iface enp0s8 inet static
+    address 192.168.168.2
+    netmask 255.255.255.0
+
+#重新启动网络
+sudo systemctl restart networking
+```
+
+之后在 windows 中添加**网络驱动器**，使用上面的 ip 和 samba 目录即可。
