@@ -125,8 +125,14 @@ iface wlan0 inet dhcp
 
 ## 开机取消 log 滚屏
 
-1. 在`/etc/default/grub`的`GRUB_CMDLINE_LINUX_DEFAULT`添加如下配置: `loglevel=3 systemd.show_status=false rd.udev.log_level=3`
+1. 在`/etc/default/grub`的`GRUB_CMDLINE_LINUX_DEFAULT`添加如下配置: `loglevel=0 rd.systemd.show_status=auto vt.global_cursor_default=0`
 1. 执行`update-grub`更新配置
+1. 用plymouth启动画面代替文本打印
+
+```bash
+sudo apt install plymouth plymouth-themes
+sudo plymouth-set-default-theme -R bgrt
+```
 
 ## networkmanager 找不到 wifi 问题
 
